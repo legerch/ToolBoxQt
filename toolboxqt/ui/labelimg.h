@@ -1,7 +1,7 @@
 #ifndef TBQ_UI_QLABELIMG_H
 #define TBQ_UI_QLABELIMG_H
 
-#include "toolboxqt_global.h"
+#include "toolboxqt/toolboxqt_global.h"
 
 #include <QLabel>
 

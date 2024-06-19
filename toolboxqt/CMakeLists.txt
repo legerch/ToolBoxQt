@@ -89,7 +89,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 # Link needed libraries
 ## Qt Library
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(${PROJECT_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
 
 # Compile needed definitions
 target_compile_definitions(${PROJECT_NAME} PRIVATE TOOLBOXQT_LIBRARY_BUILD)
@@ -101,4 +101,5 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE TOOLBOXQT_LIBRARY_BUILD)
 # endif()
 
 # Directories to includes
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+cmake_path(GET CMAKE_CURRENT_SOURCE_DIR PARENT_PATH PROJECT_ROOT_DIR)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_ROOT_DIR})
