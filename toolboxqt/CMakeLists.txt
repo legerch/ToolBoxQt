@@ -36,8 +36,7 @@ message(STATUS "Project \"${PROJECT_NAME}\" compiled with C++ standard ${CMAKE_C
 ## Example: find_package(nlohmann_json 3.11.3 REQUIRED)
 
 ## Find Qt packages
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets REQUIRED)
 
 # Configure file project - File containing macro that can be used in project
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in" "${CMAKE_CURRENT_SOURCE_DIR}/config.h")
@@ -46,10 +45,12 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in" "${CMAKE_CURRENT_SOURCE
 set(PROJECT_HEADERS
     config.h
     toolboxqt_global.h
+
+    ui/labelimg.h
 )
 
 set(PROJECT_SOURCES
-
+    ui/labelimg.cpp
 )
 
 set(PROJECT_UI
@@ -88,7 +89,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 # Link needed libraries
 ## Qt Library
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
 
 # Compile needed definitions
 target_compile_definitions(${PROJECT_NAME} PRIVATE TOOLBOXQT_LIBRARY_BUILD)
