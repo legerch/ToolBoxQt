@@ -46,10 +46,12 @@ set(PROJECT_HEADERS
     config.h
     toolboxqt_global.h
 
+    core/richlink.h
     widgets/labelimg.h
 )
 
 set(PROJECT_SOURCES
+    core/richlink.cpp
     widgets/labelimg.cpp
 )
 
