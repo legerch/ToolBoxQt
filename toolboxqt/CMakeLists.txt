@@ -46,11 +46,11 @@ set(PROJECT_HEADERS
     config.h
     toolboxqt_global.h
 
-    ui/labelimg.h
+    widgets/labelimg.h
 )
 
 set(PROJECT_SOURCES
-    ui/labelimg.cpp
+    widgets/labelimg.cpp
 )
 
 set(PROJECT_UI

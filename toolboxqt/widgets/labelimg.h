@@ -1,5 +1,5 @@
-#ifndef TBQ_UI_QLABELIMG_H
-#define TBQ_UI_QLABELIMG_H
+#ifndef TBQ_WIDGETS_QLABELIMG_H
+#define TBQ_WIDGETS_QLABELIMG_H
 
 #include "toolboxqt/toolboxqt_global.h"
 
@@ -42,4 +42,4 @@ private:
 
 } // namespace tbq
 
-#endif // TBQ_UI_QLABELIMG_H
+#endif // TBQ_WIDGETS_QLABELIMG_H
