@@ -4,6 +4,27 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class tbq::LabelImg
+ * \brief Label used to display an image
+ * \details
+ * Include with:
+ * \code{.cpp}
+ * #include "toolboxqt/widgets/labelimg.h"
+ * \endcode
+ *
+ * QLabel doesn't behave properly when using it to display an image
+ * that is loaded at runtime. Since size of image is not known
+ * when layout is rendered, QLabel size will be wrong and will not be properly
+ * updated when finally rendering an image (either too small, too big or not properly
+ * scaled). This class will manage this issue.
+ *
+ * \note
+ * Note that this class will be useful for QLabel containing image
+ * which are loaded at runtime. The described issue do not happen when image
+ * is available at compile-time.
+ */
+
 /*****************************/
 /* Macro definitions         */
 /*****************************/
@@ -30,6 +51,11 @@ LabelImg::LabelImg(QWidget *parent)
     setAlignment(Qt::AlignCenter);
 
     setTextAlt("No available image");
+}
+
+const QPixmap &LabelImg::getPixmap() const
+{
+    return m_pixmap;
 }
 
 QPixmap LabelImg::getPixmapScaled() const

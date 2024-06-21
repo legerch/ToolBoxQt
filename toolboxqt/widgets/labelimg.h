@@ -16,6 +16,7 @@ public:
     explicit LabelImg(QWidget *parent = nullptr);
 
 public:
+    const QPixmap& getPixmap() const;
     QPixmap getPixmapScaled() const;
 
 public:
