@@ -20,7 +20,7 @@ namespace tbq
 /*    BtnAbstractWordWrap    */
 /*****************************/
 
-class BtnAbstractWordWrap
+class TOOLBOXQT_EXPORT BtnAbstractWordWrap
 {
 
 public:
