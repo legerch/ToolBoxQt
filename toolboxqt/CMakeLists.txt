@@ -36,6 +36,7 @@ message(STATUS "Project \"${PROJECT_NAME}\" compiled with C++ standard ${CMAKE_C
 ## Example: find_package(nlohmann_json 3.11.3 REQUIRED)
 
 ## Find Qt packages
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets REQUIRED)
 
 # Configure file project - File containing macro that can be used in project
