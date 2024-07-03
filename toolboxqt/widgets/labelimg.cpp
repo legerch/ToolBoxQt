@@ -53,27 +53,68 @@ LabelImg::LabelImg(QWidget *parent)
     setTextAlt("No available image");
 }
 
+/*!
+ * \brief Use to get original image
+ *
+ * \return
+ * Return reference to original
+ * image
+ *
+ * \sa getPixmapScaled()
+ * \sa setImg()
+ */
 const QPixmap &LabelImg::getPixmap() const
 {
     return m_pixmap;
 }
 
+/*!
+ * \brief Use to get image scaled to fit
+ * inside the label
+ *
+ * \return
+ * Returns image scaled to fit inside the available
+ * space of the label
+ */
 QPixmap LabelImg::getPixmapScaled() const
 {
     return m_pixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 }
 
+/*!
+ * \brief Set image to use via a \b QPixmap
+ *
+ * \param[in] pixmap
+ * Pixmap image to use inside the label. Pixmap
+ * image will be copied.
+ */
 void LabelImg::setImg(const QPixmap &pixmap)
 {
     m_pixmap = pixmap;
     updatePixmap();
 }
 
+/*!
+ * \brief Set image to use via a \b QImage
+ *
+ * \param[in] img
+ * Image to use inside the label. This value
+ * will be copied.
+ */
 void LabelImg::setImg(const QImage &img)
 {
     setImg(QPixmap::fromImage(img));
 }
 
+/*!
+ * \brief Set image via a pointer to \b QImage
+ *
+ * \param[in] img
+ * Pointer to image to use. \n
+ * If \c nullptr, nothing will be perform. \n
+ * Caller don't need to keep a reference to the object,
+ * value is copied.
+ */
 void LabelImg::setImg(const QImage *img)
 {
     /* Verify pointer validity */
@@ -85,6 +126,13 @@ void LabelImg::setImg(const QImage *img)
     setImg(*img);
 }
 
+/*!
+ * \brief Set text to display when no image
+ * has been set.
+ *
+ * \param[in] text
+ * Text to display when no image has been set.
+ */
 void LabelImg::setTextAlt(const QString &text)
 {
     m_text = text;
