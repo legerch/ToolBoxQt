@@ -1,5 +1,7 @@
 #include "button.h"
 
+#include <QTimer>
+
 /*****************************/
 /* Class documentations      */
 /*****************************/
@@ -240,6 +242,23 @@ void BtnPush::setText(const QString &text)
     setTextWordWrap(text);
 }
 
+//TODO: doc (milliseconds)
+//TODO: doc (tell about "clicked" signal still available or simple if we want to be sure)
+void BtnPush::setTimeDoubleClick(int interval)
+{
+    /* Do double click timer is defined ? */
+    if(!m_timerDblClk){
+        m_timerDblClk = new QTimer(this); // Using "this" as parent, object will be automatically destroyed
+        m_timerDblClk->setSingleShot(true);
+
+        connect(this, &QPushButton::clicked, this, &BtnPush::eventIsClicked);
+        connect(m_timerDblClk, &QTimer::timeout, this, &BtnPush::eventTimeoutDblClk);
+    }
+
+    /* Set double click timer interval */
+    m_timerDblClk->setInterval(interval);
+}
+
 void BtnPush::paintEvent(QPaintEvent *event)
 {
     QPushButton::paintEvent(event);
@@ -267,6 +286,23 @@ void BtnPush::updateGeometryBtn()
 void BtnPush::updateBtn()
 {
     QPushButton::update();
+}
+
+void BtnPush::eventIsClicked()
+{
+    /* Did first click already been fired ? */
+    if(m_timerDblClk->isActive()){
+        m_timerDblClk->stop();
+        emit sClickedDouble();
+
+    }else{
+        m_timerDblClk->start();
+    }
+}
+
+void BtnPush::eventTimeoutDblClk()
+{
+    emit sClickedSimple();
 }
 
 /*****************************/
