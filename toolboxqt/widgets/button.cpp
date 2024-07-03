@@ -4,6 +4,47 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class tbq::BtnAbstractWordWrap
+ * \brief Virtual class implementing wordwrap for buttons
+ * \details
+ * Include with:
+ * \code{.cpp}
+ * #include "toolboxqt/widgets/labelimg.h"
+ * \endcode
+ * Qt button classes doesn't allow to wordwrap text when button size is not enough
+ * (even when layout space allow it!). This class will manage this issue and
+ * properly use the available space.
+ *
+ * \sa tbq::BtnPush, tbq::BtnTool
+ */
+
+/*!
+ * \class tbq::BtnTool
+ * \brief Custom QToolButton implementing wordwrap
+ * \details
+ * Include with:
+ * \code{.cpp}
+ * #include "toolboxqt/widgets/button.h"
+ * \endcode
+ *
+ * \sa tbq::BtnAbstractWordWrap
+ * \sa tbq::BtnPush
+ */
+
+/*!
+ * \class tbq::BtnPush
+ * \brief Custom QPushButton implementing wordwrap
+ * \details
+ * Include with:
+ * \code{.cpp}
+ * #include "toolboxqt/widgets/button.h"
+ * \endcode
+ *
+ * \sa tbq::BtnTool
+ * \sa tbq::BtnAbstractWordWrap
+ */
+
 /*****************************/
 /* Macro definitions         */
 /*****************************/
@@ -30,23 +71,53 @@ BtnAbstractWordWrap::BtnAbstractWordWrap()
     /* Nothing to do */
 }
 
+/*!
+ * \brief Use to set button text
+ *
+ * \param[in] text
+ * Text to display inside the button.
+ */
 void BtnAbstractWordWrap::setTextWordWrap(const QString &text)
 {
     m_text = text;
     performRefresh();
 }
 
+/*!
+ * \brief Set padding to use inside button
+ *
+ * \param[in] padding
+ * Padding to use. \n
+ * By default, padding is set to \c 0.
+ *
+ * \sa getPadding()
+ */
 void BtnAbstractWordWrap::setPadding(int padding)
 {
     m_padding = padding;
     performRefresh();
 }
 
+/*!
+ * \brief Get button text
+ *
+ * \return
+ * Returns reference to button text.
+ *
+ * \sa setTextWordWrap()
+ */
 const QString& BtnAbstractWordWrap::getText() const
 {
     return m_text;
 }
 
+/*!
+ * \brief Get current padding to use
+ * \return
+ * Return current padding.
+ *
+ * \sa setPadding()
+ */
 int BtnAbstractWordWrap::getPadding() const
 {
     return m_padding;
@@ -88,6 +159,18 @@ BtnTool::BtnTool(const QString &text, int padding, QWidget *parent)
     setPadding(padding);
 }
 
+/*!
+ * \overload
+ * \brief Use to set text of button
+ * \details
+ * This method is an overload, which simply call
+ * \c setTextWordWrap method.
+ *
+ * \param[in] text
+ * Text to display inside the button.
+ *
+ * \sa getText()
+ */
 void BtnTool::setText(const QString &text)
 {
     setTextWordWrap(text);
@@ -140,6 +223,18 @@ BtnPush::BtnPush(const QString &text, int padding, QWidget *parent)
     setPadding(padding);
 }
 
+/*!
+ * \overload
+ * \brief Use to set text of button
+ * \details
+ * This method is an overload, which simply call
+ * \c setTextWordWrap method.
+ *
+ * \param[in] text
+ * Text to display inside the button.
+ *
+ * \sa getText()
+ */
 void BtnPush::setText(const QString &text)
 {
     setTextWordWrap(text);
