@@ -1,5 +1,5 @@
-#ifndef TBQ_WIDGETS_QLABELIMG_H
-#define TBQ_WIDGETS_QLABELIMG_H
+#ifndef TBQ_WIDGETS_QLABELSCL_H
+#define TBQ_WIDGETS_QLABELSCL_H
 
 #include "toolboxqt/toolboxqt_global.h"
 
@@ -9,12 +9,12 @@
 namespace tbq
 {
 
-class TOOLBOXQT_EXPORT LabelImg : public QLabel
+class TOOLBOXQT_EXPORT LabelScl : public QLabel
 {
     Q_OBJECT
 
 public:
-    explicit LabelImg(QWidget *parent = nullptr);
+    explicit LabelScl(QWidget *parent = nullptr);
 
 public:
     const QPixmap& getPixmap() const;
@@ -53,4 +53,4 @@ private:
 
 } // namespace tbq
 
-#endif // TBQ_WIDGETS_QLABELIMG_H
+#endif // TBQ_WIDGETS_QLABELSCL_H

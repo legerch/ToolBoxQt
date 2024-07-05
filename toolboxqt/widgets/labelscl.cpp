@@ -1,4 +1,4 @@
-#include "labelimg.h"
+#include "labelscl.h"
 
 /*****************************/
 /* Class documentations      */
@@ -45,7 +45,7 @@ namespace tbq
 /*         Class             */
 /*****************************/
 
-LabelImg::LabelImg(QWidget *parent)
+LabelScl::LabelScl(QWidget *parent)
     : QLabel(parent)
 {
     setScaledContents(false);
@@ -65,7 +65,7 @@ LabelImg::LabelImg(QWidget *parent)
  * \sa getPixmapScaled()
  * \sa setImg()
  */
-const QPixmap &LabelImg::getPixmap() const
+const QPixmap &LabelScl::getPixmap() const
 {
     return m_pixmap;
 }
@@ -78,22 +78,22 @@ const QPixmap &LabelImg::getPixmap() const
  * Returns image scaled to fit inside the available
  * space of the label
  */
-QPixmap LabelImg::getPixmapScaled() const
+QPixmap LabelScl::getPixmapScaled() const
 {
     return m_pixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 }
 
-void LabelImg::animPlay(bool start)
+void LabelScl::animPlay(bool start)
 {
     start ? animStart() : animStop();
 }
 
-void LabelImg::animStart()
+void LabelScl::animStart()
 {
     m_anim->start();
 }
 
-void LabelImg::animStop()
+void LabelScl::animStop()
 {
     m_anim->stop();
 }
@@ -105,7 +105,7 @@ void LabelImg::animStop()
  * Pixmap image to use inside the label. Pixmap
  * image will be copied.
  */
-void LabelImg::setImg(const QPixmap &pixmap)
+void LabelScl::setImg(const QPixmap &pixmap)
 {
     m_pixmap = pixmap;
     updatePixmap();
@@ -118,7 +118,7 @@ void LabelImg::setImg(const QPixmap &pixmap)
  * Image to use inside the label. This value
  * will be copied.
  */
-void LabelImg::setImg(const QImage &img)
+void LabelScl::setImg(const QImage &img)
 {
     setImg(QPixmap::fromImage(img));
 }
@@ -132,7 +132,7 @@ void LabelImg::setImg(const QImage &img)
  * Caller don't need to keep a reference to the object,
  * value is copied.
  */
-void LabelImg::setImg(const QImage *img)
+void LabelScl::setImg(const QImage *img)
 {
     /* Verify pointer validity */
     if(!img){
@@ -143,10 +143,10 @@ void LabelImg::setImg(const QImage *img)
     setImg(*img);
 }
 
-void LabelImg::setAnimation(const QString &animation)
+void LabelScl::setAnimation(const QString &animation)
 {
     m_anim = std::make_unique<QMovie>(animation);
-    connect(m_anim.get(), &QMovie::frameChanged, this, &LabelImg::updateMovieFrame);
+    connect(m_anim.get(), &QMovie::frameChanged, this, &LabelScl::updateMovieFrame);
 }
 
 /*!
@@ -156,12 +156,12 @@ void LabelImg::setAnimation(const QString &animation)
  * \param[in] text
  * Text to display when no image has been set.
  */
-void LabelImg::setTextAlt(const QString &text)
+void LabelScl::setTextAlt(const QString &text)
 {
     m_text = text;
 }
 
-int LabelImg::heightForWidth(int width) const
+int LabelScl::heightForWidth(int width) const
 {
     if(m_pixmap.isNull()){
         return height();
@@ -170,13 +170,13 @@ int LabelImg::heightForWidth(int width) const
     return (m_pixmap.height() * width) / ((double)width);
 }
 
-QSize LabelImg::sizeHint() const
+QSize LabelScl::sizeHint() const
 {
     const int sizeW = width();
     return QSize(sizeW, heightForWidth(sizeW));
 }
 
-void LabelImg::resizeEvent(QResizeEvent *event)
+void LabelScl::resizeEvent(QResizeEvent *event)
 {
     if(m_anim && m_anim->state() == QMovie::Running){
         updateMovieFrame();
@@ -185,13 +185,13 @@ void LabelImg::resizeEvent(QResizeEvent *event)
     }
 }
 
-void LabelImg::updateMovieFrame()
+void LabelScl::updateMovieFrame()
 {
     m_pixmap = m_anim->currentPixmap();
     updatePixmap();
 }
 
-void LabelImg::updatePixmap()
+void LabelScl::updatePixmap()
 {
     /* Is image valid ? */
     if(m_pixmap.isNull()){
