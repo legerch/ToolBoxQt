@@ -50,6 +50,7 @@ set(PROJECT_HEADERS
     core/richlink.h
 
     widgets/button.h
+    widgets/labelanim.h
     widgets/labelimg.h
 )
 
@@ -57,6 +58,7 @@ set(PROJECT_SOURCES
     core/richlink.cpp
 
     widgets/button.cpp
+    widgets/labelanim.cpp
     widgets/labelimg.cpp
 )
 

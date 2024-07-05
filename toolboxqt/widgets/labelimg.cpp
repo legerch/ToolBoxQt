@@ -46,6 +46,7 @@ namespace tbq
 /*****************************/
 
 LabelImg::LabelImg(QWidget *parent)
+    : QLabel(parent)
 {
     setScaledContents(false);
     setAlignment(Qt::AlignCenter);
