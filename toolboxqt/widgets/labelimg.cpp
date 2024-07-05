@@ -50,6 +50,7 @@ LabelImg::LabelImg(QWidget *parent)
 {
     setScaledContents(false);
     setAlignment(Qt::AlignCenter);
+    setAttribute(Qt::WA_TranslucentBackground, true);
 
     setTextAlt("No available image");
 }
@@ -80,6 +81,21 @@ const QPixmap &LabelImg::getPixmap() const
 QPixmap LabelImg::getPixmapScaled() const
 {
     return m_pixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+}
+
+void LabelImg::animPlay(bool start)
+{
+    start ? animStart() : animStop();
+}
+
+void LabelImg::animStart()
+{
+    m_anim->start();
+}
+
+void LabelImg::animStop()
+{
+    m_anim->stop();
 }
 
 /*!
@@ -127,6 +143,12 @@ void LabelImg::setImg(const QImage *img)
     setImg(*img);
 }
 
+void LabelImg::setAnimation(const QString &animation)
+{
+    m_anim = std::make_unique<QMovie>(animation);
+    connect(m_anim.get(), &QMovie::frameChanged, this, &LabelImg::updateMovieFrame);
+}
+
 /*!
  * \brief Set text to display when no image
  * has been set.
@@ -156,6 +178,21 @@ QSize LabelImg::sizeHint() const
 
 void LabelImg::resizeEvent(QResizeEvent *event)
 {
+    if(m_anim && m_anim->state() == QMovie::Running){
+        updateMovieFrame();
+    }else{
+        updatePixmap();
+    }
+}
+
+void LabelImg::updateMovieFrame()
+{
+    m_pixmap = m_anim->currentPixmap();
+    updatePixmap();
+}
+
+void LabelImg::updatePixmap()
+{
     /* Is image valid ? */
     if(m_pixmap.isNull()){
         QLabel::setText(m_text);
@@ -163,11 +200,6 @@ void LabelImg::resizeEvent(QResizeEvent *event)
     }
 
     /* Draw pixmap */
-    updatePixmap();
-}
-
-void LabelImg::updatePixmap()
-{
     QLabel::setPixmap(getPixmapScaled());
 }
 
