@@ -47,7 +47,7 @@ Library is separated according to _Qt modules_, current modules and classes are 
   - Buttons:
     - _BtnAbstractWordWrap:_ Virtual class which define an interface allowing to properly wrap text of a button
     - _BtnTool:_ Inherit from _QToolButton_ and _BtnAbstractWordWrap_
-    - _BtnPush:_ Inherit from _QPushButton_ and _BtnAbstractWordWrap_
+    - _BtnPush:_ Inherit from _QPushButton_ and _BtnAbstractWordWrap_. Also add _double-click_ event support.
   - _LabelScl:_ Custom class which inherit from _QLabel_ class and properly scale image or animations to the label size.
 
 To use a class, simply use the proper include:

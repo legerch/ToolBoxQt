@@ -96,6 +96,11 @@ public:
 
 public:
     void setText(const QString &text);
+    void setTimeDoubleClick(int interval = 250);
+
+signals:
+    void sClickedSimple();
+    void sClickedDouble();
 
 protected: // Virtual methods from QToolButton
     void paintEvent(QPaintEvent *event) override;
@@ -109,6 +114,13 @@ protected: // Virtual methods from BtnAbstractWordWrap
 
 private: // Disable inherited public methods that can confuse users
     using QPushButton::text;
+
+private:
+    void eventIsClicked();
+    void eventTimeoutDblClk();
+
+private:
+    QTimer *m_timerDblClk = nullptr;
 };
 
 /*****************************/
