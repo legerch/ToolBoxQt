@@ -41,18 +41,18 @@ target_link_libraries(${PROJECT_NAME} PRIVATE toolboxqt)
 # 3. How to use
 
 Library is separated according to _Qt modules_, current modules and classes are (for each classes, more details can be found in their own documentation):
-- **core**:
-  - _RichLink_: Used to manage an URL with a custom display
-- **widgets**:
+- **core:**
+  - _RichLink:_ Used to manage an URL with a custom display
+- **widgets:**
   - Buttons:
-    - _BtnAbstractWordWrap_: Virtual class which define an interface allowing to properly wrap text of a button
-    - _BtnTool_: Inherit from _QToolButton_ and _BtnAbstractWordWrap_
-    - _BtnPush_: Inherit from _QPushButton_ and _BtnAbstractWordWrap_
-  - _LabelImg_: Custom class which inherit from _QLabel_ class and properly manage label containing image which are loaded at runtime.
+    - _BtnAbstractWordWrap:_ Virtual class which define an interface allowing to properly wrap text of a button
+    - _BtnTool:_ Inherit from _QToolButton_ and _BtnAbstractWordWrap_
+    - _BtnPush:_ Inherit from _QPushButton_ and _BtnAbstractWordWrap_
+  - _LabelScl:_ Custom class which inherit from _QLabel_ class and properly scale image or animations to the label size.
 
 To use a class, simply use the proper include:
 ```cpp
-#include "toolboxqt/widgets/labelimg"
+#include "toolboxqt/widgets/labelscl.h"
 ```
 
 All classes are defined inside namespace `tbq` (for _ToolBoxQt_).

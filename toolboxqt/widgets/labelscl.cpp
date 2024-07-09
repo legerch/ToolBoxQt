@@ -5,16 +5,16 @@
 /*****************************/
 
 /*!
- * \class tbq::LabelImg
- * \brief Label used to display an image
+ * \class tbq::LabelScl
+ * \brief Label that will properly scale image or animation
  * \details
  * Include with:
  * \code{.cpp}
- * #include "toolboxqt/widgets/labelimg.h"
+ * #include "toolboxqt/widgets/labelscl.h"
  * \endcode
  *
- * QLabel doesn't behave properly when using it to display an image
- * that is loaded at runtime. Since size of image is not known
+ * QLabel doesn't behave properly when using it to display an image (or
+ * animation) that is loaded at runtime. Since size of image is not known
  * when layout is rendered, QLabel size will be wrong and will not be properly
  * updated when finally rendering an image (either too small, too big or not properly
  * scaled). This class will manage this issue.
@@ -83,16 +83,39 @@ QPixmap LabelScl::getPixmapScaled() const
     return m_pixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 }
 
+/*!
+ * \brief Use to start/stop animation set
+ * \param[in] start
+ * Set to \c true to play animation, otherwise
+ * it will be stopped
+ *
+ * \sa setAnimation()
+ * \sa animStart(), animStop()
+ */
 void LabelScl::animPlay(bool start)
 {
     start ? animStart() : animStop();
 }
 
+/*!
+ * \brief Use to play animation set
+ *
+ * \sa setAnimation()
+ * \sa animStop()
+ * \sa animPlay()
+ */
 void LabelScl::animStart()
 {
     m_anim->start();
 }
 
+/*!
+ * \brief Use to play animation set
+ *
+ * \sa setAnimation()
+ * \sa animStart()
+ * \sa animPlay()
+ */
 void LabelScl::animStop()
 {
     m_anim->stop();
@@ -143,6 +166,14 @@ void LabelScl::setImg(const QImage *img)
     setImg(*img);
 }
 
+/*!
+ * \brief Set animation to use
+ * \param[in] animation
+ * Path to animation ressource
+ *
+ * \sa animPlay()
+ * \sa animStart(), animStop()
+ */
 void LabelScl::setAnimation(const QString &animation)
 {
     m_anim = std::make_unique<QMovie>(animation);
