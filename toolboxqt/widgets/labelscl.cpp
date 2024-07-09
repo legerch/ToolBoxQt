@@ -147,6 +147,8 @@ void LabelScl::setAnimation(const QString &animation)
 {
     m_anim = std::make_unique<QMovie>(animation);
     connect(m_anim.get(), &QMovie::frameChanged, this, &LabelScl::updateMovieFrame);
+
+    m_anim->jumpToFrame(0);
 }
 
 /*!
