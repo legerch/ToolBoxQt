@@ -1,20 +1,20 @@
-#include "labelimg.h"
+#include "labelscl.h"
 
 /*****************************/
 /* Class documentations      */
 /*****************************/
 
 /*!
- * \class tbq::LabelImg
- * \brief Label used to display an image
+ * \class tbq::LabelScl
+ * \brief Label that will properly scale image or animation
  * \details
  * Include with:
  * \code{.cpp}
- * #include "toolboxqt/widgets/labelimg.h"
+ * #include "toolboxqt/widgets/labelscl.h"
  * \endcode
  *
- * QLabel doesn't behave properly when using it to display an image
- * that is loaded at runtime. Since size of image is not known
+ * QLabel doesn't behave properly when using it to display an image (or
+ * animation) that is loaded at runtime. Since size of image is not known
  * when layout is rendered, QLabel size will be wrong and will not be properly
  * updated when finally rendering an image (either too small, too big or not properly
  * scaled). This class will manage this issue.
@@ -45,10 +45,12 @@ namespace tbq
 /*         Class             */
 /*****************************/
 
-LabelImg::LabelImg(QWidget *parent)
+LabelScl::LabelScl(QWidget *parent)
+    : QLabel(parent)
 {
     setScaledContents(false);
     setAlignment(Qt::AlignCenter);
+    setAttribute(Qt::WA_TranslucentBackground, true);
 
     setTextAlt("No available image");
 }
@@ -63,7 +65,7 @@ LabelImg::LabelImg(QWidget *parent)
  * \sa getPixmapScaled()
  * \sa setImg()
  */
-const QPixmap &LabelImg::getPixmap() const
+const QPixmap &LabelScl::getPixmap() const
 {
     return m_pixmap;
 }
@@ -76,9 +78,47 @@ const QPixmap &LabelImg::getPixmap() const
  * Returns image scaled to fit inside the available
  * space of the label
  */
-QPixmap LabelImg::getPixmapScaled() const
+QPixmap LabelScl::getPixmapScaled() const
 {
     return m_pixmap.scaled(size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+}
+
+/*!
+ * \brief Use to start/stop animation set
+ * \param[in] start
+ * Set to \c true to play animation, otherwise
+ * it will be stopped
+ *
+ * \sa setAnimation()
+ * \sa animStart(), animStop()
+ */
+void LabelScl::animPlay(bool start)
+{
+    start ? animStart() : animStop();
+}
+
+/*!
+ * \brief Use to play animation set
+ *
+ * \sa setAnimation()
+ * \sa animStop()
+ * \sa animPlay()
+ */
+void LabelScl::animStart()
+{
+    m_anim->start();
+}
+
+/*!
+ * \brief Use to play animation set
+ *
+ * \sa setAnimation()
+ * \sa animStart()
+ * \sa animPlay()
+ */
+void LabelScl::animStop()
+{
+    m_anim->stop();
 }
 
 /*!
@@ -88,7 +128,7 @@ QPixmap LabelImg::getPixmapScaled() const
  * Pixmap image to use inside the label. Pixmap
  * image will be copied.
  */
-void LabelImg::setImg(const QPixmap &pixmap)
+void LabelScl::setImg(const QPixmap &pixmap)
 {
     m_pixmap = pixmap;
     updatePixmap();
@@ -101,7 +141,7 @@ void LabelImg::setImg(const QPixmap &pixmap)
  * Image to use inside the label. This value
  * will be copied.
  */
-void LabelImg::setImg(const QImage &img)
+void LabelScl::setImg(const QImage &img)
 {
     setImg(QPixmap::fromImage(img));
 }
@@ -115,7 +155,7 @@ void LabelImg::setImg(const QImage &img)
  * Caller don't need to keep a reference to the object,
  * value is copied.
  */
-void LabelImg::setImg(const QImage *img)
+void LabelScl::setImg(const QImage *img)
 {
     /* Verify pointer validity */
     if(!img){
@@ -127,18 +167,39 @@ void LabelImg::setImg(const QImage *img)
 }
 
 /*!
+ * \brief Set animation to use
+ * \param[in] animation
+ * Path to animation ressource
+ *
+ * \sa animPlay()
+ * \sa animStart(), animStop()
+ */
+void LabelScl::setAnimation(const QString &animation)
+{
+    /* Don't re-create animation object if already exist */
+    if(m_anim){
+        m_anim->setFileName(animation);
+    }else{
+        m_anim = std::make_unique<QMovie>(animation);
+        connect(m_anim.get(), &QMovie::frameChanged, this, &LabelScl::updateMovieFrame);
+    }
+
+    m_anim->jumpToFrame(0);
+}
+
+/*!
  * \brief Set text to display when no image
  * has been set.
  *
  * \param[in] text
  * Text to display when no image has been set.
  */
-void LabelImg::setTextAlt(const QString &text)
+void LabelScl::setTextAlt(const QString &text)
 {
     m_text = text;
 }
 
-int LabelImg::heightForWidth(int width) const
+int LabelScl::heightForWidth(int width) const
 {
     if(m_pixmap.isNull()){
         return height();
@@ -147,13 +208,28 @@ int LabelImg::heightForWidth(int width) const
     return (m_pixmap.height() * width) / ((double)width);
 }
 
-QSize LabelImg::sizeHint() const
+QSize LabelScl::sizeHint() const
 {
     const int sizeW = width();
     return QSize(sizeW, heightForWidth(sizeW));
 }
 
-void LabelImg::resizeEvent(QResizeEvent *event)
+void LabelScl::resizeEvent(QResizeEvent *event)
+{
+    if(m_anim && m_anim->state() == QMovie::Running){
+        updateMovieFrame();
+    }else{
+        updatePixmap();
+    }
+}
+
+void LabelScl::updateMovieFrame()
+{
+    m_pixmap = m_anim->currentPixmap();
+    updatePixmap();
+}
+
+void LabelScl::updatePixmap()
 {
     /* Is image valid ? */
     if(m_pixmap.isNull()){
@@ -162,11 +238,6 @@ void LabelImg::resizeEvent(QResizeEvent *event)
     }
 
     /* Draw pixmap */
-    updatePixmap();
-}
-
-void LabelImg::updatePixmap()
-{
     QLabel::setPixmap(getPixmapScaled());
 }
 
