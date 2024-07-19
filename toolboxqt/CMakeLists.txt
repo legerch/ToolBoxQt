@@ -47,6 +47,8 @@ set(PROJECT_HEADERS
     config.h
     toolboxqt_global.h
 
+    containers/array2d.h
+
     core/richlink.h
 
     widgets/button.h
