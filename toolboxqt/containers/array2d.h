@@ -37,6 +37,19 @@ public:
     T& operator()(size_t row, size_t col);
     const T& operator()(size_t row, size_t col) const;
 
+public: // Friends operator defined using "Making new friends" idiom (https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Making_New_Friends)
+    friend bool operator==(const Array2D<T> &left, const Array2D<T> &right)
+    {
+        return left.m_rows == right.m_rows
+            && left.m_cols == right.m_cols
+            && left.m_data == right.m_data;
+    }
+
+    friend bool operator!=(const Array2D<T> &left, const Array2D<T> &right)
+    {
+        return !(left == right);
+    }
+
 private:
     size_t m_rows;
     size_t m_cols;
