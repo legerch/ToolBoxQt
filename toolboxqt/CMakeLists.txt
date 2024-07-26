@@ -50,6 +50,7 @@ set(PROJECT_HEADERS
     containers/array2d.h
 
     core/richlink.h
+    core/settingsini.h
 
     widgets/button.h
     widgets/labelscl.h
@@ -57,6 +58,7 @@ set(PROJECT_HEADERS
 
 set(PROJECT_SOURCES
     core/richlink.cpp
+    core/settingsini.cpp
 
     widgets/button.cpp
     widgets/labelscl.cpp
