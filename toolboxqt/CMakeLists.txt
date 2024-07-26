@@ -49,6 +49,7 @@ set(PROJECT_HEADERS
 
     containers/array2d.h
 
+    core/corehelper.h
     core/richlink.h
     core/settingsini.h
 
@@ -57,6 +58,7 @@ set(PROJECT_HEADERS
 )
 
 set(PROJECT_SOURCES
+    core/corehelper.cpp
     core/richlink.cpp
     core/settingsini.cpp
 

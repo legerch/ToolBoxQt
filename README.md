@@ -42,6 +42,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE toolboxqt)
 
 Library is separated according to _Qt modules_, current modules and classes are (for each classes, more details can be found in their own documentation):
 - **core:**
+  - _tbq::CoreHelper:_ Contains static utilities that can't be associated with proper classes
   - _tbq::RichLink:_ Used to manage an URL with a custom display
   - _tbq::SettingsIni:_ Virtual class to use when managing an INI configuration file is needed
 - **widgets:**
