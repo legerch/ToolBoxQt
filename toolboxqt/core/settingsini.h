@@ -6,12 +6,18 @@
 #include <QFileInfo>
 #include <QSettings>
 
+//TODO: doc "appsettings"
+//TODO: doc main
+
 namespace tbq
 {
 
 class TOOLBOXQT_EXPORT SettingsIni
 {
     TOOLBOXQT_DISABLE_COPY_MOVE(SettingsIni)
+
+protected:
+    explicit SettingsIni();
 
 public:
     bool loadSettings(const QFileInfo &fileInfo);
@@ -23,11 +29,8 @@ public:
     QVariant getValue(QAnyStringView key, const QVariant &defaultValue = QVariant()) const;
 
 protected:
-    virtual bool preLoadSettings(const QFileInfo &fileInfo);
-    virtual bool postLoadSettings(const QFileInfo &fileInfo);
-
-private:
-    explicit SettingsIni();
+    virtual bool preLoadSettings(const QFileInfo &fileInfo) = 0;
+    virtual bool postLoadSettings(const QFileInfo &fileInfo) = 0;
 
 private:
     std::unique_ptr<QSettings> m_settings;
