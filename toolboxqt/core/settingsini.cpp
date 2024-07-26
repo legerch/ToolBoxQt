@@ -6,6 +6,40 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class tbq::SettingsIni
+ * \brief Virtual class used to manage INI configuration file
+ * \details
+ * This class add necessary bases to easily manage settings depending on
+ * a \c .ini file. \n
+ * It will allow for example to not have to remember path of configuration file
+ * each time we need it ! \n
+ * This class was implemented with <em>singleton pattern</em> in mind but since we use
+ * inheritance to manage \em pre/post operations, this pattern will have to be implemented
+ * by child classes.
+ *
+ * \note
+ * Don't use this class if INI format is not mandatory, \c QSettings already provide
+ * a way to manage other format without settings parameters each time at:
+ * https://doc.qt.io/qt-6/qsettings.html#basic-usage
+ *
+ * Below, an example of a child class. \n
+ * <em>Header file :</em>
+ * \include{lineno} appsettings.h
+ *
+ * <em>Source file :</em>
+ * \include{lineno} appsettings.cpp
+ *
+ * Then to use it, we have to :
+ * 1. Load configuration in main method:
+ * \include{lineno} settings/main.cpp
+ *
+ * 2. Use it anywhere with:
+ * \code{.cpp}
+ * AppSettings::instance().getValue("mySection/myKey");
+ * \endcode
+ */
+
 /*****************************/
 /*     Virtual methods
  *     documentations        */

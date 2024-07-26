@@ -6,9 +6,6 @@
 #include <QFileInfo>
 #include <QSettings>
 
-//TODO: doc "appsettings"
-//TODO: doc main
-
 namespace tbq
 {
 
