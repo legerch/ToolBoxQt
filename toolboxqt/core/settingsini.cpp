@@ -86,7 +86,7 @@ namespace tbq
 {
 
 /*****************************/
-/* Constants defintitions    */
+/* Constants definitions     */
 /*****************************/
 
 /*****************************/

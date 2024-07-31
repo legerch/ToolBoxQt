@@ -54,6 +54,7 @@ set(PROJECT_HEADERS
     core/settingsini.h
 
     widgets/button.h
+    widgets/filechooser.h
     widgets/labelscl.h
 )
 
@@ -63,6 +64,7 @@ set(PROJECT_SOURCES
     core/settingsini.cpp
 
     widgets/button.cpp
+    widgets/filechooser.cpp
     widgets/labelscl.cpp
 )
 
