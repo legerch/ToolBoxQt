@@ -2,7 +2,7 @@
 
 #include <QApplication>
 
-#include "appsettings.h"
+#include "toolboxqt/core/settingsini.h"
 
 /*****************************/
 /* Macro definitions         */
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     /* Set application configuration file */
-    AppSettings::instance().loadSettings(QFileInfo(APP_CFG_FILE));
+    mSettings.loadSettings(QFileInfo(APP_CFG_FILE));
 
     /* Create main window */
     MainWindow mainWindow;

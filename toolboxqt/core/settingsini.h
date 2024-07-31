@@ -6,14 +6,22 @@
 #include <QFileInfo>
 #include <QSettings>
 
+#define mSettings   tbq::SettingsIni::instance()
+
 namespace tbq
 {
 
-class TOOLBOXQT_EXPORT SettingsIni
+class TOOLBOXQT_EXPORT SettingsIni final
 {
     TOOLBOXQT_DISABLE_COPY_MOVE(SettingsIni)
 
-protected:
+public:
+    using CbHook = std::function<bool(const QFileInfo &fileInfo)>;
+
+public:
+    static SettingsIni& instance();
+
+private:
     explicit SettingsIni();
 
 public:
@@ -25,12 +33,18 @@ public:
     void setValue(QAnyStringView key, const QVariant &value);
     QVariant getValue(QAnyStringView key, const QVariant &defaultValue = QVariant()) const;
 
-protected:
-    virtual bool preLoadSettings(const QFileInfo &fileInfo) = 0;
-    virtual bool postLoadSettings(const QFileInfo &fileInfo) = 0;
+public:
+    void setHooksPreLoadSettings(CbHook hookPreload);
+    void setHooksPostLoadSettings(CbHook hookPostload);
+
+private:
+    static bool defaultHook(const QFileInfo &fileInfo);
 
 private:
     std::unique_ptr<QSettings> m_settings;
+
+    CbHook m_hookPreload;
+    CbHook m_hookPostLoad;
 };
 
 } // namespace tbq
