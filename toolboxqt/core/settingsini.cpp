@@ -103,8 +103,14 @@ namespace tbq
 /*         Class             */
 /*****************************/
 
+SettingsIni &SettingsIni::instance()
+{
+    static SettingsIni instance;
+    return instance;
+}
+
 SettingsIni::SettingsIni()
-    : m_settings(nullptr)
+    : m_settings(nullptr), m_hookPreload(defaultHook), m_hookPostLoad(defaultHook)
 {
     /* Nothing to do */
 }
@@ -112,7 +118,7 @@ SettingsIni::SettingsIni()
 bool SettingsIni::loadSettings(const QFileInfo &fileInfo)
 {
     /* Perform pre-operations */
-    bool succeed = preLoadSettings(fileInfo);
+    bool succeed = m_hookPreload(fileInfo);
     if(!succeed){
         return false;
     }
@@ -121,7 +127,7 @@ bool SettingsIni::loadSettings(const QFileInfo &fileInfo)
     m_settings = std::make_unique<QSettings>(fileInfo.absoluteFilePath(), QSettings::IniFormat);
 
     /* Perform post operations */
-    return postLoadSettings(fileInfo);
+    return m_hookPostLoad(fileInfo);
 }
 
 void SettingsIni::groupBegin(QAnyStringView keyGroup)
@@ -152,6 +158,21 @@ QVariant SettingsIni::getValue(QAnyStringView key, const QVariant &defaultValue)
     }
 
     return m_settings->value(key, defaultValue);
+}
+
+void SettingsIni::setHooksPreLoadSettings(CbHook hookPreload)
+{
+    m_hookPreload = hookPreload;
+}
+
+void SettingsIni::setHooksPostLoadSettings(CbHook hookPostload)
+{
+    m_hookPostLoad = hookPostload;
+}
+
+bool SettingsIni::defaultHook(const QFileInfo &fileInfo)
+{
+    return true;
 }
 
 /*****************************/
