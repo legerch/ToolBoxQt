@@ -44,12 +44,13 @@ Library is separated according to _Qt modules_, current modules and classes are 
 - **core:**
   - _tbq::CoreHelper:_ Contains static utilities that can't be associated with proper classes
   - _tbq::RichLink:_ Used to manage an URL with a custom display
-  - _tbq::SettingsIni:_ Virtual class to use when managing an INI configuration file is needed
+  - _tbq::SettingsIni:_ Class used to manage INI configuration file
 - **widgets:**
   - Buttons:
     - _tbq::BtnAbstractWordWrap:_ Virtual class which define an interface allowing to properly wrap text of a button
     - _tbq::BtnTool:_ Inherit from _QToolButton_ and _BtnAbstractWordWrap_
     - _tbq::BtnPush:_ Inherit from _QPushButton_ and _BtnAbstractWordWrap_. Also add _double-click_ event support.
+  - _tbq::FileChooser:_ Used to choose a file from user-space
   - _tbq::LabelScl:_ Custom class which inherit from _QLabel_ class and properly scale image or animations to the label size.
 
 To use a class, simply use the proper include:
