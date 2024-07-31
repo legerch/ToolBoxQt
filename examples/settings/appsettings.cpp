@@ -1,19 +1,16 @@
 #include "appsettings.h"
 
 #include "toolboxqt/core/corehelper.h"
+#include "toolboxqt/core/settingsini.h"
 
 #include <QVersionNumber>
 
-AppSettings& AppSettings::instance()
+void AppSettings::setup(const QFileInfo &fileInfo)
 {
-    static AppSettings instance;
-    return instance;
-}
+    mSettings.setHooksPreLoadSettings(preLoadSettings);
+    mSettings.setHooksPostLoadSettings(postLoadSettings);
 
-AppSettings::AppSettings()
-    : tbq::SettingsIni()
-{
-    /* Nothing to do */
+    mSettings.loadSettings(fileInfo);
 }
 
 bool AppSettings::preLoadSettings(const QFileInfo &fileInfo)
@@ -32,7 +29,7 @@ bool AppSettings::preLoadSettings(const QFileInfo &fileInfo)
 bool AppSettings::postLoadSettings(const QFileInfo &fileInfo)
 {
     /* Verify configuration version compatibility */
-    const QString semverStr = getValue("informations/version_cfg_file").toString();
+    const QString semverStr = mSettings.getValue("informations/version_cfg_file").toString();
     const QVersionNumber semver = QVersionNumber::fromString(semverStr);
 
     if(semver.majorVersion() > SUPPORT_VERSION_MAJOR){

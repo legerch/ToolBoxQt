@@ -8,79 +8,70 @@
 
 /*!
  * \class tbq::SettingsIni
- * \brief Virtual class used to manage INI configuration file
+ * \brief Class used to manage INI configuration file
  * \details
- * This class add necessary bases to easily manage settings depending on
+ * This class allow to easily manage settings depending on
  * a \c .ini file. \n
  * It will allow for example to not have to remember path of configuration file
  * each time we need it ! \n
- * This class was implemented with <em>singleton pattern</em> in mind but since we use
- * inheritance to manage \em pre/post operations, this pattern will have to be implemented
- * by child classes.
+ * This class used the <em>singleton pattern</em>, to use it, we can use:
+ * - Method \c tbq::Settings::instance()
+ * - Macro \c mSettings
  *
  * \note
  * Don't use this class if INI format is not mandatory, \c QSettings already provide
  * a way to manage other format without settings parameters each time at:
  * https://doc.qt.io/qt-6/qsettings.html#basic-usage
  *
- * Below, an example of a child class. \n
- * <em>Header file :</em>
+ * To use this class in a project, we only have to initialize it in \c main
+ * method:
+ * \include{lineno} settings/maindefault.cpp
+ *
+ * Then we can use it anywhere with:
+ * \code{.cpp}
+ * mSettings.getValue("mySection/myKey");
+ * \endcode
+ *
+ * This class also allow to have a custom behaviour for \b pre and \b post
+ * load operations of the configuration file via setHooksPreLoadSettings()
+ * and setHooksPostLoadSettings(). \n
+ * We can defines custom ones like this:
+ * - <em>Header file :</em>
  * \include{lineno} appsettings.h
  *
- * <em>Source file :</em>
+ * - <em>Source file :</em>
  * \include{lineno} appsettings.cpp
  *
- * Then to use it, we have to :
- * 1. Load configuration in main method:
- * \include{lineno} settings/main.cpp
- *
- * 2. Use it anywhere with:
- * \code{.cpp}
- * AppSettings::instance().getValue("mySection/myKey");
- * \endcode
+ * - <em>Main file :</em>
+ * \include{lineno} maincustom.cpp
  */
 
 /*****************************/
-/*     Virtual methods
+/*      Custom types
  *     documentations        */
 /*****************************/
 
 /*!
- * \fn tbq::SettingsIni::preLoadSettings()
- * \brief Perform action before loading settings
- * \details
- * Virtual method allowing to perform oepration
- * before actually loading settings file.
+ * \typedef SettingsIni::CbHook
+ * \brief Custom callback hook use to implement custom behaviour
  *
  * \param[in] fileInfo
- * File information used in \c loadSettings()
+ * Path to configuration file used with \c loadSettings()
+ *
+ * \note
+ * Defining custom hook is not mandatory, default
+ * are provided (they do nothing excepting returning <tt>true</tt>).
  *
  * \return
- * Child classes should return
- * \c true is pre-load succeed.
+ * Must return \c true if succeed.
  *
- * \sa postLoadSettings()
+ * \sa setHooksPreLoadSettings(), setHooksPostLoadSettings()
  */
 
 /*!
- * \fn tbq::SettingsIni::postLoadSettings()
- * \brief Perform action after loading settings
+ * \def mSettings
  * \details
- * Virtual method allowing to perform oepration
- * after loading settings file.
- *
- * \param[in] fileInfo
- * File information used in \c loadSettings()
- *
- * \note
- * Base implementation perform nothing, \c true will
- * always be returned.
- *
- * \return
- * Classes reimplementing this method should return
- * \c true is post-load succeed.
- *
- * \sa preLoadSettings()
+ * Custom macro simplying usage of tbq::SettingsIni::instance()
  */
 
 /*****************************/
@@ -115,6 +106,17 @@ SettingsIni::SettingsIni()
     /* Nothing to do */
 }
 
+/*!
+ * \brief Load settings from INI configuration file
+
+ * \param fileInfo
+ * INI configuration file to use
+ *
+ * \return
+ * Return \c true if loading succeed.
+ *
+ * \sa setHooksPreLoadSettings(), setHooksPostLoadSettings()
+ */
 bool SettingsIni::loadSettings(const QFileInfo &fileInfo)
 {
     /* Perform pre-operations */
@@ -160,11 +162,25 @@ QVariant SettingsIni::getValue(QAnyStringView key, const QVariant &defaultValue)
     return m_settings->value(key, defaultValue);
 }
 
+/*!
+ * \brief Use to set custom behaviour before loading settings
+ * \param hookPreload
+ * Custom callback to use
+ *
+ * \sa setHooksPostLoadSettings()
+ */
 void SettingsIni::setHooksPreLoadSettings(CbHook hookPreload)
 {
     m_hookPreload = hookPreload;
 }
 
+/*!
+ * \brief Use to set custom behaviour after loading settings
+ * \param hookPostload
+ * Custom callback to use
+ *
+ * \sa setHooksPreLoadSettings()
+ */
 void SettingsIni::setHooksPostLoadSettings(CbHook hookPostload)
 {
     m_hookPostLoad = hookPostload;

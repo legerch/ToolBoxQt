@@ -1,23 +1,17 @@
 #ifndef APPSETTINGS_H
 #define APPSETTINGS_H
 
-#include "toolboxqt/core/settingsini.h"
+#include <QFileInfo>
 
-#define mAppCfg  AppSettings::instance()
-
-class AppSettings : public tbq::SettingsIni
+class AppSettings
 {
-    TOOLBOXQT_DISABLE_COPY_MOVE(AppSettings)
 
 public:
-    static AppSettings& instance();
-
-protected:
-    virtual bool preLoadSettings(const QFileInfo &fileInfo) override;
-    virtual bool postLoadSettings(const QFileInfo &fileInfo) override;
+    static void setup(const QFileInfo &fileInfo);
 
 private:
-    explicit AppSettings();
+    static bool preLoadSettings(const QFileInfo &fileInfo);
+    static bool postLoadSettings(const QFileInfo &fileInfo);
 
 private:
     static constexpr int SUPPORT_VERSION_MAJOR = 1;
