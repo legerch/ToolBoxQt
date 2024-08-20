@@ -8,9 +8,9 @@
  * Library management
  *********************************/
 #if defined(TOOLBOXQT_LIBRARY_BUILD)
-#  define TOOLBOXQT_EXPORT Q_DECL_EXPORT
+#   define TOOLBOXQT_EXPORT Q_DECL_EXPORT
 #else
-#  define TOOLBOXQT_EXPORT Q_DECL_IMPORT
+#   define TOOLBOXQT_EXPORT Q_DECL_IMPORT
 #endif
 
 /**********************************
@@ -28,9 +28,9 @@
  * - Clang: https://clang.llvm.org/docs/LanguageExtensions.html#has-builtin
  *********************************/
 #if defined(__GNUC__) || defined(__clang__)
-#define TOOLBOXQT_BUILTIN(x)  __has_builtin(x)
+#   define TOOLBOXQT_BUILTIN(x)  __has_builtin(x)
 #else
-#define TOOLBOXQT_BUILTIN(x)  0
+#   define TOOLBOXQT_BUILTIN(x)  0
 #endif
 
 /**********************************
@@ -60,5 +60,14 @@
 
 #define TOOLBOXQT_DISABLE_COPY_MOVE(Class) \
     Q_DISABLE_COPY_MOVE(Class)
+
+/**********************************
+ * Compatibility workaround
+ *********************************/
+#if QT_VERSION < QT_VERSION_CHECK(6, 4, 0)
+#   define TB_QTCOMPAT_STR_VIEW const QString&
+#else
+#   define TB_QTCOMPAT_STR_VIEW QAnyStringView
+#endif
 
 #endif // TOOLBOXQT_GLOBAL_H
