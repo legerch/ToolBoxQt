@@ -1,6 +1,7 @@
 #include "corehelper.h"
 
 #include <QCoreApplication>
+#include <QDebug>
 #include <QMessageBox>
 #include <QTimer>
 
