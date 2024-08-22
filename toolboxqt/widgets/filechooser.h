@@ -31,8 +31,14 @@ public:
     Q_ENUM(Type)
 
 public:
-    static QFileInfo fromUserSpace(Type idType, QStandardPaths::StandardLocation stdLocation, const QString &keyLatest = QString(), const QString &filter = QString(), QWidget *parent = nullptr);
-    static QFileInfo fromUserSpace(Type idType, const QString &dirLocation, const QString &keyLatest = QString(), const QString &filter = QString(), QWidget *parent = nullptr);
+    static QFileInfo fromUserSpaceFile(Type idType, QStandardPaths::StandardLocation stdLocation, const QString &keyLatest = QString(), const QString &filter = QString(), QWidget *parent = nullptr);
+    static QFileInfo fromUserSpaceFile(Type idType, const QString &dirLocation, const QString &keyLatest = QString(), const QString &filter = QString(), QWidget *parent = nullptr);
+
+    static QString fromUserSpaceDir(QStandardPaths::StandardLocation stdLocation, const QString &keyLatest = QString(), QWidget *parent = nullptr);
+    static QString fromUserSpaceDir(const QString &dirLocation, const QString &keyLatest = QString(), QWidget *parent = nullptr);
+
+private:
+    static const QString MODEL_KEY_FILEPATH;
 };
 
 /*****************************/
