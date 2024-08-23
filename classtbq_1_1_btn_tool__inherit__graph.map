@@ -1,0 +1,5 @@
+<map id="tbq::BtnTool" name="tbq::BtnTool">
+<area shape="rect" id="node1" title="Custom QToolButton implementing wordwrap." alt="" coords="92,79,191,104"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,107,31"/>
+<area shape="rect" id="node3" href="$classtbq_1_1_btn_abstract_word_wrap.html" title="Virtual class implementing wordwrap for buttons." alt="" coords="131,5,325,31"/>
+</map>

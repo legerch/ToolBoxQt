@@ -1,0 +1,5 @@
+<map id="tbq::BtnAbstractWordWrap" name="tbq::BtnAbstractWordWrap">
+<area shape="rect" id="node1" title="Virtual class implementing wordwrap for buttons." alt="" coords="23,5,217,31"/>
+<area shape="rect" id="node2" href="$classtbq_1_1_btn_push.html" title="Custom QPushButton implementing wordwrap and double&#45;click event support." alt="" coords="5,79,109,104"/>
+<area shape="rect" id="node3" href="$classtbq_1_1_btn_tool.html" title="Custom QToolButton implementing wordwrap." alt="" coords="133,79,232,104"/>
+</map>
