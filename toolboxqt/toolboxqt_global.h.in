@@ -1,6 +1,8 @@
 #ifndef TOOLBOXQT_GLOBAL_H
 #define TOOLBOXQT_GLOBAL_H
 
+#include <QtGlobal>
+
 /*!
  * \file toolboxqt_global.h
  */

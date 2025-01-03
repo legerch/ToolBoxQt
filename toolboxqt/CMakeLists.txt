@@ -59,6 +59,8 @@ set(PROJECT_HEADERS
     core/richlink.h
     core/settingsini.h
 
+    qml/qmlhelper.h
+
     widgets/button.h
     widgets/filechooser.h
     widgets/labelscl.h
@@ -68,6 +70,8 @@ set(PROJECT_SOURCES
     core/corehelper.cpp
     core/richlink.cpp
     core/settingsini.cpp
+
+    qml/qmlhelper.cpp
 
     widgets/button.cpp
     widgets/filechooser.cpp

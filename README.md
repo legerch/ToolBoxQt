@@ -49,7 +49,9 @@ Library is separated according to _Qt modules_, current modules and classes are 
 - **core:**
   - _tbq::CoreHelper:_ Contains static utilities that can't be associated with proper classes
   - _tbq::RichLink:_ Used to manage an URL with a custom display
-  - _tbq::SettingsIni:_ Class used to manage INI configuration file
+  - _tbq::SettingsIni:_ Used to manage INI configuration file
+- **qml:**
+  - _tbq::QmlHelper:_ Class containing multiple helpful methods that can be used in QML
 - **widgets:**
   - Buttons:
     - _tbq::BtnAbstractWordWrap:_ Virtual class which define an interface allowing to properly wrap text of a button
