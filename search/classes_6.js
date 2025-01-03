@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['settingsini_0',['SettingsIni',['../classtbq_1_1_settings_ini.html',1,'tbq']]]
+  ['richlink_0',['RichLink',['../classtbq_1_1_rich_link.html',1,'tbq']]]
 ];
