@@ -6,6 +6,8 @@ Custom [_toolbox_][toolboxqt-repo] containing multiple classes that can be usefu
   - [1.2. Dependencies](#12-dependencies)
 - [2. How to build](#2-how-to-build)
 - [3. How to use](#3-how-to-use)
+  - [3.1. Available utilities](#31-available-utilities)
+  - [3.2. Library version](#32-library-version)
 - [4. Documentation](#4-documentation)
 - [5. License](#5-license)
 
@@ -39,8 +41,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE toolboxqt)
 ```
 
 # 3. How to use
+## 3.1. Available utilities
 
 Library is separated according to _Qt modules_, current modules and classes are (for each classes, more details can be found in their own documentation):
+- **containers:**
+  - _tbq::Array2D:_ Used to manage a 2-dimensional array
 - **core:**
   - _tbq::CoreHelper:_ Contains static utilities that can't be associated with proper classes
   - _tbq::RichLink:_ Used to manage an URL with a custom display
@@ -59,6 +64,17 @@ To use a class, simply use the proper include:
 ```
 
 All classes are defined inside namespace `tbq` (for _ToolBoxQt_).
+
+## 3.2. Library version
+
+In order to easily check at compilation time library version (to manage compatibility between multiple versions for example), macro `TOOLBOXQT_VERSION_ENCODE` (defined inside _toolboxqt_global.h_ file) can be used:
+```cpp
+#if TOOLBOXQT_VERSION >= TOOLBOXQT_VERSION_ENCODE(2,0,0)
+    // Do stuff for version 2.0.0 or higher
+#else
+    // Do stuff for earlier versions
+#endif
+```
 
 # 4. Documentation
 

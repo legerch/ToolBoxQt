@@ -1,23 +1,57 @@
 #ifndef TOOLBOXQT_GLOBAL_H
 #define TOOLBOXQT_GLOBAL_H
 
-#include "config.h"
-#include <QtGlobal>
+/*!
+ * \file toolboxqt_global.h
+ */
+
+/**********************************
+ * Library informations
+ *********************************/
+#define TOOLBOXQT_INFO_NAME   "@PROJECT_NAME@"
+
+/**********************************
+ * Version management
+ *********************************/
+
+/*!
+ * \brief Use to perform compilation version comparisons
+ * \details
+ * For example:
+ * \code{.cpp}
+ * #if TOOLBOXQT_VERSION >= TOOLBOXQT_VERSION_ENCODE(1,0,0)
+ *     // Do stuff for version 1.0.0 or higher
+ * #else
+ *     // Do stuff for version 0.0.x
+ * #endif
+ * \endcode
+ */
+#define TOOLBOXQT_VERSION_ENCODE(major, minor, path)    ((major) * 10000 + (minor) * 100 + (patch))
+
+#define TOOLBOXQT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define TOOLBOXQT_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define TOOLBOXQT_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#define TOOLBOXQT_VERSION       TOOLBOXQT_VERSION_ENCODE(TOOLBOXQT_VERSION_MAJOR, TOOLBOXQT_VERSION_MINOR, TOOLBOXQT_VERSION_PATCH)
+#define TOOLBOXQT_VERSION_STR   "@PROJECT_VERSION@"
+
+/*!
+ * \cond INTERNAL
+ */
 
 /**********************************
  * Library management
  *********************************/
 #if defined(TOOLBOXQT_LIBRARY_BUILD)
-#   define TOOLBOXQT_EXPORT Q_DECL_EXPORT
+#  define TOOLBOXQT_EXPORT Q_DECL_EXPORT
 #else
-#   define TOOLBOXQT_EXPORT Q_DECL_IMPORT
+#  define TOOLBOXQT_EXPORT Q_DECL_IMPORT
 #endif
 
 /**********************************
  * Deprecations warnings
  *********************************/
 #define TOOLBOXQT_DEPREC              [[deprecated]]            /**< Use to mark a method as deprecated. \n\code{.cpp}TOOLBOXQT_DEPREC void myOldFct(); \endcode */
-#define TOOLBOXQT_DEPREC_X(reason)    [[deprecated(reason)]] 	/**< Use to mark a method as deprecated and specify a reason. \n\code{.cpp}TOOLBOXQT_DEPREC_X("Use myNewFct() instead") void myOldFunc(); \endcode */
+#define TOOLBOXQT_DEPREC_X(reason)    [[deprecated(reason)]]    /**< Use to mark a method as deprecated and specify a reason. \n\code{.cpp}TOOLBOXQT_DEPREC_X("Use myNewFct() instead") void myOldFunc(); \endcode */
 
 /**********************************
  * Custom macros used to detect custom
@@ -50,6 +84,12 @@
 #define TOOLBOXQT_FCTSIG          Q_FUNC_INFO
 
 /**********************************
+ * Variables attributes
+ *********************************/
+#define TOOLBOXQT_VAR_MAYBE_UNUSED    [[maybe_unused]]
+#define TOOLBOXQT_VAR_UNUSED          TOOLBOXQT_VAR_MAYBE_UNUSED
+
+/**********************************
  * Classes behaviours
  *********************************/
 #define TOOLBOXQT_DISABLE_COPY(Class) \
@@ -69,5 +109,9 @@
 #else
 #   define TB_QTCOMPAT_STR_VIEW QAnyStringView
 #endif
+
+/*!
+ * \endcond
+ */
 
 #endif // TOOLBOXQT_GLOBAL_H
