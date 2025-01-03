@@ -10,4 +10,4 @@ latex/
 build/
 
 # Auto generated files
-config.h
+toolboxqt_global.h
