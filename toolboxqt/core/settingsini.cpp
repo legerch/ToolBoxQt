@@ -132,6 +132,11 @@ bool SettingsIni::loadSettings(const QFileInfo &fileInfo)
     return m_hookPostLoad(fileInfo);
 }
 
+QFileInfo SettingsIni::getPath() const
+{
+    return QFileInfo(m_settings->fileName());
+}
+
 void SettingsIni::groupBegin(TB_QTCOMPAT_STR_VIEW keyGroup)
 {
     if(m_settings){
@@ -186,7 +191,7 @@ void SettingsIni::setHooksPostLoadSettings(CbHook hookPostload)
     m_hookPostLoad = hookPostload;
 }
 
-bool SettingsIni::defaultHook(const QFileInfo &fileInfo)
+bool SettingsIni::defaultHook(TOOLBOXQT_VAR_UNUSED const QFileInfo &fileInfo)
 {
     return true;
 }

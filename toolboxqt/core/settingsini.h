@@ -28,6 +28,7 @@ private:
 
 public:
     bool loadSettings(const QFileInfo &fileInfo);
+    QFileInfo getPath() const;
 
     void groupBegin(TB_QTCOMPAT_STR_VIEW keyGroup);
     void groupEnd();
