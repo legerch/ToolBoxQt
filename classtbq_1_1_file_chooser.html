@@ -123,6 +123,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a4dc9277e01c9c2996e84ddbdf3131b6b"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtbq_1_1_file_chooser.html#a4dc9277e01c9c2996e84ddbdf3131b6b">fromUserSpaceDir</a> (const QString &amp;dirLocation, const QString &amp;keyLatest=QString(), QWidget *parent=nullptr)</td></tr>
 <tr class="memdesc:a4dc9277e01c9c2996e84ddbdf3131b6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Choose a directory from user-space.  <br /></td></tr>
 <tr class="separator:a4dc9277e01c9c2996e84ddbdf3131b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c0f61bbba6a2681d4983db2a3537d40"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtbq_1_1_file_chooser.html#a4c0f61bbba6a2681d4983db2a3537d40">getPathFromKey</a> (const QString &amp;key, const QString &amp;defaultValue=QString())</td></tr>
+<tr class="memdesc:a4c0f61bbba6a2681d4983db2a3537d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow to retrieve a <a class="el" href="classtbq_1_1_file_chooser.html" title="Used to choose a file from user-space.">FileChooser</a> path from key.  <br /></td></tr>
+<tr class="separator:a4c0f61bbba6a2681d4983db2a3537d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Used to choose a file from user-space. </p>
@@ -358,6 +361,52 @@ This value will be empty if no file has been selected.</dd></dl>
 
 <p>Choose a file from user-space with standard location. </p>
 <p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="a4c0f61bbba6a2681d4983db2a3537d40" name="a4c0f61bbba6a2681d4983db2a3537d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c0f61bbba6a2681d4983db2a3537d40">&#9670;&#160;</a></span>getPathFromKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString tbq::FileChooser::getPathFromKey </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>defaultValue</em> = <code>QString()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allow to retrieve a <a class="el" href="classtbq_1_1_file_chooser.html" title="Used to choose a file from user-space.">FileChooser</a> path from key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Key used to perform registration </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">defaultValue</td><td>Default value to use if key doesn't exist or if value is empty.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns string path associated to <code>key</code> </dd></dl>
 
 </div>
 </div>
