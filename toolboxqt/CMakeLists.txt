@@ -62,6 +62,7 @@ set(PROJECT_HEADERS
     qml/qmlhelper.h
 
     widgets/button.h
+    widgets/dialogabout.h
     widgets/filechooser.h
     widgets/labelscl.h
     widgets/widgethelper.h
@@ -75,6 +76,7 @@ set(PROJECT_SOURCES
     qml/qmlhelper.cpp
 
     widgets/button.cpp
+    widgets/dialogabout.cpp
     widgets/filechooser.cpp
     widgets/labelscl.cpp
     widgets/widgethelper.cpp

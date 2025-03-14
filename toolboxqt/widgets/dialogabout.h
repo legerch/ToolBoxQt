@@ -1,0 +1,40 @@
+#ifndef TBQ_WIDGETS_DIALOGABOUT_H
+#define TBQ_WIDGETS_DIALOGABOUT_H
+
+#include "toolboxqt/toolboxqt_global.h"
+#include "toolboxqt/widgets/labelscl.h"
+
+#include <QDialog>
+#include <QTabWidget>
+#include <QVersionNumber>
+
+namespace tbq
+{
+
+class TOOLBOXQT_EXPORT DialogAbout : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit DialogAbout(QWidget *parent = nullptr);
+
+public:
+    void setAppInfos(const QString &name, const QVersionNumber &version);
+    void setLogo(const QPixmap &logo);
+
+private:
+    void uiInitBase();
+
+private:
+    /* Basic properties */
+    LabelScl *m_labelIcon = nullptr;
+    QLabel *m_labelName = nullptr;
+    QLabel *m_labelVersion = nullptr;
+
+    /* Detailled properties */
+    QTabWidget *m_tabs = nullptr;
+};
+
+} // namespace tbq
+
+#endif // TBQ_WIDGETS_DIALOGABOUT_H
