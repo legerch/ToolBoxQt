@@ -34,7 +34,6 @@ namespace tbq
 /*****************************/
 /* Constants definitions     */
 /*****************************/
-const QString FileChooser::MODEL_KEY_FILEPATH = "filepath/dir_%1";
 
 /*****************************/
 /* Functions implementation  */
@@ -88,7 +87,7 @@ QFileInfo FileChooser::fromUserSpaceFile(Type idType, const QString &dirLocation
     QString dir = dirLocation;
 
     /* Retrieve latest dir location */
-    const QString cfgKeyDir = MODEL_KEY_FILEPATH.arg(keyLatest);
+    const QString cfgKeyDir = getKeyFmt(keyLatest);
     if(!keyLatest.isNull()){
         const QString dirLatest = mSettings.getValue(cfgKeyDir).toString();
         if(!dirLatest.isEmpty()){
@@ -156,7 +155,7 @@ QString FileChooser::fromUserSpaceDir(const QString &dirLocation, const QString 
     QString dir = dirLocation;
 
     /* Retrieve latest dir location */
-    const QString cfgKeyDir = MODEL_KEY_FILEPATH.arg(keyLatest);
+    const QString cfgKeyDir = getKeyFmt(keyLatest);
     if(!keyLatest.isNull()){
         const QString dirLatest = mSettings.getValue(cfgKeyDir).toString();
         if(!dirLatest.isEmpty()){
@@ -176,6 +175,45 @@ QString FileChooser::fromUserSpaceDir(const QString &dirLocation, const QString 
     }
 
     return selectedDir;
+}
+
+/*!
+ * \brief Allow to retrieve a FileChooser path
+ * from key.
+ *
+ * \param[in] key
+ * Key used to perform registration
+ * \param[in] defaultValue
+ * Default value to use if key doesn't exist or if value is
+ * empty.
+ *
+ * \return
+ * Returns string path associated to \c key
+ */
+QString FileChooser::getPathFromKey(const QString &key, const QString &defaultValue)
+{
+    const QString path = mSettings.getValue(getKeyFmt(key), defaultValue).toString();
+    if(path.isEmpty()){
+        return defaultValue;
+    }
+
+    return path;
+}
+
+/*!
+ * \brief Format key to proper identifier
+ *
+ * \param[in] key
+ * Key to use. \n
+ * Must \b not be empty.
+ *
+ * \return
+ * Return key formatted to <em>key path</em> format.
+ */
+QString FileChooser::getKeyFmt(const QString &key)
+{
+    static const QString MODEL_KEY_FILEPATH = "filepath/dir_%1";
+    return MODEL_KEY_FILEPATH.arg(key);
 }
 
 /*****************************/

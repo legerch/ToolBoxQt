@@ -37,8 +37,11 @@ public:
     static QString fromUserSpaceDir(QStandardPaths::StandardLocation stdLocation, const QString &keyLatest = QString(), QWidget *parent = nullptr);
     static QString fromUserSpaceDir(const QString &dirLocation, const QString &keyLatest = QString(), QWidget *parent = nullptr);
 
+public:
+    static QString getPathFromKey(const QString &key, const QString &defaultValue = QString());
+
 private:
-    static const QString MODEL_KEY_FILEPATH;
+    static QString getKeyFmt(const QString &key);
 };
 
 /*****************************/
