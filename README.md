@@ -59,6 +59,7 @@ Library is separated according to _Qt modules_, current modules and classes are 
     - _tbq::BtnPush:_ Inherit from _QPushButton_ and _BtnAbstractWordWrap_. Also add _double-click_ event support.
   - _tbq::FileChooser:_ Used to choose a file from user-space
   - _tbq::LabelScl:_ Custom class which inherit from _QLabel_ class and properly scale image or animations to the label size.
+  - _tbq::WidgetHelper:_ Group multiple methods that are simple enough to not have to create an inherited object
 
 To use a class, simply use the proper include:
 ```cpp

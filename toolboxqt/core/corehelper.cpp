@@ -16,6 +16,7 @@
  * This class group multiple methods that can't be associated
  * to specific core part, this is only utilities.
  */
+
 /*****************************/
 /* Macro definitions         */
 /*****************************/
