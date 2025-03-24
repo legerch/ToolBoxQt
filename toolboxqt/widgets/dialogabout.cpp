@@ -2,6 +2,7 @@
 
 #include <QApplication>
 #include <QGridLayout>
+#include <QTextEdit>
 
 /*****************************/
 /* Class documentations      */
@@ -50,6 +51,59 @@ void DialogAbout::setAppInfos(const QString &name, const QVersionNumber &version
 void DialogAbout::setLogo(const QPixmap &logo)
 {
     m_labelIcon->setImg(logo);
+}
+
+void DialogAbout::addSectionAbout(const QString &aboutApp, const RichLink &linkHome, const RichLink &linkBug)
+{
+    QFont fontBold = qApp->font();
+    fontBold.setBold(true);
+
+    /* Prepare layout properties */
+    QGridLayout *aboutLayout = new QGridLayout();
+    int idxRowItem = 0;
+
+    /* Set app description */
+    QTextEdit *appInfo = new QTextEdit();
+    appInfo->setReadOnly(true);
+    appInfo->setAcceptRichText(true);
+    appInfo->setText(aboutApp);
+
+    aboutLayout->addWidget(appInfo, idxRowItem, 0, 3, 3);
+    idxRowItem += 3;
+
+    /* Set app home URL */
+    if(linkHome.isValid()){
+        QLabel *homeUrlTitle = new QLabel(tr("Home page: "));
+        homeUrlTitle->setFont(fontBold);
+
+        QLabel *homeUrlValue = new QLabel(linkHome.toHtml());
+        homeUrlValue->setTextInteractionFlags(Qt::TextBrowserInteraction);
+        homeUrlValue->setOpenExternalLinks(true);
+
+        aboutLayout->addWidget(homeUrlTitle, idxRowItem, 0, 1, 1);
+        aboutLayout->addWidget(homeUrlValue, idxRowItem, 1, 1, 2);
+        ++idxRowItem;
+    }
+
+    /* Set app bug URL */
+    if(linkBug.isValid()){
+        QLabel *bugUrlTitle = new QLabel(tr("Bug tracker: "));
+        bugUrlTitle->setFont(fontBold);
+
+        QLabel *bugUrlValue = new QLabel(linkBug.toHtml());
+        bugUrlValue->setTextInteractionFlags(Qt::TextBrowserInteraction);
+        bugUrlValue->setOpenExternalLinks(true);
+
+        aboutLayout->addWidget(bugUrlTitle, idxRowItem, 0, 1, 1);
+        aboutLayout->addWidget(bugUrlValue, idxRowItem, 1, 1, 2);
+        ++idxRowItem;
+    }
+
+    /* Add widget to tabs */
+    QWidget *widget = new QWidget(m_tabs);
+    widget->setLayout(aboutLayout);
+
+    m_tabs->addTab(widget, tr("About"));
 }
 
 void DialogAbout::uiInitBase()
