@@ -2,6 +2,7 @@
 #define TBQ_WIDGETS_DIALOGABOUT_H
 
 #include "toolboxqt/toolboxqt_global.h"
+#include "toolboxqt/core/depinfos.h"
 #include "toolboxqt/core/richlink.h"
 #include "toolboxqt/widgets/labelscl.h"
 
@@ -17,6 +18,9 @@ class TOOLBOXQT_EXPORT DialogAbout : public QDialog
     Q_OBJECT
 
 public:
+    using ListDeps = QVector<DepInfos>;
+
+public:
     explicit DialogAbout(QWidget *parent = nullptr);
 
 public:
@@ -24,6 +28,10 @@ public:
     void setLogo(const QPixmap &logo);
 
     void addSectionAbout(const QString &aboutApp, const RichLink &linkHome = RichLink(), const RichLink &linkBug = RichLink());
+    void addSectionDeps(const ListDeps &listDeps);
+
+private:
+    void labelSetInteractions(QLabel *label);
 
 private:
     void uiInitBase();

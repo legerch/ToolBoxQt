@@ -77,8 +77,7 @@ void DialogAbout::addSectionAbout(const QString &aboutApp, const RichLink &linkH
         homeUrlTitle->setFont(fontBold);
 
         QLabel *homeUrlValue = new QLabel(linkHome.toHtml());
-        homeUrlValue->setTextInteractionFlags(Qt::TextBrowserInteraction);
-        homeUrlValue->setOpenExternalLinks(true);
+        labelSetInteractions(homeUrlValue);
 
         aboutLayout->addWidget(homeUrlTitle, idxRowItem, 0, 1, 1);
         aboutLayout->addWidget(homeUrlValue, idxRowItem, 1, 1, 2);
@@ -91,8 +90,7 @@ void DialogAbout::addSectionAbout(const QString &aboutApp, const RichLink &linkH
         bugUrlTitle->setFont(fontBold);
 
         QLabel *bugUrlValue = new QLabel(linkBug.toHtml());
-        bugUrlValue->setTextInteractionFlags(Qt::TextBrowserInteraction);
-        bugUrlValue->setOpenExternalLinks(true);
+        labelSetInteractions(bugUrlValue);
 
         aboutLayout->addWidget(bugUrlTitle, idxRowItem, 0, 1, 1);
         aboutLayout->addWidget(bugUrlValue, idxRowItem, 1, 1, 2);
@@ -104,6 +102,47 @@ void DialogAbout::addSectionAbout(const QString &aboutApp, const RichLink &linkH
     widget->setLayout(aboutLayout);
 
     m_tabs->addTab(widget, tr("About"));
+}
+
+void DialogAbout::addSectionDeps(const ListDeps &listDeps)
+{
+    /* Prepare layout properties */
+    const QString modelDeps = QString("%1 :");
+    QGridLayout *depsLayout = new QGridLayout();
+
+    /* Manage each dependency */
+    for(int i = 0; i < listDeps.size(); ++i){
+        const DepInfos &depInfo = listDeps.at(i);
+        const RichLink &link = depInfo.getRichLink();
+        const QVersionNumber &version = depInfo.getVersion();
+
+        // Create dep title
+        QLabel *labelTitle = new QLabel(modelDeps.arg(link.toHtml()));
+        labelTitle->setToolTip(link.getUrl().toDisplayString());
+        labelSetInteractions(labelTitle);
+
+        // Create dep version
+        const QString strVersion = version.isNull() ? tr("Unknown version") : version.toString();
+        QLabel *labelVersion = new QLabel(strVersion);
+
+        // Add desp info to layout
+        depsLayout->addWidget(labelTitle, i, 0);
+        depsLayout->addWidget(labelVersion, i, 1);
+    }
+
+    depsLayout->addItem(new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum), 0, 2);
+
+    /* Add widget to tabs */
+    QWidget *widget = new QWidget(m_tabs);
+    widget->setLayout(depsLayout);
+
+    m_tabs->addTab(widget, tr("Dependencies"));
+}
+
+void DialogAbout::labelSetInteractions(QLabel *label)
+{
+    label->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    label->setOpenExternalLinks(true);
 }
 
 void DialogAbout::uiInitBase()
