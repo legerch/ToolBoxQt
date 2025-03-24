@@ -2,6 +2,7 @@
 #define TBQ_WIDGETS_DIALOGABOUT_H
 
 #include "toolboxqt/toolboxqt_global.h"
+#include "toolboxqt/core/richlink.h"
 #include "toolboxqt/widgets/labelscl.h"
 
 #include <QDialog>
@@ -21,6 +22,8 @@ public:
 public:
     void setAppInfos(const QString &name, const QVersionNumber &version);
     void setLogo(const QPixmap &logo);
+
+    void addSectionAbout(const QString &aboutApp, const RichLink &linkHome = RichLink(), const RichLink &linkBug = RichLink());
 
 private:
     void uiInitBase();

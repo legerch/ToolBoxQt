@@ -57,8 +57,9 @@ void DialogAbout::uiInitBase()
     /* Set dialog layout */
     QGridLayout *titleLayout = new QGridLayout();
     titleLayout->addWidget(m_labelIcon, 0, 0, 2, 1, Qt::AlignCenter);
-    titleLayout->addWidget(m_labelName, 0, 1);
-    titleLayout->addWidget(m_labelVersion, 1, 1);
+    titleLayout->addWidget(m_labelName, 0, 1, 1, 1);
+    titleLayout->addWidget(m_labelVersion, 1, 1, 1, 1);
+    titleLayout->addItem(new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum), 0, 2);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addLayout(titleLayout);
@@ -69,9 +70,9 @@ void DialogAbout::uiInitBase()
     /* Set font for labels */
     const QApplication *app = qApp;
 
-    QFont font = qApp->font();
-    font.setItalic(true);
-    m_labelVersion->setFont(font);
+    QFont fontItalic = qApp->font();
+    fontItalic.setItalic(true);
+    m_labelVersion->setFont(fontItalic);
 
     /* Set basic app informations */
     setAppInfos(app->applicationDisplayName(), QVersionNumber::fromString(app->applicationVersion()));
