@@ -142,7 +142,20 @@ void DialogAbout::addSectionDeps(const ListDeps &listDeps)
 
 void DialogAbout::addSectionChangelog(const QUrl &sourceUrl, QTextDocument::ResourceType type)
 {
-    uiAddSectionFromDoc(tr("Changelog"), sourceUrl, type);
+    addSectionFromDoc(tr("Changelog"), sourceUrl, type);
+}
+
+void DialogAbout::addSectionLicense(const QUrl &sourceUrl, QTextDocument::ResourceType type)
+{
+    addSectionFromDoc(tr("License"), sourceUrl, type);
+}
+
+void DialogAbout::addSectionFromDoc(const QString &name, const QUrl &sourceUrl, QTextDocument::ResourceType type)
+{
+    QTextBrowser *textArea = new QTextBrowser();
+    textArea->setSource(sourceUrl, type);
+
+    m_tabs->addTab(textArea, name);
 }
 
 void DialogAbout::labelSetInteractions(QLabel *label)
@@ -176,14 +189,6 @@ void DialogAbout::uiInitBase()
     /* Set basic app informations */
     setAppInfos(app->applicationDisplayName(), QVersionNumber::fromString(app->applicationVersion()));
     setLogo(app->windowIcon().pixmap(QSize(48, 48)));
-}
-
-void DialogAbout::uiAddSectionFromDoc(const QString &name, const QUrl &sourceUrl, QTextDocument::ResourceType type)
-{
-    QTextBrowser *textArea = new QTextBrowser();
-    textArea->setSource(sourceUrl, type);
-
-    m_tabs->addTab(textArea, name);
 }
 
 /*****************************/
