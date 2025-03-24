@@ -35,6 +35,17 @@ namespace tbq
 /*****************************/
 
 /*!
+ * \brief Create empty rich link object
+ * \details
+ * Calling \c isValid() on it will return
+ * \c false.
+ *
+ * \sa isValid()
+ * \sa setLink(), setDisplayText()
+ */
+RichLink::RichLink() = default;
+
+/*!
  * \brief Create a RichLink object
  *
  * \param[in] link
@@ -43,11 +54,52 @@ namespace tbq
  * Text to display
  *
  * \sa toHtml()
+ * \sa isValid()
+ * \sa setLink(), setDisplayText()
  */
 RichLink::RichLink(const QUrl &link, const QString &display)
     : m_link(link), m_display(display)
 {
     /* Nothing to do */
+}
+
+/*!
+ * \brief Set URL lin to use
+ *
+ * \param[in] link
+ * URL to used as a link.
+ *
+ * \sa setDisplayText()
+ */
+void RichLink::setLink(const QUrl &link)
+{
+    m_link = link;
+}
+
+/*!
+ * \brief Set text to display for the link
+ *
+ * \param[in] display
+ * Text to display
+ *
+ * \sa setLink()
+ */
+void RichLink::setDisplayText(const QString &display)
+{
+    m_display = display;
+}
+
+/*!
+ * \brief Use to verify rich link validity
+ * \details
+ * Rich link is considered valid is URL is valid.
+ *
+ * \return
+ * Returns \c true if rich link is valid
+ */
+bool RichLink::isValid() const
+{
+    return m_link.isValid();
 }
 
 /*!
