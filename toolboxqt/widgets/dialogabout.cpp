@@ -2,6 +2,7 @@
 
 #include <QApplication>
 #include <QGridLayout>
+#include <QTextBrowser>
 #include <QTextEdit>
 
 /*****************************/
@@ -139,6 +140,11 @@ void DialogAbout::addSectionDeps(const ListDeps &listDeps)
     m_tabs->addTab(widget, tr("Dependencies"));
 }
 
+void DialogAbout::addSectionChangelog(const QUrl &sourceUrl, QTextDocument::ResourceType type)
+{
+    uiAddSectionFromDoc(tr("Changelog"), sourceUrl, type);
+}
+
 void DialogAbout::labelSetInteractions(QLabel *label)
 {
     label->setTextInteractionFlags(Qt::TextBrowserInteraction);
@@ -170,6 +176,14 @@ void DialogAbout::uiInitBase()
     /* Set basic app informations */
     setAppInfos(app->applicationDisplayName(), QVersionNumber::fromString(app->applicationVersion()));
     setLogo(app->windowIcon().pixmap(QSize(48, 48)));
+}
+
+void DialogAbout::uiAddSectionFromDoc(const QString &name, const QUrl &sourceUrl, QTextDocument::ResourceType type)
+{
+    QTextBrowser *textArea = new QTextBrowser();
+    textArea->setSource(sourceUrl, type);
+
+    m_tabs->addTab(textArea, name);
 }
 
 /*****************************/

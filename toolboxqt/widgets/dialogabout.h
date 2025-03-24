@@ -29,12 +29,14 @@ public:
 
     void addSectionAbout(const QString &aboutApp, const RichLink &linkHome = RichLink(), const RichLink &linkBug = RichLink());
     void addSectionDeps(const ListDeps &listDeps);
+    void addSectionChangelog(const QUrl &sourceUrl, QTextDocument::ResourceType type = QTextDocument::UnknownResource);
 
 private:
     void labelSetInteractions(QLabel *label);
 
 private:
     void uiInitBase();
+    void uiAddSectionFromDoc(const QString &name, const QUrl &sourceUrl, QTextDocument::ResourceType type);
 
 private:
     /* Basic properties */
