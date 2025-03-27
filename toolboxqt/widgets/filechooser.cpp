@@ -89,7 +89,7 @@ QFileInfo FileChooser::fromUserSpaceFile(Type idType, const QString &dirLocation
 
     /* Retrieve latest dir location */
     const QString cfgKeyDir = getKeyFmt(keyLatest);
-    if(!keyLatest.isNull()){
+    if(!keyLatest.isEmpty()){
         const QString dirLatest = mSettings.getValue(cfgKeyDir).toString();
         if(!dirLatest.isEmpty()){
             dir = dirLatest;
@@ -112,7 +112,7 @@ QFileInfo FileChooser::fromUserSpaceFile(Type idType, const QString &dirLocation
     const QFileInfo file(filename);
 
     /* Save latest used directory */
-    if(!keyLatest.isNull()){
+    if(!keyLatest.isEmpty()){
         mSettings.setValue(cfgKeyDir, file.absoluteDir().absolutePath());
     }
 
@@ -157,7 +157,7 @@ QString FileChooser::fromUserSpaceDir(const QString &dirLocation, const QString 
 
     /* Retrieve latest dir location */
     const QString cfgKeyDir = getKeyFmt(keyLatest);
-    if(!keyLatest.isNull()){
+    if(!keyLatest.isEmpty()){
         const QString dirLatest = mSettings.getValue(cfgKeyDir).toString();
         if(!dirLatest.isEmpty()){
             dir = dirLatest;
@@ -171,7 +171,7 @@ QString FileChooser::fromUserSpaceDir(const QString &dirLocation, const QString 
     }
 
     /* Save latest used directory */
-    if(!keyLatest.isNull()){
+    if(!keyLatest.isEmpty()){
         mSettings.setValue(cfgKeyDir, selectedDir);
     }
 
