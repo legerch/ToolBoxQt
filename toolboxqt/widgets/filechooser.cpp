@@ -78,7 +78,8 @@ QFileInfo FileChooser::fromUserSpaceFile(Type idType, QStandardPaths::StandardLo
  *
  * \return
  * Returns file information of the selected file. \n
- * This value will be empty if no file has been selected.
+ * This value will be empty if no file has been selected. \n
+ * Can be verified with \c QFileInfo::filePath() method.
  *
  * \sa fromUserSpaceDir()
  */
