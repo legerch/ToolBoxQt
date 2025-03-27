@@ -2,8 +2,8 @@
 
 #include <QApplication>
 #include <QGridLayout>
-#include <QTextBrowser>
 #include <QTextEdit>
+#include <QDesktopServices>
 
 /*****************************/
 /* Class documentations      */
@@ -152,9 +152,18 @@ void DialogAbout::addSectionLicense(const QUrl &sourceUrl, QTextDocument::Resour
 
 void DialogAbout::addSectionFromDoc(const QString &name, const QUrl &sourceUrl, QTextDocument::ResourceType type)
 {
+    /* Create text area */
     QTextBrowser *textArea = new QTextBrowser();
     textArea->setSource(sourceUrl, type);
 
+    /* Set links behaviour */
+    textArea->setOpenLinks(false);
+    textArea->setOpenExternalLinks(false);
+    connect(textArea, &QTextBrowser::anchorClicked, this, [this, textArea](const QUrl &link){
+        handleDocsLinks(textArea, link);
+    });
+
+    /* Add text area to tabs */
     m_tabs->addTab(textArea, name);
 }
 
@@ -162,6 +171,21 @@ void DialogAbout::labelSetInteractions(QLabel *label)
 {
     label->setTextInteractionFlags(Qt::TextBrowserInteraction);
     label->setOpenExternalLinks(true);
+}
+
+void DialogAbout::handleDocsLinks(QTextBrowser *textArea, const QUrl &link)
+{
+    /* Do URL refer to an internal doc anchor ? */
+    if(link.isRelative() || link.hasFragment()){
+        textArea->scrollToAnchor(link.fragment());
+        return;
+    }
+
+    /* Open URL in default browser */
+    bool succeed = QDesktopServices::openUrl(link);
+    if(!succeed){
+        qWarning("Failed to open URL in default browser [url: %s]", qUtf8Printable(link.toDisplayString()));
+    }
 }
 
 void DialogAbout::uiInitBase()

@@ -8,6 +8,7 @@
 
 #include <QDialog>
 #include <QTabWidget>
+#include <QTextBrowser>
 #include <QVersionNumber>
 
 namespace tbq
@@ -36,6 +37,7 @@ public:
 
 private:
     void labelSetInteractions(QLabel *label);
+    void handleDocsLinks(QTextBrowser *textArea, const QUrl &link);
 
 private:
     void uiInitBase();
