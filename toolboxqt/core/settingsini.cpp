@@ -134,7 +134,11 @@ bool SettingsIni::loadSettings(const QFileInfo &fileInfo)
 
 QFileInfo SettingsIni::getPath() const
 {
-    return QFileInfo(m_settings->fileName());
+    if(m_settings){
+        return QFileInfo(m_settings->fileName());
+    }else{
+        return QFileInfo();
+    }
 }
 
 void SettingsIni::groupBegin(TB_QTCOMPAT_STR_VIEW keyGroup)
