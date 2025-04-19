@@ -112,8 +112,9 @@ void DialogAbout::addSectionDeps(const ListDeps &listDeps)
     QGridLayout *depsLayout = new QGridLayout();
 
     /* Manage each dependency */
-    for(int i = 0; i < listDeps.size(); ++i){
-        const DepInfos &depInfo = listDeps.at(i);
+    int row = 0;
+    for(row = 0; row < listDeps.size(); ++row){
+        const DepInfos &depInfo = listDeps.at(row);
         const RichLink &link = depInfo.getRichLink();
         const QVersionNumber &version = depInfo.getVersion();
 
@@ -127,11 +128,12 @@ void DialogAbout::addSectionDeps(const ListDeps &listDeps)
         QLabel *labelVersion = new QLabel(strVersion);
 
         // Add desp info to layout
-        depsLayout->addWidget(labelTitle, i, 0);
-        depsLayout->addWidget(labelVersion, i, 1);
+        depsLayout->addWidget(labelTitle, row, 0);
+        depsLayout->addWidget(labelVersion, row, 1);
     }
 
     depsLayout->addItem(new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum), 0, 2);
+    depsLayout->addItem(new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding), row, 1);
 
     /* Add widget to tabs */
     QWidget *widget = new QWidget(m_tabs);
