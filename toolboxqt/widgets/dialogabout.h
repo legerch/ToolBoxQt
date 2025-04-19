@@ -8,6 +8,7 @@
 
 #include <QDialog>
 #include <QTabWidget>
+#include <QTableWidget>
 #include <QTextBrowser>
 #include <QVersionNumber>
 
@@ -19,7 +20,22 @@ class TOOLBOXQT_EXPORT DialogAbout : public QDialog
     Q_OBJECT
 
 public:
+    struct Ressource
+    {
+        RichLink source;
+        QString author;
+        QString license;
+    };
+
+    struct RessourceGroup
+    {
+        QString name;
+        QVector<Ressource> listRes;
+    };
+
+public:
     using ListDeps = QVector<DepInfos>;
+    using ListResGroups = QVector<RessourceGroup>;
 
 public:
     explicit DialogAbout(QWidget *parent = nullptr);
@@ -30,12 +46,16 @@ public:
 
     void addSectionAbout(const QString &aboutApp, const RichLink &linkHome = RichLink(), const RichLink &linkBug = RichLink());
     void addSectionDeps(const ListDeps &listDeps);
+    void addSectionRessources(const ListResGroups &listGroups);
     void addSectionChangelog(const QUrl &sourceUrl, QTextDocument::ResourceType type = QTextDocument::MarkdownResource);
     void addSectionLicense(const QUrl &sourceUrl, QTextDocument::ResourceType type = QTextDocument::MarkdownResource);
 
     void addSectionFromDoc(const QString &name, const QUrl &sourceUrl, QTextDocument::ResourceType type);
 
 private:
+    QTableWidget* createRessourceGroup(const RessourceGroup &resGroup, const QFont &fontLink, const QColor &colorLink);
+    QTableWidgetItem* createRessourceSource(const RichLink &resSrc, const QFont &fontLink, const QColor &colorLink);
+
     void labelSetInteractions(QLabel *label);
     void handleDocsLinks(QTextBrowser *textArea, const QUrl &link);
 
