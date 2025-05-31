@@ -108,7 +108,7 @@ void DialogAbout::addSectionAbout(const QString &aboutApp, const RichLink &linkH
     m_tabs->addTab(widget, tr("About"));
 }
 
-void DialogAbout::addSectionDeps(const ListDeps &listDeps)
+void DialogAbout::addSectionDeps(const ListDeps &listDeps, const QString &invalidSemver)
 {
     /* Prepare layout properties */
     const QString modelDeps = QString("%1 :");
@@ -127,7 +127,7 @@ void DialogAbout::addSectionDeps(const ListDeps &listDeps)
         labelSetInteractions(labelTitle);
 
         // Create dep version
-        const QString strVersion = version.isNull() ? tr("Unknown version") : version.toString();
+        const QString strVersion = version.isNull() ? invalidSemver : version.toString();
         QLabel *labelVersion = new QLabel(strVersion);
 
         // Add desp info to layout

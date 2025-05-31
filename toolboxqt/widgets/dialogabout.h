@@ -45,7 +45,7 @@ public:
     void setLogo(const QPixmap &logo);
 
     void addSectionAbout(const QString &aboutApp, const RichLink &linkHome = RichLink(), const RichLink &linkBug = RichLink());
-    void addSectionDeps(const ListDeps &listDeps);
+    void addSectionDeps(const ListDeps &listDeps, const QString &invalidSemver = "/");
     void addSectionRessources(const ListResGroups &listGroups);
     void addSectionChangelog(const QUrl &sourceUrl, QTextDocument::ResourceType type = QTextDocument::MarkdownResource);
     void addSectionLicense(const QUrl &sourceUrl, QTextDocument::ResourceType type = QTextDocument::MarkdownResource);
