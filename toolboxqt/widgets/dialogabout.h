@@ -54,7 +54,6 @@ public:
 
 private:
     QTableWidget* createRessourceGroup(const RessourceGroup &resGroup, const QFont &fontLink, const QColor &colorLink);
-    QTableWidgetItem* createRessourceSource(const RichLink &resSrc, const QFont &fontLink, const QColor &colorLink);
 
     void labelSetInteractions(QLabel *label);
     void handleDocsLinks(QTextBrowser *textArea, const QUrl &link);

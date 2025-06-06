@@ -67,6 +67,8 @@ set(PROJECT_HEADERS
     widgets/filechooser.h
     widgets/labelscl.h
     widgets/widgethelper.h
+
+    widgets/table/tablewidgetitemlink.h
 )
 
 set(PROJECT_SOURCES
@@ -82,6 +84,8 @@ set(PROJECT_SOURCES
     widgets/filechooser.cpp
     widgets/labelscl.cpp
     widgets/widgethelper.cpp
+
+    widgets/table/tablewidgetitemlink.cpp
 )
 
 set(PROJECT_FILES ${PROJECT_HEADERS} ${PROJECT_SOURCES})

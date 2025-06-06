@@ -6,6 +6,8 @@
 #include <QHeaderView>
 #include <QTextEdit>
 
+#include "toolboxqt/widgets/table/tablewidgetitemlink.h"
+
 /*****************************/
 /* Class documentations      */
 /*****************************/
@@ -218,7 +220,7 @@ QTableWidget* DialogAbout::createRessourceGroup(const RessourceGroup &resGroup, 
     for(int row = 0; row < table->rowCount(); ++row){
         const Ressource &res = resGroup.listRes.at(row);
 
-        table->setItem(row, 0, createRessourceSource(res.source, fontLink, colorLink));
+        table->setItem(row, 0, new TableWidgetItemLink(res.source));
         table->setItem(row, 1, new QTableWidgetItem(res.author));
         table->setItem(row, 2, new QTableWidgetItem(res.license));
     }
@@ -230,39 +232,9 @@ QTableWidget* DialogAbout::createRessourceGroup(const RessourceGroup &resGroup, 
     table->sortItems(0, Qt::AscendingOrder);
 
     /* Manage table interactions */
-    connect(table, &QTableWidget::cellClicked, this, [=](int row, int column){
-        // Verify that column is source
-        if(column != 0){return;}
-
-        // Retrieve item data
-        QTableWidgetItem *item = table->item(row, column);
-        if(!item){return;}
-
-
-        // Open URL in default browser
-        const QUrl url = item->data(Qt::UserRole).toUrl();
-        bool succeed = QDesktopServices::openUrl(url);
-        if(!succeed){
-            qWarning("Failed to open URL in default browser [url: %s]", qUtf8Printable(url.toDisplayString()));
-        }
-    });
+    TableWidgetLinkHelper::manageEvents(table);
 
     return table;
-}
-
-QTableWidgetItem* DialogAbout::createRessourceSource(const RichLink &resSrc, const QFont &fontLink, const QColor &colorLink)
-{
-    QTableWidgetItem *item = new QTableWidgetItem(resSrc.getTextDisplayed());
-
-    /* Apply a "link" style */
-    item->setForeground(colorLink);
-    item->setFont(fontLink);
-
-    /* Set link informations */
-    item->setToolTip(resSrc.getUrl().toDisplayString());
-    item->setData(Qt::UserRole, resSrc.getUrl());
-
-    return item;
 }
 
 void DialogAbout::labelSetInteractions(QLabel *label)
