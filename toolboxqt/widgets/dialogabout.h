@@ -53,7 +53,7 @@ public:
     void addSectionFromDoc(const QString &name, const QUrl &sourceUrl, QTextDocument::ResourceType type);
 
 private:
-    QTableWidget* createRessourceGroup(const RessourceGroup &resGroup, const QFont &fontLink, const QColor &colorLink);
+    QTableWidget* createRessourceGroup(const RessourceGroup &resGroup);
 
     void labelSetInteractions(QLabel *label);
     void handleDocsLinks(QTextBrowser *textArea, const QUrl &link);

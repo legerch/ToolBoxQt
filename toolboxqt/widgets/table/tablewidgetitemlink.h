@@ -33,7 +33,7 @@ private:
     using QTableWidgetItem::setText;
 
 public:
-    static bool isTypeId(QTableWidgetItem *item);
+    static bool isTypeId(const QTableWidgetItem *item);
 };
 
 /*****************************/

@@ -12,6 +12,14 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class tbq::DialogAbout
+ * \brief Allow to easily create an "about" dialog window
+ * \details
+ * For example:
+ * \include{lineno} widgets/dialog-about.cpp
+ */
+
 /*****************************/
 /* Macro definitions         */
 /*****************************/
@@ -32,6 +40,20 @@ namespace tbq
 /*         Class             */
 /*****************************/
 
+/*!
+ * \brief Create a dialog about
+ * \details
+ * Methods \c setAppInfos() and \c setLogo() are called
+ * by this constructor. Informations used are the one
+ * provided \c QApplication global instance
+ *
+ * \param[in,out] parent
+ * Parent of the dialog.
+ *
+ * \sa addSectionAbout(), addSectionDeps(), addSectionRessources()
+ * \sa addSectionChangelog(), addSectionLicense()
+ * \sa addSectionFromDoc()
+ */
 DialogAbout::DialogAbout(QWidget *parent)
     : QDialog{parent}
 {
@@ -46,17 +68,46 @@ DialogAbout::DialogAbout(QWidget *parent)
     uiInitBase();
 }
 
+/*!
+ * \brief Use to set application main informations
+ *
+ * \param[in] name
+ * Application name
+ * \param[in] version
+ * Application version
+ *
+ * \sa setLogo()
+ */
 void DialogAbout::setAppInfos(const QString &name, const QVersionNumber &version)
 {
     m_labelName->setText(name);
     m_labelVersion->setText(version.toString());
 }
 
+/*!
+ * \brief Use to set application logo
+ *
+ * \param[in] logo
+ * Application logo to use
+ *
+ * \sa setAppInfos()
+ */
 void DialogAbout::setLogo(const QPixmap &logo)
 {
     m_labelIcon->setImg(logo);
 }
 
+/*!
+ * \brief Add an "about" section
+ *
+ * \param[in] aboutApp
+ * Description of the application goals. \n
+ * This field is a rich text.
+ * \param[in] linkHome
+ * Link to the project homepage.
+ * \param[in] linkBug
+ * Link to the project bug tracker.
+ */
 void DialogAbout::addSectionAbout(const QString &aboutApp, const RichLink &linkHome, const RichLink &linkBug)
 {
     QFont fontBold = qApp->font();
@@ -110,6 +161,16 @@ void DialogAbout::addSectionAbout(const QString &aboutApp, const RichLink &linkH
     m_tabs->addTab(widget, tr("About"));
 }
 
+/*!
+ * \brief Add section used to list all dependencies
+ *
+ * \param[in] listDeps
+ * List of dependencies to display
+ * \param[in] invalidSemver
+ * Text to display when version is invalid or unknown.
+ *
+ * \sa addSectionRessources()
+ */
 void DialogAbout::addSectionDeps(const ListDeps &listDeps, const QString &invalidSemver)
 {
     /* Prepare layout properties */
@@ -147,16 +208,20 @@ void DialogAbout::addSectionDeps(const ListDeps &listDeps, const QString &invali
     m_tabs->addTab(widget, tr("Dependencies"));
 }
 
+/*!
+ * \brief Add section used to list all used ressources (images,
+ * fonts, audios, etc...).
+ *
+ * \param[in] listGroups
+ * List of group ressources to display.
+ *
+ * \sa addSectionDeps()
+ */
 void DialogAbout::addSectionRessources(const ListResGroups &listGroups)
 {
     /* Retrieve app properties */
     QFont fontBold = qApp->font();
     fontBold.setBold(true);
-
-    QFont fontLink = qApp->font();
-    fontLink.setUnderline(true);
-
-    const QColor colorLink = qApp->palette().color(QPalette::Link);
 
     /* Prepare layout properties */
     QVBoxLayout *layout = new QVBoxLayout;
@@ -167,7 +232,7 @@ void DialogAbout::addSectionRessources(const ListResGroups &listGroups)
         groupTitle->setFont(fontBold);
 
         layout->addWidget(groupTitle);
-        layout->addWidget(createRessourceGroup(*it, fontLink, colorLink));
+        layout->addWidget(createRessourceGroup(*it));
     }
     layout->addItem(new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding));
 
@@ -178,16 +243,50 @@ void DialogAbout::addSectionRessources(const ListResGroups &listGroups)
     m_tabs->addTab(widget, tr("Ressources"));
 }
 
+/*!
+ * \brief Add a changelog section
+ *
+ * \param[in] sourceUrl
+ * Path to changelog ressource to use
+ * \param[in] type
+ * Type of ressource.
+ *
+ * \sa addSectionLicense()
+ * \sa addSectionFromDoc()
+ */
 void DialogAbout::addSectionChangelog(const QUrl &sourceUrl, QTextDocument::ResourceType type)
 {
     addSectionFromDoc(tr("Changelog"), sourceUrl, type);
 }
 
+/*!
+ * \brief Add a license section
+ *
+ * \param[in] sourceUrl
+ * Path to license ressource to use
+ * \param[in] type
+ * Type of ressource.
+ *
+ * \sa addSectionChangelog()
+ * \sa addSectionFromDoc()
+ */
 void DialogAbout::addSectionLicense(const QUrl &sourceUrl, QTextDocument::ResourceType type)
 {
     addSectionFromDoc(tr("License"), sourceUrl, type);
 }
 
+/*!
+ * \brief Add a custom section using ressource
+ *
+ * \param[in] name
+ * Section name
+ * \param[in] sourceUrl
+ * Path to ressource to use
+ * \param[in] type
+ * Type of ressource.
+ *
+ * \sa addSectionChangelog(), addSectionLicense()
+ */
 void DialogAbout::addSectionFromDoc(const QString &name, const QUrl &sourceUrl, QTextDocument::ResourceType type)
 {
     /* Create text area */
@@ -205,7 +304,7 @@ void DialogAbout::addSectionFromDoc(const QString &name, const QUrl &sourceUrl, 
     m_tabs->addTab(textArea, name);
 }
 
-QTableWidget* DialogAbout::createRessourceGroup(const RessourceGroup &resGroup, const QFont &fontLink, const QColor &colorLink)
+QTableWidget* DialogAbout::createRessourceGroup(const RessourceGroup &resGroup)
 {
     /* Create table */
     const QStringList headers = {tr("Asset"), tr("Author"), ("License")};

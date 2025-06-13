@@ -57,6 +57,9 @@ Library is separated according to _Qt modules_, current modules and classes are 
     - _tbq::BtnAbstractWordWrap:_ Virtual class which define an interface allowing to properly wrap text of a button
     - _tbq::BtnTool:_ Inherit from _QToolButton_ and _BtnAbstractWordWrap_
     - _tbq::BtnPush:_ Inherit from _QPushButton_ and _BtnAbstractWordWrap_. Also add _double-click_ event support.
+  - Table:
+    - _tbq::TableWidgetItemLink:_ Qt widget item allowing to store link informations
+  - _tbq::DialogAbout:_ Allow to easily create an "about" dialog window
   - _tbq::FileChooser:_ Used to choose a file from user-space
   - _tbq::LabelScl:_ Custom class which inherit from _QLabel_ class and properly scale image or animations to the label size.
   - _tbq::WidgetHelper:_ Group multiple methods that are simple enough to not have to create an inherited object
