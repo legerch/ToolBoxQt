@@ -1,5 +1,12 @@
 Custom [_toolbox_][toolboxqt-repo] containing multiple classes that can be useful when using [Qt framework][qt-official]
 
+> [!TIP]
+> Latest development/pull requests will be committed into `main` branch.  
+> Each stable release have their dedicated branch:
+> - `1.0.x`: branch `dev/1.0`
+> - `1.1.x`: branch `dev/1.1`
+> - etc...
+
 **Table of contents :**
 - [1. Requirements](#1-requirements)
   - [1.1. C++ Standards](#11-c-standards)
@@ -14,7 +21,7 @@ Custom [_toolbox_][toolboxqt-repo] containing multiple classes that can be usefu
 # 1. Requirements
 ## 1.1. C++ Standards
 
-This library requires at least **C++ 11** standard
+This library requires at least **C++ 17** standard
 
 ## 1.2. Dependencies
 

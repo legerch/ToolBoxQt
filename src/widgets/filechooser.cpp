@@ -1,6 +1,6 @@
-#include "filechooser.h"
+#include "toolboxqt/widgets/filechooser.h"
 
-#include "core/settingsini.h"
+#include "toolboxqt/core/settingsini.h"
 
 #include <QFileDialog>
 

@@ -1,4 +1,4 @@
-#include "richlink.h"
+#include "toolboxqt/core/richlink.h"
 
 /*****************************/
 /* Class documentations      */

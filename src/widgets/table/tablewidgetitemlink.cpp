@@ -1,4 +1,4 @@
-#include "tablewidgetitemlink.h"
+#include "toolboxqt/widgets/table/tablewidgetitemlink.h"
 
 #include <QApplication>
 #include <QDesktopServices>

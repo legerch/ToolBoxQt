@@ -1,4 +1,4 @@
-#include "widgethelper.h"
+#include "toolboxqt/widgets/widgethelper.h"
 
 /*****************************/
 /* Class documentations      */

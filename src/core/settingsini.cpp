@@ -1,4 +1,4 @@
-#include "settingsini.h"
+#include "toolboxqt/core/settingsini.h"
 
 #include <QFile>
 
@@ -141,7 +141,7 @@ QFileInfo SettingsIni::getPath() const
     }
 }
 
-void SettingsIni::groupBegin(TB_QTCOMPAT_STR_VIEW keyGroup)
+void SettingsIni::groupBegin(TOOLBOXQT_QTCOMPAT_STR_VIEW keyGroup)
 {
     if(m_settings){
         m_settings->beginGroup(keyGroup);
@@ -155,14 +155,14 @@ void SettingsIni::groupEnd()
     }
 }
 
-void SettingsIni::setValue(TB_QTCOMPAT_STR_VIEW key, const QVariant &value)
+void SettingsIni::setValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &value)
 {
     if(m_settings){
         m_settings->setValue(key, value);
     }
 }
 
-QVariant SettingsIni::getValue(TB_QTCOMPAT_STR_VIEW key, const QVariant &defaultValue) const
+QVariant SettingsIni::getValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &defaultValue) const
 {
     if(!m_settings){
         return QVariant();
