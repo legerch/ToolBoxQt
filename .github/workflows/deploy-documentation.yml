@@ -16,4 +16,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          config_file: Doxyfile
+          folder: docs/api-public
+          config_file: docs/fragments/Doxyfile-public-api.in
+          doxygen_version: 1.12.0
