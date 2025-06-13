@@ -56,28 +56,36 @@ set(PROJECT_HEADERS
     containers/array2d.h
 
     core/corehelper.h
+    core/depinfos.h
     core/richlink.h
     core/settingsini.h
 
     qml/qmlhelper.h
 
     widgets/button.h
+    widgets/dialogabout.h
     widgets/filechooser.h
     widgets/labelscl.h
     widgets/widgethelper.h
+
+    widgets/table/tablewidgetitemlink.h
 )
 
 set(PROJECT_SOURCES
     core/corehelper.cpp
+    core/depinfos.cpp
     core/richlink.cpp
     core/settingsini.cpp
 
     qml/qmlhelper.cpp
 
     widgets/button.cpp
+    widgets/dialogabout.cpp
     widgets/filechooser.cpp
     widgets/labelscl.cpp
     widgets/widgethelper.cpp
+
+    widgets/table/tablewidgetitemlink.cpp
 )
 
 set(PROJECT_FILES ${PROJECT_HEADERS} ${PROJECT_SOURCES})

@@ -12,9 +12,16 @@ class TOOLBOXQT_EXPORT RichLink
 {
 
 public:
+    RichLink();
     explicit RichLink(const QUrl &link, const QString &display = QString());
 
 public:
+    void setLink(const QUrl &link);
+    void setDisplayText(const QString &display);
+
+public:
+    bool isValid() const;
+
     const QUrl& getUrl() const;
     const QString& getTextDisplayed() const;
 
