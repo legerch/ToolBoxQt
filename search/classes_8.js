@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['widgethelper_0',['WidgetHelper',['../classtbq_1_1_widget_helper.html',1,'tbq']]]
+  ['settingsini_0',['SettingsIni',['../classtbq_1_1_settings_ini.html',1,'tbq']]]
 ];

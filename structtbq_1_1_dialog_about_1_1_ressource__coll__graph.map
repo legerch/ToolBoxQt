@@ -1,0 +1,5 @@
+<map id="tbq::DialogAbout::Ressource" name="tbq::DialogAbout::Ressource">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,212,119"/>
+<area shape="rect" id="Node000002" href="$classtbq_1_1_rich_link.html" title="Display a link with a custom text." alt="" coords="55,5,162,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,45,111,93,106,93,106,45"/>
+</map>

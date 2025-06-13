@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classtbq_1_1_array2_d.html" title="Use to manage a 2&#45;dimensional array." alt="" coords="5,5,148,31"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,80,56"/>
+<area shape="rect" id="Node000001" href="$classtbq_1_1_file_chooser.html" title="Used to choose a file from user&#45;space." alt="" coords="128,5,255,31"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="93,32,127,26,128,31,94,37"/>
+<area shape="rect" id="Node000002" href="$classtbq_1_1_qml_helper.html" title="Class containing multiple helpful methods that can be used in QML." alt="" coords="131,55,252,80"/>
+<area shape="poly" id="edge4_Node000000_Node000002" title=" " alt="" coords="94,49,131,55,130,60,93,54"/>
 </map>

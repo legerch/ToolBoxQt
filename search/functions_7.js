@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['qtversioncheck_0',['qtVersionCheck',['../classtbq_1_1_qml_helper.html#af2b26bb6dcfa0136386a296e1f711c28',1,'tbq::QmlHelper']]],
-  ['quitapplication_1',['quitApplication',['../classtbq_1_1_core_helper.html#aa97d3cd706905aa37acd951d1eb7b97b',1,'tbq::CoreHelper']]]
+  ['labelsetpathdir_0',['labelSetPathDir',['../classtbq_1_1_widget_helper.html#a0b57f4536d80426dfca69dfddf5abbe3',1,'tbq::WidgetHelper']]],
+  ['labelsetpathfile_1',['labelSetPathFile',['../classtbq_1_1_widget_helper.html#a707f5af74436a89593eb06be904a353c',1,'tbq::WidgetHelper']]],
+  ['loadsettings_2',['loadSettings',['../classtbq_1_1_settings_ini.html#ab54fa795702523640b949efeda772eb6',1,'tbq::SettingsIni']]]
 ];

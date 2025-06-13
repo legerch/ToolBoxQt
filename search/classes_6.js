@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['richlink_0',['RichLink',['../classtbq_1_1_rich_link.html',1,'tbq']]]
+  ['qmlhelper_0',['QmlHelper',['../classtbq_1_1_qml_helper.html',1,'tbq']]]
 ];

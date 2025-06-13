@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['qmlhelper_0',['QmlHelper',['../classtbq_1_1_qml_helper.html',1,'tbq']]],
-  ['qtversioncheck_1',['qtVersionCheck',['../classtbq_1_1_qml_helper.html#af2b26bb6dcfa0136386a296e1f711c28',1,'tbq::QmlHelper']]],
-  ['quitapplication_2',['quitApplication',['../classtbq_1_1_core_helper.html#aa97d3cd706905aa37acd951d1eb7b97b',1,'tbq::CoreHelper']]]
+  ['dependencies_0',['1.2. Dependencies',['../index.html#autotoc_md12-dependencies',1,'']]],
+  ['depinfos_1',['DepInfos',['../classtbq_1_1_dep_infos.html',1,'tbq']]],
+  ['dialogabout_2',['DialogAbout',['../classtbq_1_1_dialog_about.html',1,'tbq::DialogAbout'],['../classtbq_1_1_dialog_about.html#af71047d69232f5f7b63fcc72e2d4f6ad',1,'tbq::DialogAbout::DialogAbout()']]],
+  ['documentation_3',['4. Documentation',['../index.html#autotoc_md4-documentation',1,'']]]
 ];

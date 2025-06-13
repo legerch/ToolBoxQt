@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['labelscl_0',['LabelScl',['../classtbq_1_1_label_scl.html',1,'tbq']]]
+  ['filechooser_0',['FileChooser',['../classtbq_1_1_file_chooser.html',1,'tbq']]]
 ];
