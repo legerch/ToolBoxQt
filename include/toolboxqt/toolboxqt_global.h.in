@@ -1,23 +1,28 @@
 #ifndef TOOLBOXQT_GLOBAL_H
 #define TOOLBOXQT_GLOBAL_H
 
-#include <QtGlobal>
-
 /*!
  * \file toolboxqt_global.h
+ *
+ * \note
+ * Based on <a href="https://github.com/legerch/projects-template">Projects template repository</a>.
+ * Template file version: 2025-07-24
  */
+
+#include <QtGlobal>
 
 /**********************************
  * Library informations
  *********************************/
-#define TOOLBOXQT_INFO_NAME   "@PROJECT_NAME@"
+#define TOOLBOXQT_INFO_ID     "@PROJECT_NAME@"
+#define TOOLBOXQT_INFO_NAME   "@PRJ_READABLE_NAME@"
 
 /**********************************
  * Version management
  *********************************/
 
 /*!
- * \brief Use to perform compilation version comparisons
+ * \brief Use to perform compilation version comparaisons
  * \details
  * For example:
  * \code{.cpp}
@@ -52,8 +57,8 @@
 /**********************************
  * Deprecations warnings
  *********************************/
-#define TOOLBOXQT_DEPREC              [[deprecated]]            /**< Use to mark a method as deprecated. \n\code{.cpp}TOOLBOXQT_DEPREC void myOldFct(); \endcode */
-#define TOOLBOXQT_DEPREC_X(reason)    [[deprecated(reason)]]    /**< Use to mark a method as deprecated and specify a reason. \n\code{.cpp}TOOLBOXQT_DEPREC_X("Use myNewFct() instead") void myOldFunc(); \endcode */
+#define TOOLBOXQT_DEPREC              [[deprecated]]          /**< Use to mark a method as deprecated. \n\code{.cpp}TOOLBOXQT_DEPREC void myOldFct(); \endcode */
+#define TOOLBOXQT_DEPREC_X(reason)    [[deprecated(reason)]] 	/**< Use to mark a method as deprecated and specify a reason. \n\code{.cpp}TOOLBOXQT_DEPREC_X("Use myNewFct() instead") void myOldFunc(); \endcode */
 
 /**********************************
  * Custom macros used to detect custom
@@ -104,12 +109,19 @@
     Q_DISABLE_COPY_MOVE(Class)
 
 /**********************************
- * Compatibility workaround
+ * Qt Compatibility workaround
  *********************************/
-#if QT_VERSION < QT_VERSION_CHECK(6, 4, 0)
-#   define TB_QTCOMPAT_STR_VIEW const QString&
+
+ #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#   define TOOLBOXQT_QTCOMPAT_VARIANT_TYPE(var)    (var.type())
 #else
-#   define TB_QTCOMPAT_STR_VIEW QAnyStringView
+#   define TOOLBOXQT_QTCOMPAT_VARIANT_TYPE(var)    (var.metaType())
+#endif
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 4, 0)
+#   define TOOLBOXQT_QTCOMPAT_STR_VIEW const QString&
+#else
+#   define TOOLBOXQT_QTCOMPAT_STR_VIEW QAnyStringView
 #endif
 
 /*!

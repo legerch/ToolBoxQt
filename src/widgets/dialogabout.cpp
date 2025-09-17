@@ -1,4 +1,4 @@
-#include "dialogabout.h"
+#include "toolboxqt/widgets/dialogabout.h"
 
 #include <QApplication>
 #include <QDesktopServices>

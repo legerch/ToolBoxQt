@@ -1,4 +1,4 @@
-#include "depinfos.h"
+#include "toolboxqt/core/depinfos.h"
 
 /*****************************/
 /* Class documentations      */

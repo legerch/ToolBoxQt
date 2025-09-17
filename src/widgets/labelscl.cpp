@@ -1,4 +1,4 @@
-#include "labelscl.h"
+#include "toolboxqt/widgets/labelscl.h"
 
 /*****************************/
 /* Class documentations      */

@@ -1,4 +1,4 @@
-#include "corehelper.h"
+#include "toolboxqt/core/corehelper.h"
 
 #include <QCoreApplication>
 #include <QDebug>

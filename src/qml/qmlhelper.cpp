@@ -1,4 +1,4 @@
-#include "qmlhelper.h"
+#include "toolboxqt/qml/qmlhelper.h"
 
 /*****************************/
 /* Class documentations      */

@@ -30,11 +30,11 @@ public:
     bool loadSettings(const QFileInfo &fileInfo);
     QFileInfo getPath() const;
 
-    void groupBegin(TB_QTCOMPAT_STR_VIEW keyGroup);
+    void groupBegin(TOOLBOXQT_QTCOMPAT_STR_VIEW keyGroup);
     void groupEnd();
 
-    void setValue(TB_QTCOMPAT_STR_VIEW key, const QVariant &value);
-    QVariant getValue(TB_QTCOMPAT_STR_VIEW key, const QVariant &defaultValue = QVariant()) const;
+    void setValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &value);
+    QVariant getValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &defaultValue = QVariant()) const;
 
 public:
     void setHooksPreLoadSettings(CbHook hookPreload);
