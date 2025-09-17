@@ -2,11 +2,11 @@
 #define TOOLBOXQT_GLOBAL_H
 
 /*!
- * \file libraryglobal_qt.h
+ * \file toolboxqt_global.h
  *
  * \note
- * Based on <a href="https://github.com/legerch/library-template">Library template repository</a>.
- * Template file version: 2025-03-11
+ * Based on <a href="https://github.com/legerch/projects-template">Projects template repository</a>.
+ * Template file version: 2025-07-24
  */
 
 #include <QtGlobal>
@@ -15,7 +15,7 @@
  * Library informations
  *********************************/
 #define TOOLBOXQT_INFO_ID     "@PROJECT_NAME@"
-#define TOOLBOXQT_INFO_NAME   "@PROJECT_NAME_READABLE@"
+#define TOOLBOXQT_INFO_NAME   "@PRJ_READABLE_NAME@"
 
 /**********************************
  * Version management

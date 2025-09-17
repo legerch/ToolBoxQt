@@ -3,6 +3,10 @@
 # This file is used to generate public API documentation for "Toolbox Qt"
 # project.
 # Please refer to "Doxyfile-common.in" file for more syntax details
+#
+# Based on project template repository: https://github.com/legerch/projects-template
+# Template file version: 2025-07-24
+#
 
 #---------------------------------------------------------------------------
 # Doxyfile fragments to include
@@ -12,9 +16,26 @@
 #---------------------------------------------------------------------------
 # Custom configurations
 #---------------------------------------------------------------------------
-INPUT                   =   toolboxqt \
-                            README.md
-
+INPUT                   =   README.md \
+                            include \
+                            \
+                            src/toolboxtypes.cpp \
+                            \
+                            src/core/corehelper.cpp \
+                            src/core/depinfos.cpp \
+                            src/core/richlink.cpp \
+                            src/core/settingsini.cpp \
+                            \
+                            src/qml/qmlhelper.cpp \
+                            \
+                            src/widgets/button.cpp \
+                            src/widgets/dialogabout.cpp \
+                            src/widgets/filechooser.cpp \
+                            src/widgets/labelscl.cpp \
+                            src/widgets/widgethelper.cpp \
+                            \
+                            src/widgets/table/tablewidgetitemlink.cpp
+                            
 EXCLUDE                 =
 
 HTML_OUTPUT             =   api-public

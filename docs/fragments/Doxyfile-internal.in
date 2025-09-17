@@ -3,6 +3,10 @@
 # This file is used to generate internal API documentation for "Toolbox Qt"
 # project.
 # Please refer to "Doxyfile-common.in" file for more syntax details
+#
+# Based on project template repository: https://github.com/legerch/projects-template
+# Template file version: 2025-07-24
+#
 
 #---------------------------------------------------------------------------
 # Doxyfile fragments to include
@@ -12,8 +16,9 @@
 #---------------------------------------------------------------------------
 # Custom configurations
 #---------------------------------------------------------------------------
-INPUT                   =   toolboxqt \
-                            README.md
+INPUT                   =   README.md \
+                            include \
+                            src
 
 ENABLED_SECTIONS        =   INTERNAL
 

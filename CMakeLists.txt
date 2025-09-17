@@ -1,18 +1,30 @@
-cmake_minimum_required(VERSION 3.19)
+# CMakeLists file based on project template repository: https://github.com/legerch/projects-template
+## Template file version: 2025-08-20
+
+cmake_minimum_required(VERSION 3.20)
 
 # Set project properties
-set(PROJECT_COMPANY_ID legerch)
-set(PROJECT_COMPANY_NAME "legerch")
-set(PROJECT_NAME toolboxqt)
-set(PROJECT_NAME_READABLE "Toolbox Qt")
+set(PRJ_COMPANY_ID          legerch)
+set(PRJ_COMPANY_NAME        "Leger Charlie")
+set(PRJ_ID                  toolboxqt)
+set(PRJ_READABLE_NAME       "ToolboxQt")
+set(PRJ_VERSION_SEMANTIC    0.0.1)
+set(PRJ_DESCRIPTION         "Custom toolbox containing multiple classes that can be useful when using Qt framework.")
+set(PRJ_LICENSE             "MIT")
+set(PRJ_COPYRIGHT           "Copyright (c) 2024-2025 ${PRJ_COMPANY_NAME} (${PRJ_LICENSE} License)")
+set(PRJ_HOMEPAGE_URL        "https://github.com/legerch/ToolBoxQt")
 
-set(PROJECT_VERSION_SEMANTIC 0.0.1)
+set(PROJECT_NAME ${PRJ_ID})
 set(PROJECT_VERSION_CPP_MIN 17)
 
 # Set project configuration
 ## Generic properties
-project(${PROJECT_NAME} LANGUAGES CXX)
-project(${PROJECT_NAME} VERSION "${PROJECT_VERSION_SEMANTIC}")
+project(${PROJECT_NAME}
+    LANGUAGES       CXX
+    VERSION         "${PRJ_VERSION_SEMANTIC}"
+    DESCRIPTION     ${PRJ_DESCRIPTION}
+    HOMEPAGE_URL    ${PRJ_HOMEPAGE_URL}
+)
 
 ## Qt specific properties
 set(CMAKE_AUTOUIC ON)
@@ -31,16 +43,21 @@ if(DEFINED CMAKE_CXX_STANDARD)
     if(${CMAKE_CXX_STANDARD} LESS ${PROJECT_VERSION_CPP_MIN})
         message(FATAL_ERROR "Project ${PROJECT_NAME} require at least C++ standard ${PROJECT_VERSION_CPP_MIN}")
     endif()
-else()
-    set(CMAKE_CXX_STANDARD ${PROJECT_VERSION_CPP_MIN})
 endif()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 message(STATUS "Project \"${PROJECT_NAME}\" compiled with C++ standard ${CMAKE_CXX_STANDARD}")
 
 # Set needed packages
 ## Qt packages
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets REQUIRED)
+set(PROJECT_QT_PACKAGES
+    Core
+    Widgets
+)
+
+find_package(QT NAMES Qt6 Qt5 COMPONENTS ${PROJECT_QT_PACKAGES} REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${PROJECT_QT_PACKAGES} REQUIRED)
+
+list(TRANSFORM PROJECT_QT_PACKAGES PREPEND "Qt${QT_VERSION_MAJOR}::")
 
 ## Other library packages
 ### Example: find_package(nlohmann_json 3.11.3 REQUIRED)
@@ -49,11 +66,15 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets REQUIRED)
 set(PROJECT_DIR_PUBLIC_HEADERS_ROOT "${PROJECT_SOURCE_DIR}/include")
 set(PROJECT_DIR_PUBLIC_HEADERS      "${PROJECT_DIR_PUBLIC_HEADERS_ROOT}/${PROJECT_NAME}")
 set(PROJECT_DIR_PRIV_SOURCES        "${PROJECT_SOURCE_DIR}/src")
+
 set(PROJECT_FILE_GLOBAL             "${PROJECT_DIR_PUBLIC_HEADERS}/toolboxqt_global.h")
+
+set(PROJECT_FILE_OS_METADATA_WINDOWS "${PROJECT_SOURCE_DIR}/metadata/windows/infos.rc")
 
 # Manage library files
 ## Configure file project - File containing macros that can be used in project
 configure_file("${PROJECT_FILE_GLOBAL}.in" "${PROJECT_FILE_GLOBAL}")
+configure_file("${PROJECT_FILE_OS_METADATA_WINDOWS}.in" "${PROJECT_FILE_OS_METADATA_WINDOWS}")
 
 ## Set library compilation definitions
 set(PROJECT_DEFS_PRIV
@@ -72,13 +93,15 @@ set(PROJECT_LINKING_DIR
 
 ### Linking libs
 set(PROJECT_LINKING_LIB
-    Qt${QT_VERSION_MAJOR}::Core
-    Qt${QT_VERSION_MAJOR}::Widgets
+    ${PROJECT_QT_PACKAGES}
+    # Example: nlohmann_json::nlohmann_json
 )
 
 ## Set library files
 ### Public interface
 set(PROJECT_HEADERS_PUBLIC
+    toolboxtypes.h
+
     containers/array2d.h
 
     core/corehelper.h
@@ -96,15 +119,15 @@ set(PROJECT_HEADERS_PUBLIC
 
     widgets/table/tablewidgetitemlink.h
 )
-list(TRANSFORM PROJECT_HEADERS_PUBLIC PREPEND "${PROJECT_DIR_PUBLIC_HEADERS}/")
 
 ### Private
 set(PROJECT_HEADERS_PRIVATE
 
 )
-list(TRANSFORM PROJECT_HEADERS_PRIVATE PREPEND "${PROJECT_DIR_PRIV_SOURCES}/")
 
 set(PROJECT_SOURCES
+    toolboxtypes.cpp
+
     core/corehelper.cpp
     core/depinfos.cpp
     core/richlink.cpp
@@ -120,7 +143,10 @@ set(PROJECT_SOURCES
 
     widgets/table/tablewidgetitemlink.cpp
 )
-list(TRANSFORM PROJECT_SOURCES PREPEND "${PROJECT_DIR_PRIV_SOURCES}/")
+
+set(PROJECT_RESSOURCES
+    # No ressources to set
+)
 
 # Manage platform differences
 ## Refer to: https://cmake.org/cmake/help/latest/variable/CMAKE_SYSTEM_NAME.html
@@ -129,13 +155,23 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
         "NOMINMAX"  # Needed because Windows define macros "min/max", better to not defined those and use "std::min/std::max" instead
         "WIN32_LEAN_AND_MEAN=1"
     )
+
+    set(PROJECT_RESSOURCES ${PROJECT_RESSOURCES}
+        ${PROJECT_FILE_OS_METADATA_WINDOWS}
+    )
 endif()
 
 # Manage options
 ## Example: if(TOOLBOXQT_USE_CUSTOM_BEHAVIOUR)
 
+### Prepend all files to proper directory
+list(TRANSFORM PROJECT_HEADERS_PUBLIC PREPEND "${PROJECT_DIR_PUBLIC_HEADERS}/")
+list(TRANSFORM PROJECT_HEADERS_PRIVATE PREPEND "${PROJECT_DIR_PRIV_SOURCES}/")
+list(TRANSFORM PROJECT_SOURCES PREPEND "${PROJECT_DIR_PRIV_SOURCES}/")
+
+set(PROJECT_FILES ${PROJECT_RESSOURCES} ${PROJECT_FILE_GLOBAL} ${PROJECT_HEADERS_PUBLIC} ${PROJECT_HEADERS_PRIVATE} ${PROJECT_SOURCES})
+
 # Add files to the library
-set(PROJECT_FILES ${PROJECT_FILE_GLOBAL} ${PROJECT_HEADERS_PUBLIC} ${PROJECT_HEADERS_PRIVATE} ${PROJECT_SOURCES})
 add_library(${PROJECT_NAME} SHARED ${PROJECT_FILES})
 
 # Set version of library
