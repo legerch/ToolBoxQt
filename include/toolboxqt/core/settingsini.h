@@ -8,22 +8,15 @@
 
 #include <memory>
 
-#define mSettings   tbq::SettingsIni::instance()
-
 namespace tbq
 {
 
 class TOOLBOXQT_EXPORT SettingsIni final
 {
-    TOOLBOXQT_DISABLE_COPY_MOVE(SettingsIni)
-
 public:
     using CbHook = std::function<bool(const QFileInfo &fileInfo)>;
 
 public:
-    static SettingsIni& instance();
-
-private:
     explicit SettingsIni();
 
 public:

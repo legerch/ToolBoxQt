@@ -1,10 +1,11 @@
 #ifndef TBQ_WIDGETS_FILECHOOSER_H
 #define TBQ_WIDGETS_FILECHOOSER_H
 
+#include "toolboxqt/toolboxqt_global.h"
+#include "toolboxqt/core/settingsini.h"
+
 #include <QFileInfo>
 #include <QStandardPaths>
-
-#include "toolboxqt/toolboxqt_global.h"
 
 /*****************************/
 /* Start namespace           */
@@ -31,16 +32,17 @@ public:
     Q_ENUM(Type)
 
 public:
-    static QFileInfo fromUserSpaceFile(Type idType, QStandardPaths::StandardLocation stdLocation, const QString &keyLatest = QString(), const QString &filter = QString(), QWidget *parent = nullptr);
-    static QFileInfo fromUserSpaceFile(Type idType, const QString &dirLocation, const QString &keyLatest = QString(), const QString &filter = QString(), QWidget *parent = nullptr);
+    static QFileInfo fromUserSpaceFile(QWidget *parent, Type idType, QStandardPaths::StandardLocation stdLocation, const QString &filter = QString(), SettingsIni *settings = nullptr, const QString &keyLatest = QString());
+    static QFileInfo fromUserSpaceFile(QWidget *parent, Type idType, const QString &dirLocation, const QString &filter = QString(), SettingsIni *settings = nullptr, const QString &keyLatest = QString());
 
-    static QString fromUserSpaceDir(QStandardPaths::StandardLocation stdLocation, const QString &keyLatest = QString(), QWidget *parent = nullptr);
-    static QString fromUserSpaceDir(const QString &dirLocation, const QString &keyLatest = QString(), QWidget *parent = nullptr);
+    static QString fromUserSpaceDir(QWidget *parent, QStandardPaths::StandardLocation stdLocation, SettingsIni *settings = nullptr, const QString &keyLatest = QString());
+    static QString fromUserSpaceDir(QWidget *parent, const QString &dirLocation, SettingsIni *settings = nullptr, const QString &keyLatest = QString());
 
 public:
-    static QString getPathFromKey(const QString &key, const QString &defaultValue = QString());
+    static QString getPathFromKey(const SettingsIni *settings, const QString &key, const QString &defaultValue = QString());
 
 private:
+    static bool settingsAreValid(const SettingsIni *settings, const QString &keyLatest);
     static QString getKeyFmt(const QString &key);
 };
 

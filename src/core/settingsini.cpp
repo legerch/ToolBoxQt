@@ -11,39 +11,34 @@
  * \brief Class used to manage INI configuration file
  * \details
  * This class allow to easily manage settings depending on
- * a \c .ini file. \n
+ * a <tt>.ini</tt> file. \n
  * It will allow for example to not have to remember path of configuration file
- * each time we need it ! \n
- * This class used the <em>singleton pattern</em>, to use it, we can use:
- * - Method \c tbq::Settings::instance()
- * - Macro \c mSettings
+ * each time we need it !
  *
  * \note
  * Don't use this class if INI format is not mandatory, \c QSettings already provide
  * a way to manage other format without settings parameters each time at:
  * https://doc.qt.io/qt-6/qsettings.html#basic-usage
  *
- * To use this class in a project, we only have to initialize it in \c main
- * method:
- * \include{lineno} settings/maindefault.cpp
- *
- * Then we can use it anywhere with:
- * \code{.cpp}
- * mSettings.getValue("mySection/myKey");
- * \endcode
- *
+ * To use this class in a project, it will be easier to create a \em singleton from it
+ * adpated to our specific configuration file. \n
  * This class also allow to have a custom behaviour for \b pre and \b post
  * load operations of the configuration file via setHooksPreLoadSettings()
  * and setHooksPostLoadSettings(). \n
  * We can defines custom ones like this:
- * - <em>Header file :</em>
- * \include{lineno} appsettings.h
+ * - <em>Header file:</em>
+ * \include{lineno} preferences.h
  *
- * - <em>Source file :</em>
- * \include{lineno} appsettings.cpp
- *
- * - <em>Main file :</em>
+ * - <em>Source file:</em>
+ * \include{lineno} preferences.cpp
+ * 
+ * Then we only have to initialize it in our main:
  * \include{lineno} maincustom.cpp
+ *
+ * Then we can use it anywhere with:
+ * \code{.cpp}
+ * mPrefs.getValue("mySection/myKey");
+ * \endcode
  */
 
 /*****************************/
@@ -94,12 +89,6 @@ namespace tbq
 /*         Class             */
 /*****************************/
 
-SettingsIni &SettingsIni::instance()
-{
-    static SettingsIni instance;
-    return instance;
-}
-
 SettingsIni::SettingsIni()
     : m_settings(nullptr), m_hookPreload(defaultHook), m_hookPostLoad(defaultHook)
 {
@@ -134,11 +123,11 @@ bool SettingsIni::loadSettings(const QFileInfo &fileInfo)
 
 QFileInfo SettingsIni::getPath() const
 {
-    if(m_settings){
-        return QFileInfo(m_settings->fileName());
-    }else{
+    if(!m_settings){
         return QFileInfo();
     }
+
+    return QFileInfo(m_settings->fileName());
 }
 
 void SettingsIni::groupBegin(TOOLBOXQT_QTCOMPAT_STR_VIEW keyGroup)

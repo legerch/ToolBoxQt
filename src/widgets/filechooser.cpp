@@ -44,37 +44,40 @@ namespace tbq
  * \overload
  * \brief Choose a file from user-space with standard location
  */
-QFileInfo FileChooser::fromUserSpaceFile(Type idType, QStandardPaths::StandardLocation stdLocation, const QString &keyLatest, const QString &filter, QWidget *parent)
+QFileInfo FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, QStandardPaths::StandardLocation stdLocation, const QString &filter, SettingsIni *settings, const QString &keyLatest)
 {
-    return fromUserSpaceFile(idType, QStandardPaths::writableLocation(stdLocation), keyLatest, filter, parent);
+    return fromUserSpaceFile(parent, idType, QStandardPaths::writableLocation(stdLocation), filter, settings, keyLatest);
 }
 
 /*!
  * \brief Choose a file from user-space
  * \details
- * Allow to choose file from user-space and allowing to easily
+ * Allow to choose file from user-space and allow to easily
  * remember latest used directory.
  *
+ * \param[in, out] parent
+ * Parent widget.
  * \param[in] idType
  * Type of file to choose. \n
  * If unknown, nothing will be performed.
  * \param[in] dirLocation
  * Default directory to used when opening file dialog
  * window
- * \param[in] keyLatest
- * If not empty, provided key will be read from \c tbq::SettingsIni
- * and use the registered directory in it (and save it when file dialog
- * window is closed). \n
- * This is useful to directly open file dialog window to the latest use
- * directory for this specific ressource
  * \param[in] filter
  * Filter to use. Can be set using:
  * \code{.cpp}
  * tr("Images (*.png *.xpm *.jpg)" // Only display images files
  * tr("Images (*.png *.xpm *.jpg);;Text files (*.txt);;XML files (*.xml)" // Allow multiple filters (separated with ";;")
  * \endcode
- * \param[in, out] parent
- * Parent widget.
+ * \param[in,out] settings
+ * Settings entity to use store if using \c keyLatest argument. \n
+ * Nothing performed if \c nullptr.
+ * \param[in] keyLatest
+ * If not empty, provided key will be read from \c setting argument
+ * and use the registered directory in it (and save it when file dialog
+ * window is closed). \n
+ * This is useful to directly open file dialog window to the latest use
+ * directory for this specific ressource
  *
  * \return
  * Returns file information of the selected file. \n
@@ -83,14 +86,15 @@ QFileInfo FileChooser::fromUserSpaceFile(Type idType, QStandardPaths::StandardLo
  *
  * \sa fromUserSpaceDir()
  */
-QFileInfo FileChooser::fromUserSpaceFile(Type idType, const QString &dirLocation, const QString &keyLatest, const QString &filter, QWidget *parent)
+QFileInfo FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, const QString &dirLocation, const QString &filter, SettingsIni *settings, const QString &keyLatest)
 {
+    const bool doSettings = settingsAreValid(settings, keyLatest);
     QString dir = dirLocation;
 
     /* Retrieve latest dir location */
     const QString cfgKeyDir = getKeyFmt(keyLatest);
-    if(!keyLatest.isEmpty()){
-        const QString dirLatest = mSettings.getValue(cfgKeyDir).toString();
+    if(doSettings){
+        const QString dirLatest = settings->getValue(cfgKeyDir).toString();
         if(!dirLatest.isEmpty()){
             dir = dirLatest;
         }
@@ -102,6 +106,7 @@ QFileInfo FileChooser::fromUserSpaceFile(Type idType, const QString &dirLocation
     {
         case CHOOSE_FILE_EXIST:   filename = QFileDialog::getOpenFileName(parent, "Open file", dir, filter); break;
         case CHOOSE_FILE_CREATE:  filename = QFileDialog::getSaveFileName(parent, "File to save", dir, filter); break;
+
         default: break;
     }
 
@@ -112,8 +117,8 @@ QFileInfo FileChooser::fromUserSpaceFile(Type idType, const QString &dirLocation
     const QFileInfo file(filename);
 
     /* Save latest used directory */
-    if(!keyLatest.isEmpty()){
-        mSettings.setValue(cfgKeyDir, file.absoluteDir().absolutePath());
+    if(doSettings){
+        settings->setValue(cfgKeyDir, file.absoluteDir().absolutePath());
     }
 
     return file;
@@ -123,9 +128,9 @@ QFileInfo FileChooser::fromUserSpaceFile(Type idType, const QString &dirLocation
  * \overload
  * \brief Choose a directory from user-space with standard location
  */
-QString FileChooser::fromUserSpaceDir(QStandardPaths::StandardLocation stdLocation, const QString &keyLatest, QWidget *parent)
+QString FileChooser::fromUserSpaceDir(QWidget *parent, QStandardPaths::StandardLocation stdLocation, SettingsIni *settings, const QString &keyLatest)
 {
-    return fromUserSpaceDir(QStandardPaths::writableLocation(stdLocation), keyLatest, parent);
+    return fromUserSpaceDir(parent, QStandardPaths::writableLocation(stdLocation), settings, keyLatest);
 }
 
 /*!
@@ -134,16 +139,19 @@ QString FileChooser::fromUserSpaceDir(QStandardPaths::StandardLocation stdLocati
  * Allow to choose directory from user-space and allowing to easily
  * remember latest.
  *
+ * \param[in, out] parent
+ * Parent widget.
  * \param[in] dirLocation
  * Default directory to used when opening
  * directory dialog window
+ * \param[in,out] settings
+ * Settings entity to use store if using \c keyLatest argument. \n
+ * Nothing performed if \c nullptr.
  * \param[in] keyLatest
- * If not empty, provided key will be read from \c tbq::SettingsIni
+ * If not empty, provided key will be read from \c setting argument
  * and use the registered directory in it (and save it when directory dialog
  * window is closed). \n
  * This is useful to directly open directory dialog window to the latest used.
- * \param[in, out] parent
- * Parent widget.
  *
  * \return
  * Returns selected directory path. \n
@@ -151,28 +159,29 @@ QString FileChooser::fromUserSpaceDir(QStandardPaths::StandardLocation stdLocati
  *
  * \sa fromUserSpaceFile()
  */
-QString FileChooser::fromUserSpaceDir(const QString &dirLocation, const QString &keyLatest, QWidget *parent)
+QString FileChooser::fromUserSpaceDir(QWidget *parent, const QString &dirLocation, SettingsIni *settings, const QString &keyLatest)
 {
+    const bool doSettings = settingsAreValid(settings, keyLatest);
     QString dir = dirLocation;
 
     /* Retrieve latest dir location */
     const QString cfgKeyDir = getKeyFmt(keyLatest);
-    if(!keyLatest.isEmpty()){
-        const QString dirLatest = mSettings.getValue(cfgKeyDir).toString();
+    if(doSettings){
+        const QString dirLatest = settings->getValue(cfgKeyDir).toString();
         if(!dirLatest.isEmpty()){
             dir = dirLatest;
         }
     }
 
     /* Choose directory */
-    const QString selectedDir = QFileDialog::getExistingDirectory(parent, "Open directory", dir);
+    const QString selectedDir = QFileDialog::getExistingDirectory(parent, tr("Open directory"), dir);
     if(selectedDir.isEmpty()){
         return selectedDir;
     }
 
     /* Save latest used directory */
-    if(!keyLatest.isEmpty()){
-        mSettings.setValue(cfgKeyDir, selectedDir);
+    if(doSettings){
+        settings->setValue(cfgKeyDir, selectedDir);
     }
 
     return selectedDir;
@@ -182,6 +191,9 @@ QString FileChooser::fromUserSpaceDir(const QString &dirLocation, const QString 
  * \brief Allow to retrieve a FileChooser path
  * from key.
  *
+ * \param[in] setting
+ * Setting instance to use. \n
+ * Must be <b>not NULL</b>.
  * \param[in] key
  * Key used to perform registration
  * \param[in] defaultValue
@@ -191,14 +203,19 @@ QString FileChooser::fromUserSpaceDir(const QString &dirLocation, const QString 
  * \return
  * Returns string path associated to \c key
  */
-QString FileChooser::getPathFromKey(const QString &key, const QString &defaultValue)
+QString FileChooser::getPathFromKey(const SettingsIni *settings, const QString &key, const QString &defaultValue)
 {
-    const QString path = mSettings.getValue(getKeyFmt(key), defaultValue).toString();
+    const QString path = settings->getValue(getKeyFmt(key), defaultValue).toString();
     if(path.isEmpty()){
         return defaultValue;
     }
 
     return path;
+}
+
+bool FileChooser::settingsAreValid(const SettingsIni *settings, const QString &keyLatest)
+{
+    return settings != nullptr && !keyLatest.isEmpty();
 }
 
 /*!
