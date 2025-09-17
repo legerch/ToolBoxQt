@@ -96,51 +96,45 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a> Custom <a href="https://github.com/legerch/ToolBoxQt"><em>toolbox</em></a> containing multiple classes that can be useful when using <a href="https://www.qt.io/">Qt framework</a></p>
+<dl class="section remark"><dt>Remarks</dt><dd>Latest development/pull requests will be committed into <code>main</code> branch. <br  />
+ Each stable release have their dedicated branch:<ul>
+<li><code>1.0.x</code>: branch <code>dev/1.0</code></li>
+<li><code>1.1.x</code>: branch <code>dev/1.1</code></li>
+<li>etc...</li>
+</ul>
+</dd></dl>
 <p><b>Table of contents :</b></p><ul>
-<li><a class="el" href="#autotoc_md1-requirements">1. Requirements</a><ul>
-<li><a class="el" href="#autotoc_md11-c-standards">1.1. C++ Standards</a></li>
-<li><a class="el" href="#autotoc_md12-dependencies">1.2. Dependencies</a></li>
+<li><a class="el" href="#autotoc_md1-library-details">1. Library details</a><ul>
+<li><a class="el" href="#autotoc_md11-features">1.1. Features</a></li>
 </ul>
 </li>
-<li><a class="el" href="#autotoc_md2-how-to-build">2. How to build</a></li>
-<li><a class="el" href="#autotoc_md3-how-to-use">3. How to use</a><ul>
-<li><a class="el" href="#autotoc_md31-available-utilities">3.1. Available utilities</a></li>
-<li><a class="el" href="#autotoc_md32-library-version">3.2. Library version</a></li>
+<li><a class="el" href="#autotoc_md2-requirements">2. Requirements</a><ul>
+<li><a class="el" href="#autotoc_md21-c-standards">2.1. C++ Standards</a></li>
+<li><a class="el" href="#autotoc_md22-dependencies">2.2. Dependencies</a></li>
 </ul>
 </li>
-<li><a class="el" href="#autotoc_md4-documentation">4. Documentation</a></li>
-<li><a class="el" href="#autotoc_md5-license">5. License</a></li>
+<li><a class="el" href="#autotoc_md3-how-to-build">3. How to build</a><ul>
+<li><a class="el" href="#autotoc_md31-cmake-usage">3.1. CMake Usage</a></li>
+<li><a class="el" href="#autotoc_md32-cmake-options">3.2. CMake options</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md1-requirements"></a>
-1. Requirements</h1>
-<h2><a class="anchor" id="autotoc_md11-c-standards"></a>
-1.1. C++ Standards</h2>
-<p>This library requires at least <b>C++ 11</b> standard</p>
-<h2><a class="anchor" id="autotoc_md12-dependencies"></a>
-1.2. Dependencies</h2>
-<p>Below, list of required dependencies:</p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadCenter">Dependencies   </th><th class="markdownTableHeadCenter">VCPKG package   </th><th class="markdownTableHeadCenter">Comments    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter"><a href="https://www.qt.io/">Qt</a>   </td><td class="markdownTableBodyCenter">/   </td><td class="markdownTableBodyCenter">Library built with <b>Qt framework</b> and compatible with series <code>5.15.x</code> and <code>6.x</code>   </td></tr>
-</table>
-<blockquote class="doxtable">
-<p>&zwj;Dependency manager <a href="https://github.com/legerch/develop-memo/tree/master/Toolchains/Build%20systems/VCPKG">VCPKG</a> is not mandatory, this is only a note to be able to list needed packages </p>
-</blockquote>
-<h1><a class="anchor" id="autotoc_md2-how-to-build"></a>
-2. How to build</h1>
-<p>This library can be use as an <em>embedded library</em> in a subdirectory of your project (like a <em>git submodule</em> for example) :</p><ol type="1">
-<li>In the <b>root</b> CMakeLists, add instructions : <div class="fragment"><div class="line">add_subdirectory(toolboxqt) # Or if library is put in a folder &quot;deps&quot; : add_subdirectory(deps/toolboxqt)</div>
-</div><!-- fragment --></li>
-<li>In the <b>application/library</b> CMakeLists, add instructions : <div class="fragment"><div class="line"># Link needed libraries</div>
-<div class="line">target_link_libraries(${PROJECT_NAME} PRIVATE toolboxqt)</div>
-</div><!-- fragment --></li>
-</ol>
-<h1><a class="anchor" id="autotoc_md3-how-to-use"></a>
-3. How to use</h1>
-<h2><a class="anchor" id="autotoc_md31-available-utilities"></a>
-3.1. Available utilities</h2>
+</li>
+<li><a class="el" href="#autotoc_md4-how-to-use">4. How to use</a><ul>
+<li><a class="el" href="#autotoc_md41-usage">4.1. Usage</a></li>
+<li><a class="el" href="#autotoc_md42-library-version">4.2. Library version</a><ul>
+<li><a class="el" href="#autotoc_md421-compatibility">4.2.1. Compatibility</a></li>
+<li><a class="el" href="#autotoc_md422-compilation-time">4.2.2. Compilation time</a></li>
+<li><a class="el" href="#autotoc_md423-runtime">4.2.3. Runtime</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="el" href="#autotoc_md5-documentation">5. Documentation</a></li>
+<li><a class="el" href="#autotoc_md6-license">6. License</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md1-library-details"></a>
+1. Library details</h1>
+<h2><a class="anchor" id="autotoc_md11-features"></a>
+1.1. Features</h2>
 <p>Library is separated according to <em>Qt modules</em>, current modules and classes are (for each classes, more details can be found in their own documentation):</p><ul>
 <li><b>containers:</b><ul>
 <li><em><a class="el" href="classtbq_1_1_array2_d.html" title="Use to manage a 2-dimensional array.">tbq::Array2D</a>:</em> Used to manage a 2-dimensional array</li>
@@ -174,29 +168,75 @@ $(function(){ initResizable(false); });
 </ul>
 </li>
 </ul>
+<h1><a class="anchor" id="autotoc_md2-requirements"></a>
+2. Requirements</h1>
+<h2><a class="anchor" id="autotoc_md21-c-standards"></a>
+2.1. C++ Standards</h2>
+<p>This library requires at least <b>C++ 17</b> standard</p>
+<h2><a class="anchor" id="autotoc_md22-dependencies"></a>
+2.2. Dependencies</h2>
+<p>Below, list of required dependencies:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Dependencies   </th><th class="markdownTableHeadCenter">VCPKG package   </th><th class="markdownTableHeadCenter">Comments    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter"><a href="https://www.qt.io/">Qt</a>   </td><td class="markdownTableBodyCenter">/   </td><td class="markdownTableBodyCenter">Compatible with <b>Qt6.x</b><br  />
+Compatible with <b>Qt5.15.x</b>   </td></tr>
+</table>
+<dl class="section note"><dt>Note</dt><dd>Dependency manager <a href="https://github.com/legerch/develop-memo/tree/master/Toolchains/Build%20systems/VCPKG">VCPKG</a> is not mandatory, this is only a note to be able to list needed packages</dd></dl>
+<h1><a class="anchor" id="autotoc_md3-how-to-build"></a>
+3. How to build</h1>
+<h2><a class="anchor" id="autotoc_md31-cmake-usage"></a>
+3.1. CMake Usage</h2>
+<p>This library can be use as an <em>embedded library</em> in a subdirectory of your project (like a <em>git submodule</em> for example) :</p><ol type="1">
+<li>In the <b>root</b> CMakeLists, add instructions : <div class="fragment"><div class="line">add_subdirectory(toolboxqt) # Or if library is put in a folder &quot;dependencies&quot; : add_subdirectory(dependencies/toolboxqt)</div>
+</div><!-- fragment --></li>
+<li>In the <b>application/library</b> CMakeLists, add instructions : <div class="fragment"><div class="line"># Link needed libraries</div>
+<div class="line">target_link_libraries(${PROJECT_NAME} PRIVATE toolboxqt)</div>
+</div><!-- fragment --></li>
+</ol>
+<h2><a class="anchor" id="autotoc_md32-cmake-options"></a>
+3.2. CMake options</h2>
+<p>This library provide some <b>CMake</b> build options:</p><ul>
+<li><em>No CMake options currently available</em></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4-how-to-use"></a>
+4. How to use</h1>
+<h2><a class="anchor" id="autotoc_md41-usage"></a>
+4.1. Usage</h2>
 <p>To use a class, simply use the proper include: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;toolboxqt/widgets/labelscl.h&quot;</span></div>
 </div><!-- fragment --><p>All classes are defined inside namespace <code>tbq</code> (for <em>ToolBoxQt</em>).</p>
-<h2><a class="anchor" id="autotoc_md32-library-version"></a>
-3.2. Library version</h2>
+<h2><a class="anchor" id="autotoc_md42-library-version"></a>
+4.2. Library version</h2>
+<h3><a class="anchor" id="autotoc_md421-compatibility"></a>
+4.2.1. Compatibility</h3>
+<p>This library follow <a href="https://semver.org">semantic versioning</a> for <b>API</b>. <b>ABI</b> is not preserved between versions, so software using this library will have to recompile it to update the version of the library.</p>
+<h3><a class="anchor" id="autotoc_md422-compilation-time"></a>
+4.2.2. Compilation time</h3>
 <p>In order to easily check at compilation time library version (to manage compatibility between multiple versions for example), macro <code>TOOLBOXQT_VERSION_ENCODE</code> (defined inside <em>toolboxqt_global.h</em> file) can be used: </p><div class="fragment"><div class="line"><span class="preprocessor">#if TOOLBOXQT_VERSION &gt;= TOOLBOXQT_VERSION_ENCODE(2,0,0)</span></div>
 <div class="line">    <span class="comment">// Do stuff for version 2.0.0 or higher</span></div>
 <div class="line"><span class="preprocessor">#else</span></div>
 <div class="line">    <span class="comment">// Do stuff for earlier versions</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4-documentation"></a>
-4. Documentation</h1>
-<p>All classes has been documented with <a href="https://www.doxygen.nl/index.html">Doxygen</a> utility and automatically generated at <a href="https://lecherch.github.io/ToolBoxQt/">online website documentation</a></p>
-<p>To generate documentation locally, we can use: </p><div class="fragment"><div class="line"># Run documentation generation</div>
-<div class="line">doxygen ./Doxyfile</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md423-runtime"></a>
+4.2.3. Runtime</h3>
+<p>Since library header used during final application build could differ from the actual library version, it is recommended to use the method: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;toolboxqt/toolboxtypes.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"># Under Windows OS, maybe doxygen is not added to the $PATH</div>
-<div class="line">&quot;C:\Program Files\doxygen\bin\doxygen.exe&quot; ./Doxyfile</div>
-</div><!-- fragment --> <blockquote class="doxtable">
-<p>&zwj;<b>Note:</b> You can also load the <em>Doxyfile</em> into <em>Doxywizard</em> (Doxygen GUI) and run generation. </p>
-</blockquote>
-<h1><a class="anchor" id="autotoc_md5-license"></a>
-5. License</h1>
-<p>This library is licensed under MIT license. </p>
+<div class="line"><span class="keyword">const</span> QVersionNumber libSemver = <a class="code hl_function" href="namespacetbq.html#ac23f4fb34c93473772564705bcde7752">tbq::getLibraryVersion</a>();</div>
+<div class="ttc" id="anamespacetbq_html_ac23f4fb34c93473772564705bcde7752"><div class="ttname"><a href="namespacetbq.html#ac23f4fb34c93473772564705bcde7752">tbq::getLibraryVersion</a></div><div class="ttdeci">TOOLBOXQT_EXPORT QVersionNumber getLibraryVersion()</div><div class="ttdoc">Used to retrieve ToolBoxQt library version.</div><div class="ttdef"><b>Definition</b> toolboxtypes.cpp:36</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5-documentation"></a>
+5. Documentation</h1>
+<p>All classes/methods has been documented with <a href="https://www.doxygen.nl/index.html">Doxygen</a> utility and automatically generated at <a href="https://lecherch.github.io/ToolBoxQt/">online website documentation</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>This repository contains two kinds of documentation:<ul>
+<li><b>Public API:</b> Available via <a href="https://lecherch.github.io/ToolBoxQt/">online website documentation</a> or locally via Doxyfile <code>docs/fragments/Doxyfile-public-api.in</code></li>
+<li><b>Internal:</b> Available locally only via <code>docs/fragments/Doxyfile-internal.in</code></li>
+</ul>
+</dd></dl>
+<p>To generate documentation locally, we can use: </p><div class="fragment"><div class="line">doxygen ./docs/fragments/Doxyfile-name</div>
+</div><!-- fragment --> <dl class="section remark"><dt>Remarks</dt><dd>You can also load the <em>Doxyfile</em> into <em>Doxywizard</em> (Doxygen GUI) and run generation.</dd></dl>
+<h1><a class="anchor" id="autotoc_md6-license"></a>
+6. License</h1>
+<p>This library is licensed under <a href="https://github.com/legerch/ToolBoxQt/LICENSE.md">MIT license</a>. </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

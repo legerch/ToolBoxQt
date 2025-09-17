@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Toolbox Qt: toolboxqt/containers/array2d.h Source File</title>
+<title>Toolbox Qt: include/toolboxqt/containers/array2d.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,7 +91,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_891c11fe295b0a08016b921f8e559219.html">toolboxqt</a></li><li class="navelem"><a class="el" href="dir_0b1b56766378dcffb5b955ec05b23917.html">containers</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_946492e4bb1c5a93ef72ee5af8ea64fb.html">toolboxqt</a></li><li class="navelem"><a class="el" href="dir_2459352d832c685483f33dd830a42e98.html">containers</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -109,7 +109,8 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">/* Start namespace           */</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">/*****************************/</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span>tbq</div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespacetbq.html">   11</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacetbq.html">tbq</a></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">/*****************************/</span></div>
@@ -169,7 +170,7 @@ $(function(){ initResizable(false); });
 <div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classtbq_1_1_array2_d.html#a0f45671984c9cad170ce60f20c2b3938">   79</a></span><a class="code hl_function" href="classtbq_1_1_array2_d.html#a333f6d119cd0760b0f1d5375255fccfd">Array2D&lt;T&gt;::Array2D</a>(<span class="keywordtype">size_t</span> nbRows, <span class="keywordtype">size_t</span> nbCols)</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>{</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    resize(m_rows, m_cols);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    resize(nbRows, nbCols);</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
 </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
@@ -251,6 +252,7 @@ $(function(){ initResizable(false); });
 </div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>} <span class="comment">// namespace tbq</span></div>
+</div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">#endif </span><span class="comment">// TBQ_CONTAINER_ARRAY2D_H</span></div>
 <div class="ttc" id="aclasstbq_1_1_array2_d_html"><div class="ttname"><a href="classtbq_1_1_array2_d.html">tbq::Array2D</a></div><div class="ttdoc">Use to manage a 2-dimensional array.</div><div class="ttdef"><b>Definition</b> array2d.h:24</div></div>
@@ -262,6 +264,7 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclasstbq_1_1_array2_d_html_a7b7040811405103f0f6b3830f25507f5"><div class="ttname"><a href="classtbq_1_1_array2_d.html#a7b7040811405103f0f6b3830f25507f5">tbq::Array2D::operator()</a></div><div class="ttdeci">T &amp; operator()(size_t row, size_t col)</div><div class="ttdoc">Get modifiable reference to an element.</div><div class="ttdef"><b>Definition</b> array2d.h:210</div></div>
 <div class="ttc" id="aclasstbq_1_1_array2_d_html_a905164232d2a40355c3733af80fc6319"><div class="ttname"><a href="classtbq_1_1_array2_d.html#a905164232d2a40355c3733af80fc6319">tbq::Array2D::getCols</a></div><div class="ttdeci">size_t getCols() const</div><div class="ttdoc">Get number of columns.</div><div class="ttdef"><b>Definition</b> array2d.h:117</div></div>
 <div class="ttc" id="aclasstbq_1_1_array2_d_html_ae1007a7efb9c45bd8b6845f7500f9077"><div class="ttname"><a href="classtbq_1_1_array2_d.html#ae1007a7efb9c45bd8b6845f7500f9077">tbq::Array2D::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear content of 2D array.</div><div class="ttdef"><b>Definition</b> array2d.h:150</div></div>
+<div class="ttc" id="anamespacetbq_html"><div class="ttname"><a href="namespacetbq.html">tbq</a></div><div class="ttdoc">Namespace used for ToolBoxQt library.</div><div class="ttdef"><b>Definition</b> array2d.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

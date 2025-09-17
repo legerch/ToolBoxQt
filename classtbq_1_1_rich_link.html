@@ -91,7 +91,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>tbq</b></li><li class="navelem"><a class="el" href="classtbq_1_1_rich_link.html">RichLink</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacetbq.html">tbq</a></li><li class="navelem"><a class="el" href="classtbq_1_1_rich_link.html">RichLink</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -212,64 +212,29 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a90c2f510266472aacbf5c65cb956d699" name="a90c2f510266472aacbf5c65cb956d699"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90c2f510266472aacbf5c65cb956d699">&#9670;&#160;</a></span>getTextDisplayed()</h2>
+<a id="ae3bc4ce10979a770f94ec05a3f43b04f" name="ae3bc4ce10979a770f94ec05a3f43b04f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3bc4ce10979a770f94ec05a3f43b04f">&#9670;&#160;</a></span>setLink()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const QString &amp; tbq::RichLink::getTextDisplayed </td>
+          <td class="memname">void tbq::RichLink::setLink </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const QUrl &amp;</td>          <td class="paramname"><span class="paramname"><em>link</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get displayed text of the link. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns reference to displayed text. </dd></dl>
-
-</div>
-</div>
-<a id="a3b068a456a0ec5d919adbc1944e6bba6" name="a3b068a456a0ec5d919adbc1944e6bba6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b068a456a0ec5d919adbc1944e6bba6">&#9670;&#160;</a></span>getUrl()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const QUrl &amp; tbq::RichLink::getUrl </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get URL used in the link. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns reference to URL link </dd></dl>
-
-</div>
-</div>
-<a id="aecd213a8833107c78b3e51a5c6ff1d00" name="aecd213a8833107c78b3e51a5c6ff1d00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aecd213a8833107c78b3e51a5c6ff1d00">&#9670;&#160;</a></span>isValid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool tbq::RichLink::isValid </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Use to verify rich link validity. </p>
-<p>Rich link is considered valid is URL is valid.</p>
-<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> if rich link is valid </dd></dl>
+<p>Set URL lin to use. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">link</td><td>URL to used as a link.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af690a782eec1fb03b9db22fe2477e2bd" title="Set text to display for the link.">setDisplayText()</a> </dd></dl>
 
 </div>
 </div>
@@ -299,29 +264,64 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae3bc4ce10979a770f94ec05a3f43b04f" name="ae3bc4ce10979a770f94ec05a3f43b04f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3bc4ce10979a770f94ec05a3f43b04f">&#9670;&#160;</a></span>setLink()</h2>
+<a id="aecd213a8833107c78b3e51a5c6ff1d00" name="aecd213a8833107c78b3e51a5c6ff1d00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecd213a8833107c78b3e51a5c6ff1d00">&#9670;&#160;</a></span>isValid()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void tbq::RichLink::setLink </td>
+          <td class="memname">bool tbq::RichLink::isValid </td>
           <td>(</td>
-          <td class="paramtype">const QUrl &amp;</td>          <td class="paramname"><span class="paramname"><em>link</em></span></td><td>)</td>
-          <td></td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set URL lin to use. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">link</td><td>URL to used as a link.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af690a782eec1fb03b9db22fe2477e2bd" title="Set text to display for the link.">setDisplayText()</a> </dd></dl>
+<p>Use to verify rich link validity. </p>
+<p>Rich link is considered valid is URL is valid.</p>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> if rich link is valid </dd></dl>
+
+</div>
+</div>
+<a id="a3b068a456a0ec5d919adbc1944e6bba6" name="a3b068a456a0ec5d919adbc1944e6bba6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b068a456a0ec5d919adbc1944e6bba6">&#9670;&#160;</a></span>getUrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QUrl &amp; tbq::RichLink::getUrl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get URL used in the link. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns reference to URL link </dd></dl>
+
+</div>
+</div>
+<a id="a90c2f510266472aacbf5c65cb956d699" name="a90c2f510266472aacbf5c65cb956d699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90c2f510266472aacbf5c65cb956d699">&#9670;&#160;</a></span>getTextDisplayed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QString &amp; tbq::RichLink::getTextDisplayed </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get displayed text of the link. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns reference to displayed text. </dd></dl>
 
 </div>
 </div>
@@ -347,8 +347,8 @@ If no display text has been set, the link will be displayed "as is". </dd></dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>toolboxqt/core/<a class="el" href="richlink_8h_source.html">richlink.h</a></li>
-<li>toolboxqt/core/<b>richlink.cpp</b></li>
+<li>include/toolboxqt/core/<a class="el" href="richlink_8h_source.html">richlink.h</a></li>
+<li>src/core/<b>richlink.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

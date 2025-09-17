@@ -91,7 +91,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>tbq</b></li><li class="navelem"><a class="el" href="classtbq_1_1_dialog_about.html">DialogAbout</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacetbq.html">tbq</a></li><li class="navelem"><a class="el" href="classtbq_1_1_dialog_about.html">DialogAbout</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -286,203 +286,6 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7cf950d3902c133949a1c135c183789d" name="a7cf950d3902c133949a1c135c183789d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7cf950d3902c133949a1c135c183789d">&#9670;&#160;</a></span>addSectionAbout()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::DialogAbout::addSectionAbout </td>
-          <td>(</td>
-          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>aboutApp</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classtbq_1_1_rich_link.html">RichLink</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>linkHome</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classtbq_1_1_rich_link.html">RichLink</a>()</span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classtbq_1_1_rich_link.html">RichLink</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>linkBug</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classtbq_1_1_rich_link.html">RichLink</a>()</span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add an "about" section. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">aboutApp</td><td>Description of the application goals. <br  />
-This field is a rich text. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">linkHome</td><td>Link to the project homepage. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">linkBug</td><td>Link to the project bug tracker. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="af8da8b31164816802e2ddf43f717eebc" name="af8da8b31164816802e2ddf43f717eebc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8da8b31164816802e2ddf43f717eebc">&#9670;&#160;</a></span>addSectionChangelog()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::DialogAbout::addSectionChangelog </td>
-          <td>(</td>
-          <td class="paramtype">const QUrl &amp;</td>          <td class="paramname"><span class="paramname"><em>sourceUrl</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">QTextDocument::ResourceType</td>          <td class="paramname"><span class="paramname"><em>type</em></span><span class="paramdefsep"> = </span><span class="paramdefval">QTextDocument::MarkdownResource</span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add a changelog section. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">sourceUrl</td><td>Path to changelog ressource to use </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>Type of ressource.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ae09c0134510fbdb9357bd30b686605e5" title="Add a license section.">addSectionLicense()</a> </dd>
-<dd>
-<a class="el" href="#ae63a8f7134cee49bde07c3b97b7bf381" title="Add a custom section using ressource.">addSectionFromDoc()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a61675167e5ccea620e0ef840babae7cc" name="a61675167e5ccea620e0ef840babae7cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61675167e5ccea620e0ef840babae7cc">&#9670;&#160;</a></span>addSectionDeps()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::DialogAbout::addSectionDeps </td>
-          <td>(</td>
-          <td class="paramtype">const ListDeps &amp;</td>          <td class="paramname"><span class="paramname"><em>listDeps</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>invalidSemver</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;/&quot;</span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add section used to list all dependencies. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">listDeps</td><td>List of dependencies to display </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">invalidSemver</td><td>Text to display when version is invalid or unknown.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a0753d5edf92ad79e70e21c2f52993ac6" title="Add section used to list all used ressources (images, fonts, audios, etc...).">addSectionRessources()</a> </dd></dl>
-
-</div>
-</div>
-<a id="ae63a8f7134cee49bde07c3b97b7bf381" name="ae63a8f7134cee49bde07c3b97b7bf381"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae63a8f7134cee49bde07c3b97b7bf381">&#9670;&#160;</a></span>addSectionFromDoc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::DialogAbout::addSectionFromDoc </td>
-          <td>(</td>
-          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const QUrl &amp;</td>          <td class="paramname"><span class="paramname"><em>sourceUrl</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">QTextDocument::ResourceType</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add a custom section using ressource. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Section name </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">sourceUrl</td><td>Path to ressource to use </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>Type of ressource.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af8da8b31164816802e2ddf43f717eebc" title="Add a changelog section.">addSectionChangelog()</a>, <a class="el" href="#ae09c0134510fbdb9357bd30b686605e5" title="Add a license section.">addSectionLicense()</a> </dd></dl>
-
-</div>
-</div>
-<a id="ae09c0134510fbdb9357bd30b686605e5" name="ae09c0134510fbdb9357bd30b686605e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae09c0134510fbdb9357bd30b686605e5">&#9670;&#160;</a></span>addSectionLicense()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::DialogAbout::addSectionLicense </td>
-          <td>(</td>
-          <td class="paramtype">const QUrl &amp;</td>          <td class="paramname"><span class="paramname"><em>sourceUrl</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">QTextDocument::ResourceType</td>          <td class="paramname"><span class="paramname"><em>type</em></span><span class="paramdefsep"> = </span><span class="paramdefval">QTextDocument::MarkdownResource</span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add a license section. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">sourceUrl</td><td>Path to license ressource to use </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>Type of ressource.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af8da8b31164816802e2ddf43f717eebc" title="Add a changelog section.">addSectionChangelog()</a> </dd>
-<dd>
-<a class="el" href="#ae63a8f7134cee49bde07c3b97b7bf381" title="Add a custom section using ressource.">addSectionFromDoc()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a0753d5edf92ad79e70e21c2f52993ac6" name="a0753d5edf92ad79e70e21c2f52993ac6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0753d5edf92ad79e70e21c2f52993ac6">&#9670;&#160;</a></span>addSectionRessources()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::DialogAbout::addSectionRessources </td>
-          <td>(</td>
-          <td class="paramtype">const ListResGroups &amp;</td>          <td class="paramname"><span class="paramname"><em>listGroups</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add section used to list all used ressources (images, fonts, audios, etc...). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">listGroups</td><td>List of group ressources to display.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a61675167e5ccea620e0ef840babae7cc" title="Add section used to list all dependencies.">addSectionDeps()</a> </dd></dl>
-
-</div>
-</div>
 <a id="af0e9e59ef803486f0692dd5d6104a17e" name="af0e9e59ef803486f0692dd5d6104a17e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0e9e59ef803486f0692dd5d6104a17e">&#9670;&#160;</a></span>setAppInfos()</h2>
 
@@ -540,9 +343,206 @@ This field is a rich text. </td></tr>
 
 </div>
 </div>
+<a id="a7cf950d3902c133949a1c135c183789d" name="a7cf950d3902c133949a1c135c183789d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cf950d3902c133949a1c135c183789d">&#9670;&#160;</a></span>addSectionAbout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tbq::DialogAbout::addSectionAbout </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>aboutApp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classtbq_1_1_rich_link.html">RichLink</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>linkHome</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classtbq_1_1_rich_link.html">RichLink</a>()</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classtbq_1_1_rich_link.html">RichLink</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>linkBug</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classtbq_1_1_rich_link.html">RichLink</a>()</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add an "about" section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aboutApp</td><td>Description of the application goals. <br  />
+This field is a rich text. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">linkHome</td><td>Link to the project homepage. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">linkBug</td><td>Link to the project bug tracker. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a61675167e5ccea620e0ef840babae7cc" name="a61675167e5ccea620e0ef840babae7cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61675167e5ccea620e0ef840babae7cc">&#9670;&#160;</a></span>addSectionDeps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tbq::DialogAbout::addSectionDeps </td>
+          <td>(</td>
+          <td class="paramtype">const ListDeps &amp;</td>          <td class="paramname"><span class="paramname"><em>listDeps</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>invalidSemver</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;/&quot;</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add section used to list all dependencies. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">listDeps</td><td>List of dependencies to display </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">invalidSemver</td><td>Text to display when version is invalid or unknown.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a0753d5edf92ad79e70e21c2f52993ac6" title="Add section used to list all used ressources (images, fonts, audios, etc...).">addSectionRessources()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0753d5edf92ad79e70e21c2f52993ac6" name="a0753d5edf92ad79e70e21c2f52993ac6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0753d5edf92ad79e70e21c2f52993ac6">&#9670;&#160;</a></span>addSectionRessources()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tbq::DialogAbout::addSectionRessources </td>
+          <td>(</td>
+          <td class="paramtype">const ListResGroups &amp;</td>          <td class="paramname"><span class="paramname"><em>listGroups</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add section used to list all used ressources (images, fonts, audios, etc...). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">listGroups</td><td>List of group ressources to display.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a61675167e5ccea620e0ef840babae7cc" title="Add section used to list all dependencies.">addSectionDeps()</a> </dd></dl>
+
+</div>
+</div>
+<a id="af8da8b31164816802e2ddf43f717eebc" name="af8da8b31164816802e2ddf43f717eebc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8da8b31164816802e2ddf43f717eebc">&#9670;&#160;</a></span>addSectionChangelog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tbq::DialogAbout::addSectionChangelog </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;</td>          <td class="paramname"><span class="paramname"><em>sourceUrl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QTextDocument::ResourceType</td>          <td class="paramname"><span class="paramname"><em>type</em></span><span class="paramdefsep"> = </span><span class="paramdefval">QTextDocument::MarkdownResource</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a changelog section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sourceUrl</td><td>Path to changelog ressource to use </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>Type of ressource.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ae09c0134510fbdb9357bd30b686605e5" title="Add a license section.">addSectionLicense()</a> </dd>
+<dd>
+<a class="el" href="#ae63a8f7134cee49bde07c3b97b7bf381" title="Add a custom section using ressource.">addSectionFromDoc()</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae09c0134510fbdb9357bd30b686605e5" name="ae09c0134510fbdb9357bd30b686605e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae09c0134510fbdb9357bd30b686605e5">&#9670;&#160;</a></span>addSectionLicense()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tbq::DialogAbout::addSectionLicense </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;</td>          <td class="paramname"><span class="paramname"><em>sourceUrl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QTextDocument::ResourceType</td>          <td class="paramname"><span class="paramname"><em>type</em></span><span class="paramdefsep"> = </span><span class="paramdefval">QTextDocument::MarkdownResource</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a license section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sourceUrl</td><td>Path to license ressource to use </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>Type of ressource.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af8da8b31164816802e2ddf43f717eebc" title="Add a changelog section.">addSectionChangelog()</a> </dd>
+<dd>
+<a class="el" href="#ae63a8f7134cee49bde07c3b97b7bf381" title="Add a custom section using ressource.">addSectionFromDoc()</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae63a8f7134cee49bde07c3b97b7bf381" name="ae63a8f7134cee49bde07c3b97b7bf381"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63a8f7134cee49bde07c3b97b7bf381">&#9670;&#160;</a></span>addSectionFromDoc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tbq::DialogAbout::addSectionFromDoc </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QUrl &amp;</td>          <td class="paramname"><span class="paramname"><em>sourceUrl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QTextDocument::ResourceType</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a custom section using ressource. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Section name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sourceUrl</td><td>Path to ressource to use </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>Type of ressource.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af8da8b31164816802e2ddf43f717eebc" title="Add a changelog section.">addSectionChangelog()</a>, <a class="el" href="#ae09c0134510fbdb9357bd30b686605e5" title="Add a license section.">addSectionLicense()</a> </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>toolboxqt/widgets/<a class="el" href="dialogabout_8h_source.html">dialogabout.h</a></li>
-<li>toolboxqt/widgets/<b>dialogabout.cpp</b></li>
+<li>include/toolboxqt/widgets/<a class="el" href="dialogabout_8h_source.html">dialogabout.h</a></li>
+<li>src/widgets/<b>dialogabout.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

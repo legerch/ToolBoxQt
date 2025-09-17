@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['widgethelper_0',['WidgetHelper',['../classtbq_1_1_widget_helper.html',1,'tbq']]]
+  ['version_0',['4.2. Library version',['../index.html#autotoc_md42-library-version',1,'']]]
 ];

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['qmlhelper_0',['QmlHelper',['../classtbq_1_1_qml_helper.html',1,'tbq']]],
-  ['qt_1',['Toolbox Qt',['../index.html',1,'']]],
-  ['qtversioncheck_2',['qtVersionCheck',['../classtbq_1_1_qml_helper.html#af2b26bb6dcfa0136386a296e1f711c28',1,'tbq::QmlHelper']]],
-  ['quitapplication_3',['quitApplication',['../classtbq_1_1_core_helper.html#aa97d3cd706905aa37acd951d1eb7b97b',1,'tbq::CoreHelper']]]
+  ['openlink_0',['openLink',['../classtbq_1_1_table_widget_item_link.html#a1c76dc5982b8ed2cf97f3af9dc8e6610',1,'tbq::TableWidgetItemLink']]],
+  ['operator_28_29_1',['operator()',['../classtbq_1_1_array2_d.html#a7b7040811405103f0f6b3830f25507f5',1,'tbq::Array2D::operator()(size_t row, size_t col)'],['../classtbq_1_1_array2_d.html#acd734a5070976c5318d1a4e9ba19036a',1,'tbq::Array2D::operator()(size_t row, size_t col) const']]],
+  ['options_2',['3.2. CMake options',['../index.html#autotoc_md32-cmake-options',1,'']]]
 ];

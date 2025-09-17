@@ -91,7 +91,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>tbq</b></li><li class="navelem"><a class="el" href="classtbq_1_1_label_scl.html">LabelScl</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacetbq.html">tbq</a></li><li class="navelem"><a class="el" href="classtbq_1_1_label_scl.html">LabelScl</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -181,6 +181,49 @@ virtual QSize&#160;</td><td class="memItemRight" valign="bottom"><b>sizeHint</b>
 </div><!-- fragment --><p>QLabel doesn't behave properly when using it to display an image (or animation) that is loaded at runtime. Since size of image is not known when layout is rendered, QLabel size will be wrong and will not be properly updated when finally rendering an image (either too small, too big or not properly scaled). This class will manage this issue.</p>
 <dl class="section note"><dt>Note</dt><dd>Note that this class will be useful for QLabel containing image which are loaded at runtime. The described issue do not happen when image is available at compile-time. </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1c3f397ae707cc12226ca19ad18ff2ca" name="a1c3f397ae707cc12226ca19ad18ff2ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c3f397ae707cc12226ca19ad18ff2ca">&#9670;&#160;</a></span>getPixmap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QPixmap &amp; tbq::LabelScl::getPixmap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use to get original image. </p>
+<dl class="section return"><dt>Returns</dt><dd>Return reference to original image</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#adb3a6b7a9f73b7ff664dc823835842ae" title="Use to get image scaled to fit inside the label.">getPixmapScaled()</a> </dd>
+<dd>
+<a class="el" href="#ab8f0a92b5061c3b3cfdad343ef99087e" title="Set image to use via a QPixmap.">setImg()</a> </dd></dl>
+
+</div>
+</div>
+<a id="adb3a6b7a9f73b7ff664dc823835842ae" name="adb3a6b7a9f73b7ff664dc823835842ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb3a6b7a9f73b7ff664dc823835842ae">&#9670;&#160;</a></span>getPixmapScaled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPixmap tbq::LabelScl::getPixmapScaled </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use to get image scaled to fit inside the label. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns image scaled to fit inside the available space of the label </dd></dl>
+
+</div>
+</div>
 <a id="a52e49cb7d58966ae2c709cea657c6cf9" name="a52e49cb7d58966ae2c709cea657c6cf9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a52e49cb7d58966ae2c709cea657c6cf9">&#9670;&#160;</a></span>animPlay()</h2>
 
@@ -257,46 +300,80 @@ virtual QSize&#160;</td><td class="memItemRight" valign="bottom"><b>sizeHint</b>
 
 </div>
 </div>
-<a id="a1c3f397ae707cc12226ca19ad18ff2ca" name="a1c3f397ae707cc12226ca19ad18ff2ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c3f397ae707cc12226ca19ad18ff2ca">&#9670;&#160;</a></span>getPixmap()</h2>
+<a id="ab8f0a92b5061c3b3cfdad343ef99087e" name="ab8f0a92b5061c3b3cfdad343ef99087e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8f0a92b5061c3b3cfdad343ef99087e">&#9670;&#160;</a></span>setImg() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const QPixmap &amp; tbq::LabelScl::getPixmap </td>
+          <td class="memname">void tbq::LabelScl::setImg </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const QPixmap &amp;</td>          <td class="paramname"><span class="paramname"><em>pixmap</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Use to get original image. </p>
-<dl class="section return"><dt>Returns</dt><dd>Return reference to original image</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#adb3a6b7a9f73b7ff664dc823835842ae" title="Use to get image scaled to fit inside the label.">getPixmapScaled()</a> </dd>
-<dd>
-<a class="el" href="#ab8f0a92b5061c3b3cfdad343ef99087e" title="Set image to use via a QPixmap.">setImg()</a> </dd></dl>
+<p>Set image to use via a <b>QPixmap</b>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pixmap</td><td>Pixmap image to use inside the label. Pixmap image will be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="adb3a6b7a9f73b7ff664dc823835842ae" name="adb3a6b7a9f73b7ff664dc823835842ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb3a6b7a9f73b7ff664dc823835842ae">&#9670;&#160;</a></span>getPixmapScaled()</h2>
+<a id="a889f3b525f0a5454ab5c9245908ae3e5" name="a889f3b525f0a5454ab5c9245908ae3e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a889f3b525f0a5454ab5c9245908ae3e5">&#9670;&#160;</a></span>setImg() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QPixmap tbq::LabelScl::getPixmapScaled </td>
+          <td class="memname">void tbq::LabelScl::setImg </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const QImage &amp;</td>          <td class="paramname"><span class="paramname"><em>img</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Use to get image scaled to fit inside the label. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns image scaled to fit inside the available space of the label </dd></dl>
+<p>Set image to use via a <b>QImage</b>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">img</td><td>Image to use inside the label. This value will be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1cfa12905b6d9c75ac529895433f6386" name="a1cfa12905b6d9c75ac529895433f6386"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cfa12905b6d9c75ac529895433f6386">&#9670;&#160;</a></span>setImg() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tbq::LabelScl::setImg </td>
+          <td>(</td>
+          <td class="paramtype">const QImage *</td>          <td class="paramname"><span class="paramname"><em>img</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set image via a pointer to <b>QImage</b>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">img</td><td>Pointer to image to use. <br  />
+If <code>nullptr</code>, nothing will be perform. <br  />
+Caller don't need to keep a reference to the object, value is copied. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -328,83 +405,6 @@ virtual QSize&#160;</td><td class="memItemRight" valign="bottom"><b>sizeHint</b>
 
 </div>
 </div>
-<a id="a889f3b525f0a5454ab5c9245908ae3e5" name="a889f3b525f0a5454ab5c9245908ae3e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a889f3b525f0a5454ab5c9245908ae3e5">&#9670;&#160;</a></span>setImg() <span class="overload">[1/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::LabelScl::setImg </td>
-          <td>(</td>
-          <td class="paramtype">const QImage &amp;</td>          <td class="paramname"><span class="paramname"><em>img</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set image to use via a <b>QImage</b>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">img</td><td>Image to use inside the label. This value will be copied. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a1cfa12905b6d9c75ac529895433f6386" name="a1cfa12905b6d9c75ac529895433f6386"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cfa12905b6d9c75ac529895433f6386">&#9670;&#160;</a></span>setImg() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::LabelScl::setImg </td>
-          <td>(</td>
-          <td class="paramtype">const QImage *</td>          <td class="paramname"><span class="paramname"><em>img</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set image via a pointer to <b>QImage</b>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">img</td><td>Pointer to image to use. <br  />
-If <code>nullptr</code>, nothing will be perform. <br  />
-Caller don't need to keep a reference to the object, value is copied. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab8f0a92b5061c3b3cfdad343ef99087e" name="ab8f0a92b5061c3b3cfdad343ef99087e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8f0a92b5061c3b3cfdad343ef99087e">&#9670;&#160;</a></span>setImg() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tbq::LabelScl::setImg </td>
-          <td>(</td>
-          <td class="paramtype">const QPixmap &amp;</td>          <td class="paramname"><span class="paramname"><em>pixmap</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set image to use via a <b>QPixmap</b>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pixmap</td><td>Pixmap image to use inside the label. Pixmap image will be copied. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ace420cbd4c028258515934f62153bf9c" name="ace420cbd4c028258515934f62153bf9c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace420cbd4c028258515934f62153bf9c">&#9670;&#160;</a></span>setTextAlt()</h2>
 
@@ -431,8 +431,8 @@ Caller don't need to keep a reference to the object, value is copied. </td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>toolboxqt/widgets/<a class="el" href="labelscl_8h_source.html">labelscl.h</a></li>
-<li>toolboxqt/widgets/<b>labelscl.cpp</b></li>
+<li>include/toolboxqt/widgets/<a class="el" href="labelscl_8h_source.html">labelscl.h</a></li>
+<li>src/widgets/<b>labelscl.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

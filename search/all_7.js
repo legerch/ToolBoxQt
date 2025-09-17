@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['c_20standards_0',['1.1. C++ Standards',['../index.html#autotoc_md11-c-standards',1,'']]],
-  ['cbhook_1',['CbHook',['../classtbq_1_1_settings_ini.html#ae8f0a512f8592083e2ccac781badb29b',1,'tbq::SettingsIni']]],
-  ['clear_2',['clear',['../classtbq_1_1_array2_d.html#ae1007a7efb9c45bd8b6845f7500f9077',1,'tbq::Array2D']]],
-  ['corehelper_3',['CoreHelper',['../classtbq_1_1_core_helper.html',1,'tbq']]]
+  ['btnabstractwordwrap_0',['BtnAbstractWordWrap',['../classtbq_1_1_btn_abstract_word_wrap.html',1,'tbq']]],
+  ['btnpush_1',['BtnPush',['../classtbq_1_1_btn_push.html',1,'tbq']]],
+  ['btntool_2',['BtnTool',['../classtbq_1_1_btn_tool.html',1,'tbq']]],
+  ['build_3',['3. How to build',['../index.html#autotoc_md3-how-to-build',1,'']]]
 ];

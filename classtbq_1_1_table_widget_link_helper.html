@@ -91,7 +91,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>tbq</b></li><li class="navelem"><a class="el" href="classtbq_1_1_table_widget_link_helper.html">TableWidgetLinkHelper</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacetbq.html">tbq</a></li><li class="navelem"><a class="el" href="classtbq_1_1_table_widget_link_helper.html">TableWidgetLinkHelper</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -132,8 +132,8 @@ This class aims to fix this issue by properly:</p><ul>
 <dd>
 <a class="el" href="#aade1bd8d24d76485e0300b6f62223fa8" title="Allow to manage &quot;open&quot; event of a QTableWidget.">handleOpening()</a>, <a class="el" href="#aa230f21018c15a60a4a4abe0d714c8f9" title="Allow to manage &quot;hover&quot; event of a QTableWidget.">handleHovering()</a> </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa230f21018c15a60a4a4abe0d714c8f9" name="aa230f21018c15a60a4a4abe0d714c8f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa230f21018c15a60a4a4abe0d714c8f9">&#9670;&#160;</a></span>handleHovering()</h2>
+<a id="a9509c92f672ceaa47f6ec1d9cec10a2c" name="a9509c92f672ceaa47f6ec1d9cec10a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9509c92f672ceaa47f6ec1d9cec10a2c">&#9670;&#160;</a></span>manageEvents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -142,14 +142,10 @@ This class aims to fix this issue by properly:</p><ul>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void tbq::TableWidgetLinkHelper::handleHovering </td>
+          <td class="memname">void tbq::TableWidgetLinkHelper::manageEvents </td>
           <td>(</td>
-          <td class="paramtype">QTableWidget *</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">QTableWidget *</td>          <td class="paramname"><span class="paramname"><em>table</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">QTableWidgetItem *</td>          <td class="paramname"><span class="paramname"><em>item</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -159,20 +155,15 @@ This class aims to fix this issue by properly:</p><ul>
 </table>
 </div><div class="memdoc">
 
-<p>Allow to manage "hover" event of a <code>QTableWidget</code>. </p>
-<p>If item is a <code><a class="el" href="classtbq_1_1_table_widget_item_link.html" title="Qt widget item allowing to store link informations.">TableWidgetItemLink</a></code>, cursor will be set to <code>Qt::PointingHandCursor</code>, otherwise it be reset to default.</p>
+<p>Use to set listeners for events related to a <code><a class="el" href="classtbq_1_1_table_widget_item_link.html" title="Qt widget item allowing to store link informations.">TableWidgetItemLink</a></code>. </p>
+<p>This method only set connect events to their respective method. If caller need to to re-implement connection event, methods <code><a class="el" href="#aade1bd8d24d76485e0300b6f62223fa8" title="Allow to manage &quot;open&quot; event of a QTableWidget.">handleOpening()</a></code> and <code><a class="el" href="#aa230f21018c15a60a4a4abe0d714c8f9" title="Allow to manage &quot;hover&quot; event of a QTableWidget.">handleHovering()</a></code> can be called.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">table</td><td>Table associated to the event. <br  />
-Must be <b>not NULL</b>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">item</td><td>Item related to the event. <br  />
-Can be <b>NULL</b>.</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">table</td><td>Table to use to manage events.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#aade1bd8d24d76485e0300b6f62223fa8" title="Allow to manage &quot;open&quot; event of a QTableWidget.">handleOpening()</a> </dd>
-<dd>
-<a class="el" href="#a9509c92f672ceaa47f6ec1d9cec10a2c" title="Use to set listeners for events related to a TableWidgetItemLink.">manageEvents()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#aade1bd8d24d76485e0300b6f62223fa8" title="Allow to manage &quot;open&quot; event of a QTableWidget.">handleOpening()</a>, <a class="el" href="#aa230f21018c15a60a4a4abe0d714c8f9" title="Allow to manage &quot;hover&quot; event of a QTableWidget.">handleHovering()</a> </dd></dl>
 
 </div>
 </div>
@@ -224,8 +215,8 @@ Can be <b>NULL</b>.</td></tr>
 
 </div>
 </div>
-<a id="a9509c92f672ceaa47f6ec1d9cec10a2c" name="a9509c92f672ceaa47f6ec1d9cec10a2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9509c92f672ceaa47f6ec1d9cec10a2c">&#9670;&#160;</a></span>manageEvents()</h2>
+<a id="aa230f21018c15a60a4a4abe0d714c8f9" name="aa230f21018c15a60a4a4abe0d714c8f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa230f21018c15a60a4a4abe0d714c8f9">&#9670;&#160;</a></span>handleHovering()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -234,10 +225,14 @@ Can be <b>NULL</b>.</td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void tbq::TableWidgetLinkHelper::manageEvents </td>
+          <td class="memname">void tbq::TableWidgetLinkHelper::handleHovering </td>
           <td>(</td>
-          <td class="paramtype">QTableWidget *</td>          <td class="paramname"><span class="paramname"><em>table</em></span></td><td>)</td>
+          <td class="paramtype">QTableWidget *</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">QTableWidgetItem *</td>          <td class="paramname"><span class="paramname"><em>item</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -247,21 +242,26 @@ Can be <b>NULL</b>.</td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Use to set listeners for events related to a <code><a class="el" href="classtbq_1_1_table_widget_item_link.html" title="Qt widget item allowing to store link informations.">TableWidgetItemLink</a></code>. </p>
-<p>This method only set connect events to their respective method. If caller need to to re-implement connection event, methods <code><a class="el" href="#aade1bd8d24d76485e0300b6f62223fa8" title="Allow to manage &quot;open&quot; event of a QTableWidget.">handleOpening()</a></code> and <code><a class="el" href="#aa230f21018c15a60a4a4abe0d714c8f9" title="Allow to manage &quot;hover&quot; event of a QTableWidget.">handleHovering()</a></code> can be called.</p>
+<p>Allow to manage "hover" event of a <code>QTableWidget</code>. </p>
+<p>If item is a <code><a class="el" href="classtbq_1_1_table_widget_item_link.html" title="Qt widget item allowing to store link informations.">TableWidgetItemLink</a></code>, cursor will be set to <code>Qt::PointingHandCursor</code>, otherwise it be reset to default.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">table</td><td>Table to use to manage events.</td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">table</td><td>Table associated to the event. <br  />
+Must be <b>not NULL</b>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">item</td><td>Item related to the event. <br  />
+Can be <b>NULL</b>.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#aade1bd8d24d76485e0300b6f62223fa8" title="Allow to manage &quot;open&quot; event of a QTableWidget.">handleOpening()</a>, <a class="el" href="#aa230f21018c15a60a4a4abe0d714c8f9" title="Allow to manage &quot;hover&quot; event of a QTableWidget.">handleHovering()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#aade1bd8d24d76485e0300b6f62223fa8" title="Allow to manage &quot;open&quot; event of a QTableWidget.">handleOpening()</a> </dd>
+<dd>
+<a class="el" href="#a9509c92f672ceaa47f6ec1d9cec10a2c" title="Use to set listeners for events related to a TableWidgetItemLink.">manageEvents()</a> </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>toolboxqt/widgets/table/<a class="el" href="tablewidgetitemlink_8h_source.html">tablewidgetitemlink.h</a></li>
-<li>toolboxqt/widgets/table/<b>tablewidgetitemlink.cpp</b></li>
+<li>include/toolboxqt/widgets/table/<a class="el" href="tablewidgetitemlink_8h_source.html">tablewidgetitemlink.h</a></li>
+<li>src/widgets/table/<b>tablewidgetitemlink.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
