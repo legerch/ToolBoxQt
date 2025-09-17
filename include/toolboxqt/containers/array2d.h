@@ -78,7 +78,7 @@ private:
 template<typename T>
 Array2D<T>::Array2D(size_t nbRows, size_t nbCols)
 {
-    resize(m_rows, m_cols);
+    resize(nbRows, nbCols);
 }
 
 /*!

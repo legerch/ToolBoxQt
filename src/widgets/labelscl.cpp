@@ -214,7 +214,7 @@ QSize LabelScl::sizeHint() const
     return QSize(sizeW, heightForWidth(sizeW));
 }
 
-void LabelScl::resizeEvent(QResizeEvent *event)
+void LabelScl::resizeEvent(TOOLBOXQT_VAR_UNUSED QResizeEvent *event)
 {
     if(m_anim && m_anim->state() == QMovie::Running){
         updateMovieFrame();
