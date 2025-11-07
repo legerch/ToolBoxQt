@@ -1,11 +1,11 @@
 #ifndef TBQ_CONTAINER_ARRAY2D_H
 #define TBQ_CONTAINER_ARRAY2D_H
 
-#include "toolboxqt/toolboxqt_global.h"
+#include <QSize>
 #include <QVector>
 
 /*****************************/
-/* Start namespace           */
+/* Namespace instructions    */
 /*****************************/
 
 namespace tbq
@@ -20,17 +20,17 @@ namespace tbq
  * \brief Use to manage a 2-dimensional array
  */
 template <typename T>
-class TOOLBOXQT_EXPORT Array2D
+class Array2D
 {
-
 public:
-    explicit Array2D();
+    Array2D();
     explicit Array2D(size_t nbRows, size_t nbCols);
 
 public:
     size_t getRows() const;
     size_t getCols() const;
-    size_t getSize() const;
+    size_t getNbElements() const;
+    QSize getSize() const;
 
 public:
     void clear();
@@ -97,7 +97,8 @@ Array2D<T>::Array2D()
  * \return
  * Returns number of rows available
  *
- * \sa getCols(), getSize()
+ * \sa getCols()
+ * \sa getSize(), getNbElements()
  */
 template<typename T>
 size_t Array2D<T>::getRows() const
@@ -111,7 +112,8 @@ size_t Array2D<T>::getRows() const
  * \return
  * Returns number of columns available
  *
- * \sa getRows(), getSize()
+ * \sa getRows()
+ * \sa getSize(), getNbElements()
  */
 template<typename T>
 size_t Array2D<T>::getCols() const
@@ -120,18 +122,33 @@ size_t Array2D<T>::getCols() const
 }
 
 /*!
- * \brief Get total size of 2D array (a.k.a number
- * of elements)
+ * \brief Get number of elements of 2D array
  *
  * \return
  * Returns number of elements
  *
  * \sa getRows(), getCols()
+ * \sa getSize()
  */
 template<typename T>
-size_t Array2D<T>::getSize() const
+size_t Array2D<T>::getNbElements() const
 {
     return m_rows * m_cols;
+}
+
+/*!
+ * \brief Get matrix size
+ *
+ * \return
+ * Returns matrix size
+ *
+ * \sa getRows(), getCols()
+ * \sa getNbElements()
+ */
+template<typename T>
+QSize Array2D<T>::getSize() const
+{
+    return QSize(m_cols, m_rows);
 }
 
 /*!
@@ -231,6 +248,18 @@ const T& Array2D<T>::operator()(size_t row, size_t col) const
     return m_data[row * m_cols + col];
 }
 
+/*****************************/
+/* Qt specific methods       */
+/*****************************/
+
+/*****************************/
+/* End namespaces            */
+/*****************************/
+
 } // namespace tbq
+
+/*****************************/
+/* Qt specific meta-system   */
+/*****************************/
 
 #endif // TBQ_CONTAINER_ARRAY2D_H
