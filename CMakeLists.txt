@@ -56,6 +56,7 @@ set(PROJECT_QT_PACKAGES
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS ${PROJECT_QT_PACKAGES} REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${PROJECT_QT_PACKAGES} REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 list(TRANSFORM PROJECT_QT_PACKAGES PREPEND "Qt${QT_VERSION_MAJOR}::")
 
@@ -112,6 +113,7 @@ set(PROJECT_HEADERS_PUBLIC
     qml/qmlhelper.h
 
     widgets/button.h
+    widgets/colorbutton.h
     widgets/dialogabout.h
     widgets/filechooser.h
     widgets/labelscl.h
@@ -136,6 +138,7 @@ set(PROJECT_SOURCES
     qml/qmlhelper.cpp
 
     widgets/button.cpp
+    widgets/colorbutton.cpp
     widgets/dialogabout.cpp
     widgets/filechooser.cpp
     widgets/labelscl.cpp
@@ -174,6 +177,8 @@ set(PROJECT_FILES ${PROJECT_RESSOURCES} ${PROJECT_FILE_GLOBAL} ${PROJECT_HEADERS
 # Add files to the library
 add_library(${PROJECT_NAME} SHARED ${PROJECT_FILES})
 
+
+target_link_libraries(toolboxqt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 # Set version of library
 set_target_properties(${PROJECT_NAME} PROPERTIES
                         VERSION ${PROJECT_VERSION}
