@@ -124,9 +124,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a905164232d2a40355c3733af80fc6319" id="r_a905164232d2a40355c3733af80fc6319"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a905164232d2a40355c3733af80fc6319">getCols</a> () const</td></tr>
 <tr class="memdesc:a905164232d2a40355c3733af80fc6319"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of columns.  <br /></td></tr>
 <tr class="separator:a905164232d2a40355c3733af80fc6319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3458989c0b58d2e56ba77bb28a107ea4" id="r_a3458989c0b58d2e56ba77bb28a107ea4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3458989c0b58d2e56ba77bb28a107ea4">getSize</a> () const</td></tr>
-<tr class="memdesc:a3458989c0b58d2e56ba77bb28a107ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get total size of 2D array (a.k.a number of elements)  <br /></td></tr>
-<tr class="separator:a3458989c0b58d2e56ba77bb28a107ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82b9c1a9456fdd7ed4fed5c5e11d832e" id="r_a82b9c1a9456fdd7ed4fed5c5e11d832e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82b9c1a9456fdd7ed4fed5c5e11d832e">getNbElements</a> () const</td></tr>
+<tr class="memdesc:a82b9c1a9456fdd7ed4fed5c5e11d832e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of elements of 2D array.  <br /></td></tr>
+<tr class="separator:a82b9c1a9456fdd7ed4fed5c5e11d832e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5243d022f3d358e534137618e62d28de" id="r_a5243d022f3d358e534137618e62d28de"><td class="memItemLeft" align="right" valign="top">QSize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5243d022f3d358e534137618e62d28de">getSize</a> () const</td></tr>
+<tr class="memdesc:a5243d022f3d358e534137618e62d28de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get matrix size.  <br /></td></tr>
+<tr class="separator:a5243d022f3d358e534137618e62d28de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1007a7efb9c45bd8b6845f7500f9077" id="r_ae1007a7efb9c45bd8b6845f7500f9077"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1007a7efb9c45bd8b6845f7500f9077">clear</a> ()</td></tr>
 <tr class="memdesc:ae1007a7efb9c45bd8b6845f7500f9077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear content of 2D array.  <br /></td></tr>
 <tr class="separator:ae1007a7efb9c45bd8b6845f7500f9077"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,7 +219,9 @@ template&lt;typename T &gt; </div>
 
 <p>Get number of rows. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns number of rows available</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a905164232d2a40355c3733af80fc6319" title="Get number of columns.">getCols()</a>, <a class="el" href="#a3458989c0b58d2e56ba77bb28a107ea4" title="Get total size of 2D array (a.k.a number of elements)">getSize()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a905164232d2a40355c3733af80fc6319" title="Get number of columns.">getCols()</a> </dd>
+<dd>
+<a class="el" href="#a5243d022f3d358e534137618e62d28de" title="Get matrix size.">getSize()</a>, <a class="el" href="#a82b9c1a9456fdd7ed4fed5c5e11d832e" title="Get number of elements of 2D array.">getNbElements()</a> </dd></dl>
 
 </div>
 </div>
@@ -239,12 +244,14 @@ template&lt;typename T &gt; </div>
 
 <p>Get number of columns. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns number of columns available</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a77090971411b20a42c86961883bd4924" title="Get number of rows.">getRows()</a>, <a class="el" href="#a3458989c0b58d2e56ba77bb28a107ea4" title="Get total size of 2D array (a.k.a number of elements)">getSize()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a77090971411b20a42c86961883bd4924" title="Get number of rows.">getRows()</a> </dd>
+<dd>
+<a class="el" href="#a5243d022f3d358e534137618e62d28de" title="Get matrix size.">getSize()</a>, <a class="el" href="#a82b9c1a9456fdd7ed4fed5c5e11d832e" title="Get number of elements of 2D array.">getNbElements()</a> </dd></dl>
 
 </div>
 </div>
-<a id="a3458989c0b58d2e56ba77bb28a107ea4" name="a3458989c0b58d2e56ba77bb28a107ea4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3458989c0b58d2e56ba77bb28a107ea4">&#9670;&#160;</a></span>getSize()</h2>
+<a id="a82b9c1a9456fdd7ed4fed5c5e11d832e" name="a82b9c1a9456fdd7ed4fed5c5e11d832e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82b9c1a9456fdd7ed4fed5c5e11d832e">&#9670;&#160;</a></span>getNbElements()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,7 +259,7 @@ template&lt;typename T &gt; </div>
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="classtbq_1_1_array2_d.html">tbq::Array2D</a>&lt; T &gt;::getSize </td>
+          <td class="memname">size_t <a class="el" href="classtbq_1_1_array2_d.html">tbq::Array2D</a>&lt; T &gt;::getNbElements </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -260,9 +267,36 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Get total size of 2D array (a.k.a number of elements) </p>
+<p>Get number of elements of 2D array. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns number of elements</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a77090971411b20a42c86961883bd4924" title="Get number of rows.">getRows()</a>, <a class="el" href="#a905164232d2a40355c3733af80fc6319" title="Get number of columns.">getCols()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a77090971411b20a42c86961883bd4924" title="Get number of rows.">getRows()</a>, <a class="el" href="#a905164232d2a40355c3733af80fc6319" title="Get number of columns.">getCols()</a> </dd>
+<dd>
+<a class="el" href="#a5243d022f3d358e534137618e62d28de" title="Get matrix size.">getSize()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a5243d022f3d358e534137618e62d28de" name="a5243d022f3d358e534137618e62d28de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5243d022f3d358e534137618e62d28de">&#9670;&#160;</a></span>getSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">QSize <a class="el" href="classtbq_1_1_array2_d.html">tbq::Array2D</a>&lt; T &gt;::getSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get matrix size. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns matrix size</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a77090971411b20a42c86961883bd4924" title="Get number of rows.">getRows()</a>, <a class="el" href="#a905164232d2a40355c3733af80fc6319" title="Get number of columns.">getCols()</a> </dd>
+<dd>
+<a class="el" href="#a82b9c1a9456fdd7ed4fed5c5e11d832e" title="Get number of elements of 2D array.">getNbElements()</a> </dd></dl>
 
 </div>
 </div>
