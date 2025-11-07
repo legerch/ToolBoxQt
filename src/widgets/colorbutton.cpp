@@ -30,14 +30,24 @@ namespace tbq
 
 ColorButton::ColorButton(QWidget *parent) :
     QPushButton(parent),
-    m_color(Qt::white)
+    m_shape(ColorShape::COLOR_SHAPE_RECT), m_color(Qt::white)
 {
     connect(this, &QPushButton::clicked, this, &ColorButton::chooseColor);
+}
+
+ColorButton::ColorShape ColorButton::getShape() const
+{
+    return m_shape;
 }
 
 const QColor &ColorButton::getColor() const
 {
     return m_color;
+}
+
+void ColorButton::setShape(ColorShape shape)
+{
+    m_shape = shape;
 }
 
 void ColorButton::setColor(const QColor &color)
@@ -63,27 +73,37 @@ void ColorButton::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
 {
     QPainter painter(this);
 
-    /* Draw button */
+    /* Draw base button */
     QStyleOptionButton option;
     initStyleOption(&option);
 
     style()->drawControl(QStyle::CE_PushButton, &option, &painter, this);
 
-    /* Set color "pastille" properties */
-    // Size
-    const int diameter = height() * 0.8;    // 80 % of the button height
-
-    // Alignment
-    int x = (width() - diameter) / 2;       // Center it horizontally
-    int y = (height() - diameter) / 2;      // Center it vertically
-
-    QRect rect(x, y, diameter, diameter);
-
-    /* Draw the color */
+    /* Set painter properties */
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setPen(Qt::gray);
     painter.setBrush(m_color);
-    painter.drawEllipse(rect);
+
+    /* Draw the color */
+    switch(m_shape)
+    {
+        case ColorShape::COLOR_SHAPE_CIRCLE:{
+            const int diameter = height() * 0.8;        // 80 % of the button height
+
+            const int x = (width() - diameter) / 2;     // Center it horizontally
+            const int y = (height() - diameter) / 2;    // Center it vertically
+
+            const QRect rect(x, y, diameter, diameter);
+            painter.drawEllipse(rect);
+        }break;
+
+        case ColorShape::COLOR_SHAPE_RECT:{
+            const QRect rect = this->rect().adjusted(2, 2, -2, -2); // Give small margins
+            painter.drawRect(rect);
+        }break;
+
+        default: break;
+    }
 }
 
 void ColorButton::chooseColor()
