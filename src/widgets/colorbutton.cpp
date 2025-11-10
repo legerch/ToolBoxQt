@@ -58,7 +58,7 @@ void ColorButton::setColor(const QColor &color)
     }
 
     /* Do color differs */
-    if(color == color){
+    if(m_color == color){
         return;
     }
 
