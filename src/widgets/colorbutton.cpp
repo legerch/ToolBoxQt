@@ -30,8 +30,9 @@ namespace tbq
 
 ColorButton::ColorButton(QWidget *parent) :
     QPushButton(parent),
-    m_shape(ColorShape::COLOR_SHAPE_RECT), m_color(Qt::white)
+    m_shape(ColorShape::COLOR_SHAPE_RECT)
 {
+    setColor(Qt::white);
     connect(this, &QPushButton::clicked, this, &ColorButton::chooseColor);
 }
 
@@ -64,7 +65,7 @@ void ColorButton::setColor(const QColor &color)
 
     /* Perform color change */
     m_color = color;
-    update();
+    setToolTip(m_color.name().toUpper());
 
     emit colorChanged(m_color);
 }
