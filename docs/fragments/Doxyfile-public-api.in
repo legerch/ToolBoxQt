@@ -29,6 +29,7 @@ INPUT                   =   README.md \
                             src/qml/qmlhelper.cpp \
                             \
                             src/widgets/button.cpp \
+                            src/widgets/colorbutton.cpp \
                             src/widgets/dialogabout.cpp \
                             src/widgets/filechooser.cpp \
                             src/widgets/labelscl.cpp \
