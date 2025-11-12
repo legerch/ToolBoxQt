@@ -19,6 +19,7 @@ public:
         COLOR_SHAPE_RECT
     };
     Q_ENUM(ColorShape);
+
 public:
     explicit ColorButton(QWidget *parent = nullptr);
 
@@ -31,7 +32,7 @@ public:
     void setColor(const QColor &color);
 
 signals:
-    void colorChanged(const QColor &color);
+    void sColorChanged(const QColor &color);
 
 protected:
     void paintEvent(QPaintEvent *event) override;

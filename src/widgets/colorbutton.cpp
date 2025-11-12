@@ -8,6 +8,30 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class tbq::ColorButton
+ * \brief Button used to pick a color
+ * \details
+ * Include with:
+ * \code{.cpp}
+ * #include "toolboxqt/widgets/colorbutton.h"
+ * \endcode
+ *
+ * Create a button that allow to pick a color when
+ * clicking on it and display the selected color
+ */
+
+/*****************************/
+/* Signals documentations    */
+/*****************************/
+
+/*!
+ * \fn tbq::ColorButton::sColorChanged()
+ * \brief Signal emitted when new color has been selected.
+ *
+ * \sa getColor(), setColor()
+ */
+
 /*****************************/
 /* Macro definitions         */
 /*****************************/
@@ -28,6 +52,15 @@ namespace tbq
 /*         Class             */
 /*****************************/
 
+/*!
+ * \brief Create default color button
+ * \details
+ * By default, \em shape is set to \c ColorShape::COLOR_SHAPE_RECT
+ * and \em color to \c Qt::white.
+ *
+ * \param[in, out] parent
+ * Parent widget.
+ */
 ColorButton::ColorButton(QWidget *parent) :
     QPushButton(parent),
     m_shape(ColorShape::COLOR_SHAPE_RECT)
@@ -36,21 +69,58 @@ ColorButton::ColorButton(QWidget *parent) :
     connect(this, &QPushButton::clicked, this, &ColorButton::chooseColor);
 }
 
+/*!
+ * \brief Use to get button current shape
+ * \return
+ * Returns shape of the button
+ *
+ * \sa setShape()
+ */
 ColorButton::ColorShape ColorButton::getShape() const
 {
     return m_shape;
 }
 
+/*!
+ * \brief Use to get selected color
+ * \return
+ * Returns currently selected color
+ *
+ * \sa setColor()
+ */
 const QColor &ColorButton::getColor() const
 {
     return m_color;
 }
 
+/*!
+ * \brief Use to set button shape
+ *
+ * \param[in] shape
+ * Shape to use.
+ *
+ * \sa getShape()
+ */
 void ColorButton::setShape(ColorShape shape)
 {
     m_shape = shape;
 }
 
+/*!
+ * \brief Use to set selected color.
+ * \details
+ * Allow to manually set selected color
+ * which will update displayed color
+ * and related tooltip button.
+ *
+ * \param[in] color
+ * Color to set. \n
+ * If invalid or same as already selected,
+ * nothing is performed.
+ *
+ * \sa getColor()
+ * \sa colorChanged()
+ */
 void ColorButton::setColor(const QColor &color)
 {
     /* Verify color validity */
@@ -67,7 +137,7 @@ void ColorButton::setColor(const QColor &color)
     m_color = color;
     setToolTip(m_color.name().toUpper());
 
-    emit colorChanged(m_color);
+    emit sColorChanged(m_color);
 }
 
 void ColorButton::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
@@ -107,6 +177,11 @@ void ColorButton::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
     }
 }
 
+/*!
+ * \brief Use to pick a color
+ * \details
+ * Trigger color picker window.
+ */
 void ColorButton::chooseColor()
 {
     const QColor newColor = QColorDialog::getColor(m_color, this, tr("Select color"));
