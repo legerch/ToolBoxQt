@@ -107,6 +107,50 @@ void WidgetHelper::labelSetPathFile(QLabel *label, const QFileInfo &fileInfo, bo
     label->setToolTip(fileInfo.absoluteFilePath());
 }
 
+/*!
+ * \brief Use to initialize a line edit input as
+ * a password input
+ * \details
+ * It allow to manage show/hide property of a password field
+ * input.
+ *
+ * \param[out] lineEdit
+ * Line edit to set. \n
+ * Must be <b>not NULL</b>.
+ * \param[in] iconShow
+ * Icon to use to show password.
+ * \param[in] iconHide
+ * Icon to use to hide password.
+ * \param[in] txtShow
+ * Tooltip to use to show password.
+ * \param[in] txtHide
+ * Tooltip to use to hide password.
+ */
+void WidgetHelper::lineEditSetAsInputPasswd(QLineEdit *lineEdit, const QIcon &iconShow, const QIcon &iconHide, const QString &txtShow, const QString &txtHide)
+{
+    /* Set default mode */
+    lineEdit->setEchoMode(QLineEdit::Password);
+
+    /* Create action */
+    QAction *action = lineEdit->addAction(iconShow, QLineEdit::TrailingPosition);
+    action->setToolTip(txtShow);
+
+    /* Manage action event */
+    QObject::connect(action, &QAction::triggered, [lineEdit, action, iconShow, iconHide, txtShow, txtHide]{
+        const bool showPassword = (lineEdit->echoMode() == QLineEdit::Password); // If currently set on password mode, show as plain text
+
+        if(showPassword){
+            lineEdit->setEchoMode(QLineEdit::Normal);
+            action->setIcon(iconHide);
+            action->setToolTip(txtHide);
+        }else{
+            lineEdit->setEchoMode(QLineEdit::Password);
+            action->setIcon(iconShow);
+            action->setToolTip(txtShow);
+        }
+    });
+}
+
 /*****************************/
 /* End namespace             */
 /*****************************/
