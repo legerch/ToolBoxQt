@@ -5,7 +5,7 @@ var searchData=
   ['clear_2',['clear',['../classtbq_1_1_array2_d.html#ae1007a7efb9c45bd8b6845f7500f9077',1,'tbq::Array2D']]],
   ['cmake_20options_3',['3.2. CMake options',['../index.html#autotoc_md32-cmake-options',1,'']]],
   ['cmake_20usage_4',['3.1. CMake Usage',['../index.html#autotoc_md31-cmake-usage',1,'']]],
-  ['colorbutton_5',['ColorButton',['../classtbq_1_1_color_button.html',1,'tbq']]],
+  ['colorbutton_5',['ColorButton',['../classtbq_1_1_color_button.html',1,'tbq::ColorButton'],['../classtbq_1_1_color_button.html#a1f9e36e4442c608d6ed8860a68df1649',1,'tbq::ColorButton::ColorButton()']]],
   ['compatibility_6',['4.2.1. Compatibility',['../index.html#autotoc_md421-compatibility',1,'']]],
   ['compilation_20time_7',['4.2.2. Compilation time',['../index.html#autotoc_md422-compilation-time',1,'']]],
   ['corehelper_8',['CoreHelper',['../classtbq_1_1_core_helper.html',1,'tbq']]]
