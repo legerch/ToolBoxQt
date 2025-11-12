@@ -114,6 +114,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a707f5af74436a89593eb06be904a353c" id="r_a707f5af74436a89593eb06be904a353c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a707f5af74436a89593eb06be904a353c">labelSetPathFile</a> (QLabel *label, const QFileInfo &amp;fileInfo, bool verifyExist)</td></tr>
 <tr class="memdesc:a707f5af74436a89593eb06be904a353c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to display a file info path inside a label.  <br /></td></tr>
 <tr class="separator:a707f5af74436a89593eb06be904a353c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4811571bbc0b0e4c56d62fdbb0be08dd" id="r_a4811571bbc0b0e4c56d62fdbb0be08dd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4811571bbc0b0e4c56d62fdbb0be08dd">lineEditSetAsInputPasswd</a> (QLineEdit *lineEdit, const QIcon &amp;iconShow, const QIcon &amp;iconHide, const QString &amp;txtShow=&quot;Show password&quot;, const QString &amp;txtHide=&quot;Hide password&quot;)</td></tr>
+<tr class="memdesc:a4811571bbc0b0e4c56d62fdbb0be08dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to initialize a line edit input as a password input.  <br /></td></tr>
+<tr class="separator:a4811571bbc0b0e4c56d62fdbb0be08dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class containing multiple helpful methods related to widgets. </p>
@@ -212,6 +215,64 @@ If empty, file will be considered as not selected. </td></tr>
   </dd>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a0b57f4536d80426dfca69dfddf5abbe3" title="Use to display a directory path inside a label.">labelSetPathDir()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4811571bbc0b0e4c56d62fdbb0be08dd" name="a4811571bbc0b0e4c56d62fdbb0be08dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4811571bbc0b0e4c56d62fdbb0be08dd">&#9670;&#160;</a></span>lineEditSetAsInputPasswd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tbq::WidgetHelper::lineEditSetAsInputPasswd </td>
+          <td>(</td>
+          <td class="paramtype">QLineEdit *</td>          <td class="paramname"><span class="paramname"><em>lineEdit</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QIcon &amp;</td>          <td class="paramname"><span class="paramname"><em>iconShow</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QIcon &amp;</td>          <td class="paramname"><span class="paramname"><em>iconHide</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>txtShow</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;Show&#160;password&quot;</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>txtHide</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;Hide&#160;password&quot;</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Use to initialize a line edit input as a password input. </p>
+<p>It allow to manage show/hide property of a password field input.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">lineEdit</td><td>Line edit to set. <br  />
+Must be <b>not NULL</b>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iconShow</td><td>Icon to use to show password. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iconHide</td><td>Icon to use to hide password. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">txtShow</td><td>Tooltip to use to show password. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">txtHide</td><td>Tooltip to use to hide password. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
