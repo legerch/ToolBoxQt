@@ -1,5 +1,7 @@
 #include "toolboxqt/widgets/widgethelper.h"
 
+#include <QAction>
+
 /*****************************/
 /* Class documentations      */
 /*****************************/
