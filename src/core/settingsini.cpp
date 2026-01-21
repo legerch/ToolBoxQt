@@ -151,6 +151,21 @@ void SettingsIni::setValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &valu
     }
 }
 
+/*!
+ * \brief Use to retrieve value from \c .ini file
+ *
+ * \param[in] key
+ * Key of parameter to retrieve at format <tt>section/my_field</tt>.
+ * \param[in] defaultValue
+ * Value to use if the setting \c key doesn't exist
+ *
+ * \return
+ * Returns value associated to \c key or \c defaultValue if field
+ * doesn't exists.
+ *
+ * \sa getString()
+ * \sa setValue()
+ */
 QVariant SettingsIni::getValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &defaultValue) const
 {
     if(!m_settings){
@@ -158,6 +173,35 @@ QVariant SettingsIni::getValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &
     }
 
     return m_settings->value(key, defaultValue);
+}
+
+/*!
+ * \brief Use to retrieve a string from \c .ini file
+ * \details
+ * This method differs from \c getValue() because here, default
+ * value will also be returned if the field exist but the value is empty.
+ *
+ * \param[in] key
+ * Key of parameter to retrieve at format <tt>section/my_field</tt>.
+ * \param[in] defaultValue
+ * Value to use if:
+ * - The setting \c key doesn't exist
+ * - Retrieved string value is empty
+ *
+ * \return
+ * Returns value associated to \c key or \c defaultValue
+ *
+ * \sa getValue()
+ * \sa setValue()
+ */
+QString SettingsIni::getString(QAnyStringView key, const QString &defaultValue) const
+{
+    const QString value = getValue(key, defaultValue).toString();
+    if(value.isEmpty()){
+        return defaultValue;
+    }
+
+    return value;
 }
 
 /*!

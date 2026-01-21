@@ -27,7 +27,9 @@ public:
     void groupEnd();
 
     void setValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &value);
+
     QVariant getValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &defaultValue = QVariant()) const;
+    QString getString(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QString &defaultValue = QString()) const;
 
 public:
     void setHooksPreLoadSettings(CbHook hookPreload);
