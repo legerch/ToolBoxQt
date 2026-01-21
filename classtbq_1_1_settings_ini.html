@@ -130,9 +130,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>groupEnd</b> ()</td><
 <tr class="memitem:ace047ae2bddf3429d6e584063f8e7e4d" id="r_ace047ae2bddf3429d6e584063f8e7e4d"><td class="memItemLeft" align="right" valign="top"><a id="ace047ae2bddf3429d6e584063f8e7e4d" name="ace047ae2bddf3429d6e584063f8e7e4d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setValue</b> (TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &amp;value)</td></tr>
 <tr class="separator:ace047ae2bddf3429d6e584063f8e7e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf0c57b827c69fc73531c41280a5b7db" id="r_abf0c57b827c69fc73531c41280a5b7db"><td class="memItemLeft" align="right" valign="top"><a id="abf0c57b827c69fc73531c41280a5b7db" name="abf0c57b827c69fc73531c41280a5b7db"></a>
-QVariant&#160;</td><td class="memItemRight" valign="bottom"><b>getValue</b> (TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &amp;defaultValue=QVariant()) const</td></tr>
+<tr class="memitem:abf0c57b827c69fc73531c41280a5b7db" id="r_abf0c57b827c69fc73531c41280a5b7db"><td class="memItemLeft" align="right" valign="top">QVariant&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf0c57b827c69fc73531c41280a5b7db">getValue</a> (TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &amp;defaultValue=QVariant()) const</td></tr>
+<tr class="memdesc:abf0c57b827c69fc73531c41280a5b7db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to retrieve value from <code></code>.ini file.  <br /></td></tr>
 <tr class="separator:abf0c57b827c69fc73531c41280a5b7db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9b60b189f7c0baffb5606644add60b4" id="r_af9b60b189f7c0baffb5606644add60b4"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9b60b189f7c0baffb5606644add60b4">getString</a> (TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QString &amp;defaultValue=QString()) const</td></tr>
+<tr class="memdesc:af9b60b189f7c0baffb5606644add60b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to retrieve a string from <code></code>.ini file.  <br /></td></tr>
+<tr class="separator:af9b60b189f7c0baffb5606644add60b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c102835aa9de9af13723f693ce0bedc" id="r_a2c102835aa9de9af13723f693ce0bedc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c102835aa9de9af13723f693ce0bedc">setHooksPreLoadSettings</a> (<a class="el" href="#ae8f0a512f8592083e2ccac781badb29b">CbHook</a> hookPreload)</td></tr>
 <tr class="memdesc:a2c102835aa9de9af13723f693ce0bedc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to set custom behaviour before loading settings.  <br /></td></tr>
 <tr class="separator:a2c102835aa9de9af13723f693ce0bedc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -328,6 +331,79 @@ We can defines custom ones like this:</p><ul>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Return <code>true</code> if loading succeed.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2c102835aa9de9af13723f693ce0bedc" title="Use to set custom behaviour before loading settings.">setHooksPreLoadSettings()</a>, <a class="el" href="#a148ab1f30e1f2cac6cacda9a9ccbb36c" title="Use to set custom behaviour after loading settings.">setHooksPostLoadSettings()</a> </dd></dl>
+
+</div>
+</div>
+<a id="abf0c57b827c69fc73531c41280a5b7db" name="abf0c57b827c69fc73531c41280a5b7db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf0c57b827c69fc73531c41280a5b7db">&#9670;&#160;</a></span>getValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVariant tbq::SettingsIni::getValue </td>
+          <td>(</td>
+          <td class="paramtype">TOOLBOXQT_QTCOMPAT_STR_VIEW</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QVariant &amp;</td>          <td class="paramname"><span class="paramname"><em>defaultValue</em></span><span class="paramdefsep"> = </span><span class="paramdefval">QVariant()</span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use to retrieve value from <code></code>.ini file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Key of parameter to retrieve at format <code>section/my_field</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">defaultValue</td><td>Value to use if the setting <code>key</code> doesn't exist</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns value associated to <code>key</code> or <code>defaultValue</code> if field doesn't exists.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af9b60b189f7c0baffb5606644add60b4" title="Use to retrieve a string from .ini file.">getString()</a> </dd>
+<dd>
+setValue() </dd></dl>
+
+</div>
+</div>
+<a id="af9b60b189f7c0baffb5606644add60b4" name="af9b60b189f7c0baffb5606644add60b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9b60b189f7c0baffb5606644add60b4">&#9670;&#160;</a></span>getString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString tbq::SettingsIni::getString </td>
+          <td>(</td>
+          <td class="paramtype">TOOLBOXQT_QTCOMPAT_STR_VIEW</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>defaultValue</em></span><span class="paramdefsep"> = </span><span class="paramdefval">QString()</span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use to retrieve a string from <code></code>.ini file. </p>
+<p>This method differs from <code><a class="el" href="#abf0c57b827c69fc73531c41280a5b7db" title="Use to retrieve value from .ini file.">getValue()</a></code> because here, default value will also be returned if the field exist but the value is empty.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Key of parameter to retrieve at format <code>section/my_field</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">defaultValue</td><td>Value to use if:<ul>
+<li>The setting <code>key</code> doesn't exist</li>
+<li>Retrieved string value is empty</li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns value associated to <code>key</code> or <code>defaultValue</code> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#abf0c57b827c69fc73531c41280a5b7db" title="Use to retrieve value from .ini file.">getValue()</a> </dd>
+<dd>
+setValue() </dd></dl>
 
 </div>
 </div>

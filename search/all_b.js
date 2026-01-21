@@ -11,7 +11,9 @@ var searchData=
   ['getrows_8',['getRows',['../classtbq_1_1_array2_d.html#a77090971411b20a42c86961883bd4924',1,'tbq::Array2D']]],
   ['getshape_9',['getShape',['../classtbq_1_1_color_button.html#a2dbdc8783895d61223b420913115814f',1,'tbq::ColorButton']]],
   ['getsize_10',['getSize',['../classtbq_1_1_array2_d.html#a5243d022f3d358e534137618e62d28de',1,'tbq::Array2D']]],
-  ['gettext_11',['getText',['../classtbq_1_1_btn_abstract_word_wrap.html#add8a632f35e9503589b6e9c40167a817',1,'tbq::BtnAbstractWordWrap']]],
-  ['gettextdisplayed_12',['getTextDisplayed',['../classtbq_1_1_rich_link.html#a90c2f510266472aacbf5c65cb956d699',1,'tbq::RichLink']]],
-  ['geturl_13',['getUrl',['../classtbq_1_1_rich_link.html#a3b068a456a0ec5d919adbc1944e6bba6',1,'tbq::RichLink']]]
+  ['getstring_11',['getString',['../classtbq_1_1_settings_ini.html#af9b60b189f7c0baffb5606644add60b4',1,'tbq::SettingsIni']]],
+  ['gettext_12',['getText',['../classtbq_1_1_btn_abstract_word_wrap.html#add8a632f35e9503589b6e9c40167a817',1,'tbq::BtnAbstractWordWrap']]],
+  ['gettextdisplayed_13',['getTextDisplayed',['../classtbq_1_1_rich_link.html#a90c2f510266472aacbf5c65cb956d699',1,'tbq::RichLink']]],
+  ['geturl_14',['getUrl',['../classtbq_1_1_rich_link.html#a3b068a456a0ec5d919adbc1944e6bba6',1,'tbq::RichLink']]],
+  ['getvalue_15',['getValue',['../classtbq_1_1_settings_ini.html#abf0c57b827c69fc73531c41280a5b7db',1,'tbq::SettingsIni']]]
 ];
