@@ -119,6 +119,8 @@ set(PROJECT_HEADERS_PUBLIC
     widgets/labelscl.h
     widgets/widgethelper.h
 
+    widgets/gauges/gaugetarget.h
+
     widgets/table/tablewidgetitemlink.h
 )
 
@@ -143,6 +145,8 @@ set(PROJECT_SOURCES
     widgets/filechooser.cpp
     widgets/labelscl.cpp
     widgets/widgethelper.cpp
+
+    widgets/gauges/gaugetarget.cpp
 
     widgets/table/tablewidgetitemlink.cpp
 )
