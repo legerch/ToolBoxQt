@@ -46,7 +46,7 @@ void GaugeTargetStyle::reset()
 {
     m_mapColors.insert(GAUGE_ZONE_BAR, QColor(80, 80, 80));
     m_mapColors.insert(GAUGE_ZONE_TOLERANCE, QColor(190, 190, 190));
-    m_mapColors.insert(GAUGE_MARK_TARGET_CURSOR, QColor(56, 164, 255));
+    m_mapColors.insert(GAUGE_MARK_TARGET_CURSOR, QColor(56, 164, 255, 150));
     m_mapColors.insert(GAUGE_MARK_TARGET_TEXT, Qt::gray);
     m_mapColors.insert(GAUGE_MARK_VALUE_CURSOR_OK, Qt::green);
     m_mapColors.insert(GAUGE_MARK_VALUE_CURSOR_KO, Qt::red);
@@ -139,7 +139,7 @@ void GaugeTarget::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
     const int topLeft = height() * 0.5 - barHeight * 0.5;
 
     const QRect zoneBar(margin, topLeft, zoneDraw.width() - margin * 2, barHeight);
-    const int cursorFactor = zoneBar.height() * 0.375;
+    const int cursorFactor = zoneBar.height() * 0.3;
 
     /* Define tolerance zone */
     const int pixTolLow = findPixelFromValue(zoneBar, m_tolLow);
@@ -160,7 +160,7 @@ void GaugeTarget::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
     const int pixTarget = findPixelFromValue(zoneBar, m_target);
     const QLine markTarget(pixTarget, zoneBar.top() - cursorFactor, pixTarget, zoneBar.bottom() + cursorFactor);
 
-    painter.setPen(QPen(m_style.getColor(GaugeTargetStyle::GAUGE_MARK_TARGET_CURSOR), 2, Qt::DotLine));
+    painter.setPen(QPen(m_style.getColor(GaugeTargetStyle::GAUGE_MARK_TARGET_CURSOR), 2));
     painter.drawLine(markTarget);
 
     // Text
