@@ -229,15 +229,16 @@ QRect GaugeTarget::calcZoneMarkText(const QFontMetrics &ftInfos, const QRect &zo
     /* Determinate coordinates */
     // Horizontal
     int posX = mark.x1() - txtSize.width() * 0.5;
-    posX = std::max(posX, zoneDraw.x());
+    posX = std::clamp(posX, zoneDraw.left(), zoneDraw.right() - txtSize.width());
 
     // Vertical
     int posY = 0;
     if(atTop){
-        posY = zoneDraw.top();
+        posY = mark.y1() - txtSize.height();
     }else{
-        posY = zoneDraw.bottom() - txtSize.height();
+        posY = mark.y2();
     }
+    posY = std::clamp(posY, zoneDraw.top(), zoneDraw.bottom() - txtSize.height());
 
     /* Create text zone */
     return QRect(posX, posY, txtSize.width(), txtSize.height());
