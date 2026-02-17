@@ -134,6 +134,11 @@ void GaugeTarget::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
 
     constexpr int margin = 4;
 
+    /* Do the widget is enabled ? */
+    if(!isEnabled()){
+        painter.setOpacity(0.4);
+    }
+
     /* Define bar zone */
     const int barHeight = zoneDraw.height() * 0.20;
     const int topLeft = height() * 0.5 - barHeight * 0.5;
