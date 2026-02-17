@@ -33,14 +33,20 @@ public:
 
 public:
     QColor getColor(GaugeElement idElement) const;
+    int getMargins() const;
+    double getMarkFactor() const;
 
 public:
     void reset();
 
     void setColor(GaugeElement idElement, const QColor &color);
+    void setMargins(int margins);
+    void setMarkFactor(double factor);
 
 private:
     QHash<GaugeElement, QColor> m_mapColors;
+    int m_margins = 0;
+    double m_markFactor = 0.0;
 };
 
 class TOOLBOXQT_EXPORT GaugeTarget : public QWidget

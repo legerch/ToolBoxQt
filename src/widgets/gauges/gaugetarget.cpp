@@ -42,8 +42,19 @@ QColor GaugeTargetStyle::getColor(GaugeElement idElement) const
     return m_mapColors.value(idElement, Qt::gray);
 }
 
+int GaugeTargetStyle::getMargins() const
+{
+    return m_margins;
+}
+
+double GaugeTargetStyle::getMarkFactor() const
+{
+    return m_markFactor;
+}
+
 void GaugeTargetStyle::reset()
 {
+    /* Set default color style */
     m_mapColors.insert(GAUGE_ZONE_BAR, QColor(80, 80, 80));
     m_mapColors.insert(GAUGE_ZONE_TOLERANCE, QColor(190, 190, 190));
     m_mapColors.insert(GAUGE_MARK_TARGET_CURSOR, QColor(56, 164, 255, 150));
@@ -52,13 +63,26 @@ void GaugeTargetStyle::reset()
     m_mapColors.insert(GAUGE_MARK_VALUE_CURSOR_KO, Qt::red);
     m_mapColors.insert(GAUGE_MARK_VALUE_TEXT_OK, QColor(34, 139, 34));
     m_mapColors.insert(GAUGE_MARK_VALUE_TEXT_KO, Qt::red);
-
     Q_ASSERT(GAUGE_NB_ELEMENTS == m_mapColors.size());
+
+    /* Set size properties */
+    m_margins = 4;
+    m_markFactor = 0.3;
 }
 
 void GaugeTargetStyle::setColor(GaugeElement idElement, const QColor &color)
 {
     m_mapColors.insert(idElement, color);
+}
+
+void GaugeTargetStyle::setMargins(int margins)
+{
+    m_margins = std::max(0, margins);
+}
+
+void GaugeTargetStyle::setMarkFactor(double factor)
+{
+    m_markFactor = std::clamp(factor, 0.0, 10.0);
 }
 
 /*****************************/
@@ -130,9 +154,9 @@ void GaugeTarget::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing);
 
     const QFontMetrics fontInfos(painter.font());
-    const QRect zoneDraw(0, 0, width(), height());
+    const QRect zoneDraw = rect();
 
-    constexpr int margin = 4;
+    const int margin = m_style.getMargins();
 
     /* Do the widget is enabled ? */
     if(!isEnabled()){
@@ -144,7 +168,7 @@ void GaugeTarget::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
     const int topLeft = height() * 0.5 - barHeight * 0.5;
 
     const QRect zoneBar(margin, topLeft, zoneDraw.width() - margin * 2, barHeight);
-    const int cursorFactor = zoneBar.height() * 0.3;
+    const int cursorFactor = zoneBar.height() * m_style.getMarkFactor();
 
     /* Define tolerance zone */
     const int pixTolLow = findPixelFromValue(zoneBar, m_tolLow);
