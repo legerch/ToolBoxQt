@@ -70,6 +70,7 @@ protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
+    void updateProperties();
     int findPixelFromValue(const QRect &zoneDraw, int value) const;
 
     QRect calcZoneMarkText(const QFontMetrics &ftInfos, const QRect &zoneDraw, const QLine &mark, const QString &txt, bool atTop);

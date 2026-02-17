@@ -83,7 +83,7 @@ GaugeTargetStyle GaugeTarget::getStyle() const
 void GaugeTarget::setValue(int value)
 {
     m_value = value;
-    update();
+    updateProperties();
 }
 
 void GaugeTarget::setRange(int min, int max)
@@ -91,7 +91,7 @@ void GaugeTarget::setRange(int min, int max)
     m_min = min;
     m_max = max;
 
-    update();
+    updateProperties();
 }
 
 void GaugeTarget::setTarget(int target, int tolerance)
@@ -101,7 +101,7 @@ void GaugeTarget::setTarget(int target, int tolerance)
     m_tolHigh = std::min(target + tolerance, m_max);
     m_tolLow = std::max(target - tolerance, m_min);
 
-    update();
+    updateProperties();
 }
 
 void GaugeTarget::setTarget(int target, int tolerance, int range)
@@ -197,6 +197,20 @@ void GaugeTarget::paintEvent(TOOLBOXQT_VAR_UNUSED QPaintEvent *event)
 
     qDebug() << "Gauge cursor zone: " << zoneDraw << "(zone-bar: " << zoneBar << ")";
 #endif
+}
+
+void GaugeTarget::updateProperties()
+{
+    /* Update tooltip informations */
+    const QString tooltip = QString(tr("Current value: %1\nTarget: %2\nTolerance zone: [%3 ; %4]\nBar zone: [%5 ; %6]")).arg(
+        QString::number(m_value), QString::number(m_target),
+        QString::number(m_tolLow), QString::number(m_tolHigh),
+        QString::number(m_min), QString::number(m_max)
+    );
+    setToolTip(tooltip);
+
+    /* Call method used to refresh widget UI */
+    update();
 }
 
 int GaugeTarget::findPixelFromValue(const QRect &zoneDraw, int value) const
