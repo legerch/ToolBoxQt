@@ -46,6 +46,7 @@ private:
 
 private: // Disable inherited public methods that can confuse users
     using QLabel::setMovie;
+    using QLabel::setPixmap;
 
 private:
     QPixmap m_pixmap;
