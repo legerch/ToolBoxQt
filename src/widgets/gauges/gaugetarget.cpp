@@ -6,6 +6,23 @@
 /* Class documentations      */
 /*****************************/
 
+/*!
+ * \class tbq::GaugeTargetStyle
+ * \brief Allow to set style of a \c GaugeTarget widget.
+ *
+ * \sa GaugeTarget
+ */
+
+/*!
+ * \class tbq::GaugeTarget
+ * \brief A gauge used to determine how close we are from a target value.
+ * \details
+ * Allow to display a <em>tolerance zone</em>, where a valu is considered valid
+ * while trying to be as close as possible of a target.
+ *
+ * \sa GaugeTargetStyle
+ */
+
 /*****************************/
 /* Signals documentations    */
 /*****************************/
@@ -32,26 +49,71 @@ namespace tbq
 /*  Class GaugeTargetStyle   */
 /*****************************/
 
+/*!
+ * \brief Construct a gauge target style element
+ * \details
+ * Contains default style of a gauge target.
+ *
+ * \sa reset()
+ */
 GaugeTargetStyle::GaugeTargetStyle()
 {
     reset();
 }
 
+/*!
+ * \brief Retrieve color of a gauge element
+ *
+ * \param[in] idElement
+ * Element ID to retrieve the color. \n
+ * If unknown ID, color \c Qt::gray is returned.
+ *
+ * \return
+ * Returns color associated to selected element.
+ *
+ * \sa setColor()
+ * \sa getMargins(), getMarkFactor()
+ */
 QColor GaugeTargetStyle::getColor(GaugeElement idElement) const
 {
     return m_mapColors.value(idElement, Qt::gray);
 }
 
+/*!
+ * \brief Retrieve margins used by the gauge
+ *
+ * \return
+ * Returns margins used by the gauge.
+ *
+ * \sa setMargins()
+ * \sa getColor(), getMarkFactor()
+ */
 int GaugeTargetStyle::getMargins() const
 {
     return m_margins;
 }
 
+/*!
+ * \brief Retrieve factor used for cursors marks
+ * \details
+ * Mark correspond to cursors (current value, target, etc...). \n
+ * The factor (coefficient) is used to determine the size used
+ * by cursors
+ *
+ * \return
+ * Returns factor used for marks elements.
+ *
+ * \sa setMarkFactor()
+ * \sa getMargins(), getColor()
+ */
 double GaugeTargetStyle::getMarkFactor() const
 {
     return m_markFactor;
 }
 
+/*!
+ * \brief Reset style to default values
+ */
 void GaugeTargetStyle::reset()
 {
     /* Set default color style */
@@ -70,16 +132,65 @@ void GaugeTargetStyle::reset()
     m_markFactor = 0.3;
 }
 
+/*!
+ * \brief Use to set color of a gauge element.
+ *
+ * \param[in] idElement
+ * Element ID for which to set the color
+ * \param[in] color
+ * Color to use.
+ *
+ * \sa getColor()
+ * \sa setMargins(), setMarkFactor()
+ */
 void GaugeTargetStyle::setColor(GaugeElement idElement, const QColor &color)
 {
     m_mapColors.insert(idElement, color);
 }
 
+/*!
+ * \brief Use to set margins used by the gauge
+ *
+ * \param[in] margins
+ * Margins to use in pixels. \n
+ * If value is negative, margins will be set to \c 0.
+ *
+ * \sa getMargins()
+ * \sa setColor(), setMarkFactor()
+ */
 void GaugeTargetStyle::setMargins(int margins)
 {
     m_margins = std::max(0, margins);
 }
 
+/*!
+ * \brief Retrieve factor used for cursors marks
+ * \details
+ * Mark correspond to cursors (current value, target, etc...). \n
+ * The factor (coefficient) is used to determine the size used
+ * by cursors
+ *
+ * \return
+ * Returns factor used for marks elements.
+ *
+ * \sa setMarkFactor()
+ * \sa getMargins(), getColor()
+ */
+
+/*!
+ * \brief Set factor used for cursors marks.
+ * \details
+ * Mark correspond to cursors (current value, target, etc...). \n
+ * The factor (coefficient) is used to determine the size used
+ * by cursors.
+ *
+ * \param[in] factor
+ * Factor coefficient to use for mark cursors. \n
+ * Value will be clamped in range <b>[0.0 ; 10.0]</b>
+ *
+ * \sa getMarkFactor()
+ * \sa setColor(), setMargins()
+ */
 void GaugeTargetStyle::setMarkFactor(double factor)
 {
     m_markFactor = std::clamp(factor, 0.0, 10.0);
@@ -90,26 +201,70 @@ void GaugeTargetStyle::setMarkFactor(double factor)
 /*    Class GaugeTarget      */
 /*****************************/
 
+/*!
+ * \brief Create a gauge target with their default values
+ *
+ * \param[in, out] parent
+ * Parent widget.
+ */
 GaugeTarget::GaugeTarget(QWidget *parent)
     : QWidget{parent}
 {}
 
+/*!
+ * \brief Use to know if current value is in tolerance
+ * zone.
+ *
+ * \return
+ * Returns \c true if current value is in tolerance zone.
+ *
+ * \sa setRange(), setTarget()
+ * \sa setValue()
+ */
 bool GaugeTarget::isInTolerance() const
 {
     return (m_value >= m_tolLow && m_value <= m_tolHigh);
 }
 
+/*!
+ * \brief Retrieve gauge current style
+ *
+ * \return
+ * Returns style associated to the gauge.
+ *
+ * \sa setStyle()
+ */
 GaugeTargetStyle GaugeTarget::getStyle() const
 {
     return m_style;
 }
 
+/*!
+ * \brief Use to set current value
+ *
+ * \param[in] value
+ * Current value
+ *
+ * \sa setRange(), setTarget()
+ */
 void GaugeTarget::setValue(int value)
 {
     m_value = value;
     updateProperties();
 }
 
+/*!
+ * \brief Use to set range to display for the gauge
+ * \details
+ * The range corresponds to the all gauge.
+ *
+ * \param[in] min
+ * Minimum range to use
+ * \param[in] max
+ * Maximum range to use
+ *
+ * \sa setTarget(), setValue()
+ */
 void GaugeTarget::setRange(int min, int max)
 {
     m_min = min;
@@ -118,6 +273,18 @@ void GaugeTarget::setRange(int min, int max)
     updateProperties();
 }
 
+/*!
+ * \brief Set the target value
+ *
+ * \param[in] target
+ * Target value to use. \n
+ * The goal is to be as close as possible
+ * of this value
+ * \param[in] tolerance
+ * Tolerance value to use.
+ *
+ * \sa setRange(), setValue()
+ */
 void GaugeTarget::setTarget(int target, int tolerance)
 {
     m_target = std::clamp(target, m_min, m_max);
@@ -128,12 +295,32 @@ void GaugeTarget::setTarget(int target, int tolerance)
     updateProperties();
 }
 
+/*!
+ * \overload
+ *
+ * \param[in] target
+ * Target value to use. \n
+ * The goal is to be as close as possible
+ * of this value
+ * \param[in] tolerance
+ * Tolerance value to use.
+ * \param[in] range
+ * Range to use
+ *
+ * \sa setRange(), setValue()
+ */
 void GaugeTarget::setTarget(int target, int tolerance, int range)
 {
     setRange(target - range, target + range);
     setTarget(target, tolerance);
 }
 
+/*!
+ * \brief Set style of the gauge
+ *
+ * \param[in] style
+ * Style to use on the gauge
+ */
 void GaugeTarget::setStyle(const GaugeTargetStyle &style)
 {
     m_style = style;
