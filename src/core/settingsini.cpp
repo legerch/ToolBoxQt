@@ -151,6 +151,15 @@ void SettingsIni::setValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &valu
     }
 }
 
+bool SettingsIni::contains(TOOLBOXQT_QTCOMPAT_STR_VIEW key) const
+{
+    if(m_settings){
+        return m_settings->contains(key);
+    }
+
+    return false;
+}
+
 /*!
  * \brief Use to retrieve value from \c .ini file
  *

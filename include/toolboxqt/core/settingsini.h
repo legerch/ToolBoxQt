@@ -28,6 +28,7 @@ public:
 
     void setValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &value);
 
+    bool contains(TOOLBOXQT_QTCOMPAT_STR_VIEW key) const;
     QVariant getValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &defaultValue = QVariant()) const;
     QString getString(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QString &defaultValue = QString()) const;
 
