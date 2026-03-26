@@ -194,7 +194,7 @@ QVariant SettingsIni::getValue(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QVariant &
  * \sa getValue()
  * \sa setValue()
  */
-QString SettingsIni::getString(QAnyStringView key, const QString &defaultValue) const
+QString SettingsIni::getString(TOOLBOXQT_QTCOMPAT_STR_VIEW key, const QString &defaultValue) const
 {
     const QString value = getValue(key, defaultValue).toString();
     if(value.isEmpty()){
