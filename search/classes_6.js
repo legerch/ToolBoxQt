@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qmlhelper_0',['QmlHelper',['../classtbq_1_1_qml_helper.html',1,'tbq']]]
+  ['labelscl_0',['LabelScl',['../classtbq_1_1_label_scl.html',1,'tbq']]]
 ];

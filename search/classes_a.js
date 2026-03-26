@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['widgethelper_0',['WidgetHelper',['../classtbq_1_1_widget_helper.html',1,'tbq']]]
+  ['tablewidgetitemlink_0',['TableWidgetItemLink',['../classtbq_1_1_table_widget_item_link.html',1,'tbq']]],
+  ['tablewidgetlinkhelper_1',['TableWidgetLinkHelper',['../classtbq_1_1_table_widget_link_helper.html',1,'tbq']]]
 ];
