@@ -35,6 +35,8 @@ INPUT                   =   README.md \
                             src/widgets/labelscl.cpp \
                             src/widgets/widgethelper.cpp \
                             \
+                            src/widgets/gauges/gaugetarget.cpp \
+                            \
                             src/widgets/table/tablewidgetitemlink.cpp
                             
 EXCLUDE                 =
