@@ -126,6 +126,78 @@ QString FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, const QStri
 
 /*!
  * \overload
+ * \brief Choose multiple files from user-space with standard location
+ */
+QStringList FileChooser::fromUserSpaceFiles(QWidget *parent, QStandardPaths::StandardLocation stdLocation, const QString &filter, SettingsIni *settings, const QString &keyLatest)
+{
+    return fromUserSpaceFiles(parent, QStandardPaths::writableLocation(stdLocation), filter, settings, keyLatest);
+}
+
+/*!
+ * \brief Choose multiple files from user-space
+ * \details
+ * Allow to choose list of files from user-space and allow to easily
+ * remember latest used directory.
+ *
+ * \param[in, out] parent
+ * Parent widget.
+ * \param[in] dirLocation
+ * Default directory to used when opening file dialog
+ * window
+ * \param[in] filter
+ * Filter to use. Can be set using:
+ * \code{.cpp}
+ * tr("Images (*.png *.xpm *.jpg)" // Only display images files
+ * tr("Images (*.png *.xpm *.jpg);;Text files (*.txt);;XML files (*.xml)" // Allow multiple filters (separated with ";;")
+ * \endcode
+ * \param[in,out] settings
+ * Settings entity to use store if using \c keyLatest argument. \n
+ * Nothing performed if \c nullptr.
+ * \param[in] keyLatest
+ * If not empty, provided key will be read from \c setting argument
+ * and use the registered directory in it (and save it when file dialog
+ * window is closed). \n
+ * This is useful to directly open file dialog window to the latest use
+ * directory for this specific ressource
+ *
+ * \return
+ * Returns absolute path of selected files. \n
+ * This value will be empty if no file has been selected.
+ *
+ * \sa fromUserSpaceFile()
+ * \sa fromUserSpaceDir()
+ */
+QStringList FileChooser::fromUserSpaceFiles(QWidget *parent, const QString &dirLocation, const QString &filter, SettingsIni *settings, const QString &keyLatest)
+{
+    const bool doSettings = settingsAreValid(settings, keyLatest);
+    QString dir = dirLocation;
+
+    /* Retrieve latest dir location */
+    const QString cfgKeyDir = getKeyFmt(keyLatest);
+    if(doSettings){
+        const QString dirLatest = settings->getValue(cfgKeyDir).toString();
+        if(!dirLatest.isEmpty()){
+            dir = dirLatest;
+        }
+    }
+
+    /* Choose list of files */
+    const QStringList listFiles = QFileDialog::getOpenFileNames(parent, "Open files", dir, filter);
+    if(listFiles.isEmpty()){
+        return listFiles;
+    }
+    const QFileInfo file(listFiles.first());
+
+    /* Save latest used directory */
+    if(doSettings){
+        settings->setValue(cfgKeyDir, file.absoluteDir().absolutePath());
+    }
+
+    return listFiles;
+}
+
+/*!
+ * \overload
  * \brief Choose a directory from user-space with standard location
  */
 QString FileChooser::fromUserSpaceDir(QWidget *parent, QStandardPaths::StandardLocation stdLocation, SettingsIni *settings, const QString &keyLatest)
@@ -157,7 +229,7 @@ QString FileChooser::fromUserSpaceDir(QWidget *parent, QStandardPaths::StandardL
  * Returns selected directory path. \n
  * This value will be empty if no file has been selected.
  *
- * \sa fromUserSpaceFile()
+ * \sa fromUserSpaceFile(), fromUserSpaceFiles()
  */
 QString FileChooser::fromUserSpaceDir(QWidget *parent, const QString &dirLocation, SettingsIni *settings, const QString &keyLatest)
 {
