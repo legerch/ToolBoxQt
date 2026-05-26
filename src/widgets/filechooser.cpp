@@ -44,7 +44,7 @@ namespace tbq
  * \overload
  * \brief Choose a file from user-space with standard location
  */
-QFileInfo FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, QStandardPaths::StandardLocation stdLocation, const QString &filter, SettingsIni *settings, const QString &keyLatest)
+QString FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, QStandardPaths::StandardLocation stdLocation, const QString &filter, SettingsIni *settings, const QString &keyLatest)
 {
     return fromUserSpaceFile(parent, idType, QStandardPaths::writableLocation(stdLocation), filter, settings, keyLatest);
 }
@@ -80,13 +80,13 @@ QFileInfo FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, QStandard
  * directory for this specific ressource
  *
  * \return
- * Returns file information of the selected file. \n
- * This value will be empty if no file has been selected. \n
- * Can be verified with \c QFileInfo::filePath() method.
+ * Returns absolute path of the selected file. \n
+ * This value will be empty if no file has been selected.
  *
+ * \sa fromUserSpaceFile()
  * \sa fromUserSpaceDir()
  */
-QFileInfo FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, const QString &dirLocation, const QString &filter, SettingsIni *settings, const QString &keyLatest)
+QString FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, const QString &dirLocation, const QString &filter, SettingsIni *settings, const QString &keyLatest)
 {
     const bool doSettings = settingsAreValid(settings, keyLatest);
     QString dir = dirLocation;
@@ -112,7 +112,7 @@ QFileInfo FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, const QSt
 
     /* Do filename is valid ? */
     if(filename.isEmpty()){
-        return QFileInfo();
+        return QString();
     }
     const QFileInfo file(filename);
 
@@ -121,7 +121,7 @@ QFileInfo FileChooser::fromUserSpaceFile(QWidget *parent, Type idType, const QSt
         settings->setValue(cfgKeyDir, file.absoluteDir().absolutePath());
     }
 
-    return file;
+    return file.absoluteFilePath();
 }
 
 /*!
